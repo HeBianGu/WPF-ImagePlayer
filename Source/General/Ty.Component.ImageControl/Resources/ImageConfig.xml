@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+ <root xmlns="">
+   <!-- SaveCommand 用于设置保存的快捷键-->
+   <SaveCommand Key="S" Modifiers="Control"/>
+   
+   <!-- DefectRectangle 用于设置缺陷框 Stroke=边框颜色 StrokeThickness=边框粗细 Fill=填充颜色 Opacity=填充颜色透明度 -->
+   <DefectRectangle Stroke="Red" StrokeThickness="6" Fill="Transparent" Opacity="0"/>
+
+   <!-- SampleRectangle 用于设置样本框 Stroke=边框颜色 StrokeThickness=边框粗细 Fill=填充颜色 Opacity=填充颜色透明度 -->
+   <SampleRectangle Stroke="Blue" StrokeThickness="6"  Fill="Transparent" Opacity="0"/>
+   
+   <!-- DynamicRectangle 用于框选动态框 Stroke=边框颜色 StrokeThickness=边框粗细 Fill=填充颜色 Opacity=填充颜色透明度 -->
+   <DynamicRectangle Stroke="Blue" StrokeThickness="6"  Fill="Transparent" Opacity="0.3" Width="20" Height="20"/>
+
+   <!-- DynamicMatch 用于框选动态框 Width=设置有效值的宽度 Height=设置有效值的高度 -->
+   <DynamicMatch Width="50" Height="50"/>
+
+   <SystemConfig BackGround="Red" Foreground="Blue"/>
+</root>

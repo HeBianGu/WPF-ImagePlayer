@@ -1,0 +1,17 @@
+﻿<Application x:Class="SureDream.Appliaction.Demo.ImageControl.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:SureDream.Appliaction.Demo.ImageControl"
+             StartupUri="ShellWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--自定义资源引用-->
+                <ResourceDictionary Source="/Ty.Base.WpfBase;component/Themes/Ty.Themes.Resource.xaml"/>
+                <ResourceDictionary Source="/Ty.Base.WpfBase;component/Themes/Color/LightThemeResource.xaml"/>
+                <ResourceDictionary Source="/Ty.Base.WpfBase;component/Themes/Ty.Thremes.Control.xaml"/>
+                <ResourceDictionary Source="/Ty.Component.ImageControl;component/Theme/General.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

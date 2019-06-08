@@ -1,0 +1,319 @@
+﻿<!--<UserControl x:Class="Ty.Component.ImageControl.ImageControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ty.Component.ImageControl"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:base="clr-namespace:Ty.Base.WpfBase;assembly=Ty.Base.WpfBase"
+             mc:Ignorable="d" Background="Black"
+             d:DesignHeight="600" d:DesignWidth="1000">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                --><!--自定义资源引用--><!--
+                <ResourceDictionary Source="/Ty.Base.WpfBase;component/Themes/Ty.Themes.Resource.xaml"/>
+                <ResourceDictionary Source="/Ty.Base.WpfBase;component/Themes/Color/LightThemeResource.xaml"/>
+                <ResourceDictionary Source="/Ty.Base.WpfBase;component/Themes/Ty.Thremes.Control.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            --><!--<RoutedUICommand x:Key="Resource.Command.AddDefect" Text="添加缺陷"/>--><!--
+            <RoutedUICommand x:Key="Resource.Command.AddSample" Text="添加标定"/>
+            <RoutedUICommand x:Key="Resource.Command.AddScrean" Text="放大视图"/>
+
+            <ContextMenu x:Key="Resource.ContextMenu.DynamicMenu">
+                <MenuItem Command="{StaticResource Resource.Command.AddSample}" Header="添加缺陷" CommandParameter="Defect"/>
+                <MenuItem Command="{StaticResource Resource.Command.AddSample}" Header="添加标定"  CommandParameter="Sample"/>
+                <MenuItem Command="{StaticResource Resource.Command.AddScrean}" Header="放大视图"/>
+                --><!--<MenuItem Header="放大视图"/>--><!--
+            </ContextMenu>
+
+            <Style TargetType="{x:Type local:DefectShape}">
+                --><!--<Setter Property="StrokeDashArray" Value="8,8"/>
+                <Setter Property="StrokeDashCap" Value="Triangle"/>--><!--
+                <Setter Property="Stroke" Value="Red"/>
+                <Setter Property="Fill">
+                    <Setter.Value>
+                        <SolidColorBrush Color="LightGray" Opacity="0"/>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="ToolTip">
+                    <Setter.Value>
+                        <ToolTip>
+                            <ToolTip.Background>
+                                <SolidColorBrush Color="White" Opacity="0.7"/>
+                            </ToolTip.Background>
+                            <Grid>
+                                <Grid Height="100" Width="200">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="样本名称："  Grid.Row="0"/>
+                                    <TextBlock Text="缺陷类型：" Grid.Row="1"/>
+                                    <TextBlock Text="样本类型：" Grid.Row="2"/>
+
+                                    <TextBlock Grid.Column="1" Grid.Row="0"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="1"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="2"/>
+                                </Grid>
+                            </Grid>
+                        </ToolTip>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="{x:Type local:DynamicShape}">
+                <Setter Property="StrokeDashArray" Value="8,8"/>
+                <Setter Property="StrokeDashCap" Value="Triangle"/>
+                <Setter Property="Stroke" Value="Blue"/>
+                <Setter Property="StrokeThickness" Value="0.2"/>
+                <Setter Property="Fill">
+                    <Setter.Value>
+                        <SolidColorBrush Color="LightGray" Opacity="0.3"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="{x:Type local:SampleShape}">
+                --><!--<Setter Property="StrokeDashArray" Value="8,8"/>
+                <Setter Property="StrokeDashCap" Value="Triangle"/>--><!--
+                <Setter Property="Stroke" Value="Green"/>
+                <Setter Property="Fill">
+                    <Setter.Value>
+                        <SolidColorBrush Color="LightGray" Opacity="0"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="ToolTip">
+                    <Setter.Value>
+                        <ToolTip>
+                            <ToolTip.Background>
+                                <SolidColorBrush Color="White" Opacity="0.7"/>
+                            </ToolTip.Background>
+                            <Grid>
+                                <Grid Height="70" Width="200">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Text="样本名称："  Grid.Row="0"/>
+                                    <TextBlock Text="样本类型：" Grid.Row="2"/>
+
+                                    <TextBlock Grid.Column="1" Grid.Row="0"/>
+                                    <TextBlock Grid.Column="1" Grid.Row="1"/>
+                                </Grid>
+                            </Grid>
+                        </ToolTip>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <ObjectDataProvider x:Key="Resource.ObjectDataProvider.InkCanvasEditingMode" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="InkCanvasEditingMode"/>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="Height" Value="Auto"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+            </Style>
+
+
+            <Style TargetType="{x:Type ComboBox}">
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+
+            <DataTemplate DataType="{x:Type local:SampleVieModel}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox IsChecked="{Binding Visible}"/>
+                    <TextBlock Style="{StaticResource FIcon}" Text="{Binding Flag}" Grid.Column="1"/>
+                    <TextBlock  Text="{Binding Name}" VerticalAlignment="Center" ToolTip="{Binding Code}" Grid.Column="2"/>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type DrawingAttributes}" >
+                <Border Width="80" Height="{Binding Path=Height}">
+                    <Border.Background >
+                        <SolidColorBrush Color="{Binding Path=Color}"/>
+                    </Border.Background>
+                </Border>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource Resource.Command.AddSample}" 
+                        Executed="CommandBinding_Executed_AddSample"
+                        CanExecute="CommandBinding_CanExecute_AddSample"
+                        />
+    </UserControl.CommandBindings>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+            <Viewbox Grid.ColumnSpan="2" Grid.RowSpan="2" Stretch="Uniform">
+                <Grid>
+                    <InkCanvas x:Name="canvas_screen"  Visibility="{Binding ElementName=c_showScreen,Path=IsChecked,Mode=TwoWay,Converter={x:Static base:XConverter.VisibilityConverter}}" >
+                        <InkCanvas.DefaultDrawingAttributes>
+                            <DrawingAttributes Color="Transparent"/>
+                        </InkCanvas.DefaultDrawingAttributes>
+
+                        <Image Stretch="Uniform" Source="{Binding ImageSource}" />
+
+                        <Rectangle x:Name="rectangle_clip_screen" 
+                               Width="{Binding ElementName=canvas,Path=ActualWidth}"
+                               Height="{Binding ElementName=canvas,Path=ActualHeight}">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="White" Opacity="0.7"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </InkCanvas>
+                    
+                    <InkCanvas x:Name="canvas" PreviewMouseLeftButtonDown="InkCanvas_MouseDown" Background="Black"
+                       MouseMove="InkCanvas_MouseMove"  Cursor="Cross" ForceCursor="True" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                       EditingMode="None" PreviewMouseUp="InkCanvas_MouseUp" MouseUp="InkCanvas_MouseUp">
+                        <InkCanvas.DefaultDrawingAttributes>
+                            <DrawingAttributes Color="Transparent"/>
+                        </InkCanvas.DefaultDrawingAttributes>
+
+                        <Image Stretch="Uniform" Source="{Binding ImageSource}" />
+
+                        <local:DynamicShape x:Name="_dynamic" Visibility="Collapsed"/>
+
+                        <Rectangle x:Name="rectangle_clip"  Visibility="{Binding ElementName=c_showScreen,Path=IsChecked,Mode=TwoWay,Converter={x:Static base:XConverter.VisibilityConverter}}" 
+                               Width="{Binding ElementName=canvas,Path=ActualWidth}" 
+                               Height="{Binding ElementName=canvas,Path=ActualHeight}">
+                            <Rectangle.Fill>
+                                <SolidColorBrush Color="Black" Opacity="1"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+
+                    </InkCanvas>
+                </Grid>
+            </Viewbox>
+
+            <Grid  x:Name="Screen_Rectangle"  Grid.ColumnSpan="3" Grid.RowSpan="3" Visibility="{Binding ElementName=c_showScreen,Path=IsChecked,Converter={x:Static base:XConverter.VisibilityConverter}}">
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <VisualBrush x:Name="VisualBrush" Visual="{Binding ElementName=canvas}" Stretch="Uniform" 
+
+                                     ViewboxUnits="Absolute" 
+
+                                     ViewportUnits="RelativeToBoundingBox" Viewport="0, 0, 1, 1">
+
+                        </VisualBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+
+                <Grid Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            </Grid>
+
+            <Button x:Name="btn_close" Grid.Column="1" 
+                            Content="关闭" Opacity="0.5"
+                            HorizontalAlignment="Right" 
+                            VerticalAlignment="Top" FontSize="25"
+                            Click="btn_close_Click" Visibility="{Binding ElementName=c_showScreen,Path=IsChecked,Converter={x:Static base:XConverter.VisibilityConverter}}"
+                            MouseEnter="btn_close_MouseEnter" 
+                            MouseLeave="btn_close_MouseLeave" />
+
+            <Rectangle x:Name="rectangle_show" Stroke="Blue" Grid.Column="1" HorizontalAlignment="Stretch"
+                       Grid.Row="1"  Visibility="{Binding ElementName=c_showScreen,Path=IsChecked,Converter={x:Static base:XConverter.VisibilityConverter}}"
+                       StrokeThickness="1" >
+
+                <Rectangle.Fill>
+                    <VisualBrush Visual="{Binding ElementName=canvas_screen}" Stretch="Uniform">
+
+                    </VisualBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <Button Content="《" Width="30" Height="50" HorizontalAlignment="Left" Click="Button_Click_1" Grid.RowSpan="3"/>
+            <Button Content="》" Width="30" Height="50" HorizontalAlignment="Right" Grid.ColumnSpan="3"  Grid.RowSpan="3" Click="Button_Click_2"/>
+
+        </Grid>
+       
+
+        <ListBox Grid.Column="2" ItemsSource="{Binding SampleCollection,Mode=TwoWay}"/>
+
+        <ListBox  Grid.Column="1">
+            <RadioButton x:Name="r_defect" Content="缺陷" IsChecked="True" HorizontalAlignment="Stretch" Style="{x:Null}"/>
+            <RadioButton x:Name="r_sample" Content="样本" HorizontalAlignment="Stretch" Style="{x:Null}"/>
+            <RadioButton x:Name="r_screen" Content="放大" HorizontalAlignment="Stretch" Style="{x:Null}"/>
+            <CheckBox x:Name="c_showScreen" Content="视图" IsChecked="False"/>
+        </ListBox>
+
+        <Popup x:Name="popup" PopupAnimation="Slide"
+                               Placement="MousePoint" AllowsTransparency="True"
+                               StaysOpen="False" HorizontalAlignment="Left" 
+                               VerticalAlignment="Bottom">
+            <Grid Height="150" Width="200">
+                <Grid.Background>
+                    <SolidColorBrush Color="White" Opacity="0.7"/>
+                </Grid.Background>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="样本名称："  Grid.Row="0"/>
+                <TextBlock Text="缺陷类型：" Grid.Row="1"/>
+                <TextBlock Text="样本类型：" Grid.Row="2"/>
+
+                <ComboBox Grid.Column="1" Grid.Row="0"/>
+                <ComboBox Grid.Column="1" Grid.Row="1"/>
+                <ComboBox Grid.Column="1" Grid.Row="2"/>
+
+                <Button Content="保存" Height="30" Width="100" Grid.Row="3" Grid.Column="1" Click="Button_Click"/>
+            </Grid>
+        </Popup> 
+    </Grid>
+</UserControl>-->

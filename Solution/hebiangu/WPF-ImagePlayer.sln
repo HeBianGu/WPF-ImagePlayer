@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F0B44989-BF14-41A4-83E8-95BC99504412}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gereral", "Gereral", "{DB155184-ECA0-4D07-93BF-4AEDD2D90A88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.Appliaction.Demo.MediaControl", "..\..\Source\Application\SureDream.Appliaction.Demo.MediaControl\HeBianGu.Appliaction.Demo.MediaControl.csproj", "{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.Appliaction.Demo.ImageControl", "..\..\Source\Application\SureDream.Appliaction.Demo.ImageControl\HeBianGu.Appliaction.Demo.ImageControl.csproj", "{E6A6995F-0865-4EE4-86C8-D7B5245859B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.ImagePlayer.ImagePlayerControl", "..\..\Source\General\Ty.Component.MediaControl\HeBianGu.ImagePlayer.ImagePlayerControl.csproj", "{73CDFD21-2014-470C-B250-740852BD4EEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.ImagePlayer.ImageControl", "..\..\Source\General\Ty.Component.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj", "{90678356-1EF7-4B98-90B0-754A597D872B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6A6995F-0865-4EE4-86C8-D7B5245859B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6A6995F-0865-4EE4-86C8-D7B5245859B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6A6995F-0865-4EE4-86C8-D7B5245859B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6A6995F-0865-4EE4-86C8-D7B5245859B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73CDFD21-2014-470C-B250-740852BD4EEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73CDFD21-2014-470C-B250-740852BD4EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73CDFD21-2014-470C-B250-740852BD4EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73CDFD21-2014-470C-B250-740852BD4EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90678356-1EF7-4B98-90B0-754A597D872B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90678356-1EF7-4B98-90B0-754A597D872B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90678356-1EF7-4B98-90B0-754A597D872B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90678356-1EF7-4B98-90B0-754A597D872B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F} = {F0B44989-BF14-41A4-83E8-95BC99504412}
+		{E6A6995F-0865-4EE4-86C8-D7B5245859B0} = {F0B44989-BF14-41A4-83E8-95BC99504412}
+		{73CDFD21-2014-470C-B250-740852BD4EEA} = {DB155184-ECA0-4D07-93BF-4AEDD2D90A88}
+		{90678356-1EF7-4B98-90B0-754A597D872B} = {DB155184-ECA0-4D07-93BF-4AEDD2D90A88}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5EF2E071-0F99-4784-A498-CEC7A6A02A3B}
+	EndGlobalSection
+EndGlobal

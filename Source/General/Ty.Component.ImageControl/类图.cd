@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Ty.Component.ImageControl.ImgMarkEntity" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="3" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAIAAIAADwAAgAAAIAAwgMRwDgAEEAAAhRBJoQRBcQI=</HashCode>
+      <FileName>Model\ImgMarkEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ty.Component.ImageControl.ImageOprateCtrEntity" Collapsed="true">
+    <Position X="5" Y="3" Width="4" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>JERQmAiACSAYZkBBwJDCECSJkgCxAAQQIQhACqhkKAA=</HashCode>
+      <FileName>View\ImageOprateCtrEntity.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ty.Component.ImageControl.ImageView" Collapsed="true">
+    <Position X="11.25" Y="0.75" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAAAAQAEAIAAgABgAgAACEEAECAAgABwAggACABAIAA=</HashCode>
+      <FileName>View\ImageView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ty.Component.ImageControl.ImagePartView" Collapsed="true">
+    <Position X="4.5" Y="1.75" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAAAAQAAAAQAAAAAAAAAAAgAAAAAEAAwAAAAAACAAAA=</HashCode>
+      <FileName>View\ImagePartView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ty.Component.ImageControl.ImageFullScreenWindow" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAAAAAAgQAAAAAAAAAAA=</HashCode>
+      <FileName>View\ImageFullScreenWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ty.Component.ImageControl.IconButton" Collapsed="true">
+    <Position X="0.5" Y="4.25" Width="3.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IgQAB4AAAaEAIAAAAIQUAAgiCBgAAAAAAAABJAAAAAA=</HashCode>
+      <FileName>Provider\IconButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ty.Component.ImageControl.ImageViewCommands" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAgAIAAAAAAAAAAAAAAAAAEAAEAAAAAAA=</HashCode>
+      <FileName>Provider\ImageViewCommands.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ty.Component.ImageControl.RectangleShape" Collapsed="true">
+    <Position X="4.75" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>EQAAAAAAAAAgkgAiAAAgAAQAACAAAAAAAIAAAABAAAA=</HashCode>
+      <FileName>Provider\RectangleShape.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Ty.Component.ImageControl.DynamicShape" Collapsed="true">
+    <Position X="5" Y="7.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BAICAAAAAABAAAAAAAAAAAAAQAAAAAAAAgAABAAAABA=</HashCode>
+      <FileName>Provider\RectangleShape.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ty.Component.ImageControl.DefectShape" Collapsed="true">
+    <Position X="1" Y="7.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Provider\RectangleShape.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Ty.Component.ImageControl.SampleShape" Collapsed="true">
+    <Position X="7.75" Y="7.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Provider\RectangleShape.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Ty.Component.ImageControl.IImgOperate">
+    <Position X="0.5" Y="3.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>BEAAiAAAAQAIBABAQAAAECSAEgAAAAAAAABACqBkKAA=</HashCode>
+      <FileName>Service\IImgOperate.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Ty.Component.ImageControl.IRectangleStroke" Collapsed="true">
+    <Position X="8.25" Y="4.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAEgAAAAAAAAAAAAAAAAAAAIAAAABAAAA=</HashCode>
+      <FileName>Provider\IRectangleStroke.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Ty.Component.ImageControl.ImgPlayMode" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAABQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ImgMarkEntity.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Ty.Component.ImageControl.ImgProcessType" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAEAAAAAAAAAAAQAAAAAEAAAAAAAACAAAgA=</HashCode>
+      <FileName>Model\ImgMarkEntity.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Ty.Component.ImageControl.ImgMarkOperateType" Collapsed="true">
+    <Position X="6" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ImgMarkEntity.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="Ty.Component.ImageControl.ImgMarkHandler" Collapsed="true">
+    <Position X="10.25" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ImgMarkEntity.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="Ty.Component.ImageControl.ImgProcessHandler" Collapsed="true">
+    <Position X="11" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\ImgMarkEntity.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="ImageFullScreenWindow" Bounds="54.4364031982422,-24.3512106372406,162.16,25.24" Label="ImageFullScreenWindow" />
+    <Node Id="ImageOprateCtrEntity" Category="Category2" Bounds="34.4575865582421,-174.799392570041,202.11763328,195.6563638656" Group="Expanded" UseManualLocation="True" />
+    <Node Id="ImagePartView" Bounds="54.4684556782421,-79.5593923396406,106.513333333333,25.24" />
+    <Node Id="ImageView" Bounds="54.4684556789453,-134.799392454841,83.4833333333333,25.24" />
+    <Node Id="Ty.Base.WpfBase" Category="Category2" Bounds="382.324724966427,-152.638809620942,116.096666666667,25.24" UseManualLocation="True" />
+    <Node Id="Ty.Component.ImageControl" Category="Category2" Bounds="349.915036632776,-35.6477395384957,186.086666666667,25.24" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="ImageOprateCtrEntity" Target="ImageFullScreenWindow" Category="Contains" Bounds="164.817531113957,-6.73096063724074,9.04970748222621,21.6937551620104" />
+    <Link Source="ImageOprateCtrEntity" Target="ImagePartView" Category="Contains" Bounds="109.454512402438,23.6065446728,13.3040437630469,56.017026370724" />
+    <Link Source="ImageOprateCtrEntity" Target="ImageView" Category="Contains" Bounds="91.5951817523893,4.99999999999999,0.00132717748174116,21.0000000179735" />
+    <Link Source="Ty.Component.ImageControl" Target="Ty.Base.WpfBase" Bounds="440.850776462284,-118.401006336737,1.82871210538735,82.7532667982414" Label="引用" LabelBounds="413.765132395799,-84.6001869900417,24,15.24" />
+  </Links>
+  <Categories>
+    <Category Id="Category2" Label="类别 2" Background="#FF339933" IsTag="True" />
+    <Category Id="Contains" Label="包含" Description="链接的源是否包含目标对象" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="包含者" IsContainment="True" OutgoingActionLabel="包含" />
+  </Categories>
+  <Properties>
+    <Property Id="Background" Label="背景" Description="背景色" DataType="System.Windows.Media.Brush" />
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="Group" Label="组" Description="将节点显示为组" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsTag" DataType="System.Boolean" />
+    <Property Id="Label" Label="标签" Description="可批注对象的可显示标签" DataType="System.String" />
+    <Property Id="LabelBounds" DataType="System.Windows.Rect" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="类别 2" ValueLabel="具有类别">
+      <Condition Expression="HasCategory('Category2')" />
+      <Setter Property="Background" Value="#FF339933" />
+    </Style>
+  </Styles>
+</DirectedGraph>
