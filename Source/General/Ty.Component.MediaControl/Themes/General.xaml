@@ -187,12 +187,6 @@
     
     <!--矢量图标按钮样式-->
     <Style x:Key="MenuIconButtonDefaultStyle" TargetType="{x:Type local:MediaButton}">
-        <!--<Setter Property="Background" Value="{StaticResource S_AccentBrush}" />
-        <Setter Property="Foreground" Value="{StaticResource S_WhiteNotice}" />
-        <Setter Property="MouseOverBackground" Value="{StaticResource S_AccentBrushCommon}" />
-        <Setter Property="MouseOverForeground" Value="{StaticResource S_WhiteNotice}" />
-        <Setter Property="PressedBackground" Value="{StaticResource S_GrayNotice}" />
-        <Setter Property="PressedForeground" Value="{StaticResource S_WhiteNotice}" />-->
 
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="MouseOverBackground" Value="Transparent" />

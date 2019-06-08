@@ -46,7 +46,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         }
 
         /// <summary> 多个图片播放时用于检测播放同步 </summary>
-        public List<IImgOperate> IImgOperateCollection { get; set; } = new List<IImgOperate>();
+        public List<IImageView> IImgOperateCollection { get; set; } = new List<IImageView>();
 
         public void RefreshPercent()
         {
@@ -58,7 +58,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         Semaphore _semaphore = new Semaphore(1, 1);
 
         //private bool _cancel = false;
-        public void WaitForAllReady(ImgPlayMode imgPlayMode, IImgOperate operate)
+        public void WaitForAllReady(ImgPlayMode imgPlayMode, IImageView operate)
         {
             //_cancel = true;
 

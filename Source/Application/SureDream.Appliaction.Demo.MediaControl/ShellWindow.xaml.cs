@@ -1,4 +1,4 @@
-﻿using CDTY.DataAnalysis.Entity;
+﻿using HeBianGu.Base.WpfBase;
 using HeBianGu.ImagePlayer.ImageControl;
 using HeBianGu.ImagePlayer.ImageControl.Hook;
 using Newtonsoft.Json;
@@ -34,11 +34,11 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
 
             this.DataContext = _vm;
 
-            IImgOperate _imgOperate = this.media.ImagePlayerService.GetImgOperate();
+            IImageView _imgOperate = this.media.ImagePlayerService.GetImgOperate();
 
             _imgOperate.SetMarkType(MarkType.Defect);
 
-            List<ImgMarkEntity> temp = new List<ImgMarkEntity>();
+            List<ImageMarkEntity> temp = new List<ImageMarkEntity>();
 
             this.media.ImagePlayerService.ImgPlayModeChanged += (l,k) =>
               {
@@ -76,7 +76,7 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
                   {
                       string marks = File.ReadAllText(item);
 
-                      var list = JsonConvert.DeserializeObject<List<ImgMarkEntity>>(marks);
+                      var list = JsonConvert.DeserializeObject<List<ImageMarkEntity>>(marks);
 
                       //foreach (var c in list)
                       //{
@@ -126,36 +126,7 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
                 //Debug.WriteLine(l);
                 //Debug.WriteLine(k);
 
-                //  Do：选择的责任工区
-                l.SelectResponsibilityWorkArea = new TyeBaseDepartmentEntity();
-                //  Do：选择的责任车间
-                l.SelectResponsibilityWorkshop = new TyeBaseDepartmentEntity();
-                //  Do：选择的单元
-                l.SelectBasicUnit = new TyeBasePillarEntity();
-                //  Do：选择的站
-                l.SelectDedicatedStation = new TyeBaseSiteEntity();
-                //  Do：选择的段
-                l.SelectDedicatedLine = new TyeBaseLineEntity();
-                //  Do：选择的铁路局顺序码
-                l.SelectRailwaySsequence = new TyeBaseRailwaystationEntity();
-                //  Do：选择的数据采集方式
-                l.SelectDataAcquisitionMode = new TyeBaseDatacollecttypeEntity();
-                //  Do：PHM编码（基本由界面属性组合而成）
-                l.PHMCodes = "PHM编码（基本由界面属性组合而成）";
-                //  Do：当前用户
-                l.tyeAdminUserEntity = new TyeAdminUserEntity();
-                //  Do：检测日期
-                l.DetectDate = DateTime.Now;
-                //  Do：公里标
-                l.KmLog = "公里标";
-                //  Do：检测车辆
-                l.DetectionVehicles = "检测车辆";
-
-                //  Do：选择的缺陷
-                l.SelectDefectOrMarkCodes = new TyeEncodeDeviceEntity();
-
-                //  Do：选择的历史信息
-                l.SelectCommonHistoricalDefectsOrMark = new DefectCommonUsed();
+                
 
                 _imgOperate.AddMark(l);
 
@@ -164,7 +135,7 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
 
             _imgOperate.MarkEntitySelectChanged += (l,k) =>
               {
-                  Debug.WriteLine("MarkEntitySelectChanged:" + l.DetectDate);
+                  Debug.WriteLine("MarkEntitySelectChanged:" );
               };
         }
 

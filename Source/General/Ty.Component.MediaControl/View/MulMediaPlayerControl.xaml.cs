@@ -56,21 +56,21 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
         }
 
-        public List<IVdeioImagePlayerService> MediaSources
+        public List<IVdeioImagePlayer> MediaSources
         {
-            get { return (List<IVdeioImagePlayerService>)GetValue(MediaSourcesProperty); }
+            get { return (List<IVdeioImagePlayer>)GetValue(MediaSourcesProperty); }
             set { SetValue(MediaSourcesProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MediaSourcesProperty =
-            DependencyProperty.Register("MediaSources", typeof(List<IVdeioImagePlayerService>), typeof(MulMediaPlayerControl), new PropertyMetadata(new List<IVdeioImagePlayerService>(), (d, e) =>
+            DependencyProperty.Register("MediaSources", typeof(List<IVdeioImagePlayer>), typeof(MulMediaPlayerControl), new PropertyMetadata(new List<IVdeioImagePlayer>(), (d, e) =>
              {
                  MulMediaPlayerControl control = d as MulMediaPlayerControl;
 
                  if (control == null) return;
 
-                 List<IVdeioImagePlayerService> config = e.NewValue as List<IVdeioImagePlayerService>;
+                 List<IVdeioImagePlayer> config = e.NewValue as List<IVdeioImagePlayer>;
 
                  control.Init(config);
 
@@ -110,7 +110,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
              }));
 
-        void Init(List<IVdeioImagePlayerService> services)
+        void Init(List<IVdeioImagePlayer> services)
         {
 
             for (int i = 0; i < services.Count; i++)
@@ -180,7 +180,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             Debug.WriteLine("ImgPlayModeChanged");
         }
 
-        private void Operate_FullScreenChangedEvent(bool obj, IImgOperate operate)
+        private void Operate_FullScreenChangedEvent(bool obj, IImageView operate)
         {
             int index = this.MediaSources.FindIndex(l => l.ImagePlayerService?.GetImgOperate() == operate);
 
@@ -189,7 +189,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             Debug.WriteLine("Operate_FullScreenChangedEvent");
         }
 
-        private void Operate_MarkEntitySelectChanged(ImgMarkEntity obj, IImgOperate operate)
+        private void Operate_MarkEntitySelectChanged(ImageMarkEntity obj, IImageView operate)
         {
             int index = this.MediaSources.FindIndex(l => l.ImagePlayerService?.GetImgOperate() == operate);
 
@@ -198,7 +198,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             Debug.WriteLine("Operate_MarkEntitySelectChanged");
         }
 
-        private void Operate_ImgMarkOperateEvent(ImgMarkEntity markEntity, IImgOperate operate)
+        private void Operate_ImgMarkOperateEvent(ImageMarkEntity markEntity, IImageView operate)
         {
             int index = this.MediaSources.FindIndex(l => l.ImagePlayerService?.GetImgOperate() == operate);
 
@@ -207,7 +207,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             Debug.WriteLine("Operate_ImgMarkOperateEvent");
         }
 
-        private void Operate_DeleteImgEvent(string obj, IImgOperate operate)
+        private void Operate_DeleteImgEvent(string obj, IImageView operate)
         {
             int index = this.MediaSources.FindIndex(l => l.ImagePlayerService?.GetImgOperate() == operate);
 
@@ -216,7 +216,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             Debug.WriteLine("Operate_DeleteImgEvent");
         }
 
-        private void Item_DrawMarkedMouseUp(ImgMarkEntity markEntity, MarkType type, IImgOperate operate)
+        private void Item_DrawMarkedMouseUp(ImageMarkEntity markEntity, MarkType type, IImageView operate)
         {
             int index = this.MediaSources.FindIndex(l => l.ImagePlayerService?.GetImgOperate() == operate);
 
@@ -226,7 +226,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         }
 
         //  Message：全屏事件
-        private void Item_FullScreenHandle(IVdeioImagePlayerService obj)
+        private void Item_FullScreenHandle(IVdeioImagePlayer obj)
         {
             int index = this.MediaSources.FindIndex(l => l == obj);
 
@@ -352,7 +352,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
         #region - 加载功能 -
 
-        List<IVdeioImagePlayerService> services = new List<IVdeioImagePlayerService>();
+        List<IVdeioImagePlayer> services = new List<IVdeioImagePlayer>();
 
         /// <summary> 初始化控件 </summary>
         void InitControl(int count)
@@ -360,7 +360,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             //  Message：注销事件
             this.Dispose();
 
-            services = new List<IVdeioImagePlayerService>();
+            services = new List<IVdeioImagePlayer>();
 
             for (int i = 0; i < count; i++)
             {
@@ -386,7 +386,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         public void LoadImageFolders(params Tuple<List<string>, string>[] imageFoders)
         {
 
-            Action<IVdeioImagePlayerService, int> action = (l, i) =>
+            Action<IVdeioImagePlayer, int> action = (l, i) =>
                {
                    l.LoadImageFolder(imageFoders[i].Item1, imageFoders[i].Item2);
                };
@@ -434,7 +434,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         }
 
         /// <summary> 异步加载 </summary>
-        async void AsyncLoadImages(Action<IVdeioImagePlayerService, int> action, Array imageFoders)
+        async void AsyncLoadImages(Action<IVdeioImagePlayer, int> action, Array imageFoders)
         {
 
             if (imageFoders == null) return;
@@ -464,7 +464,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         public void LoadImageFtpFolders(string useName, string passWord, params Tuple<List<string>, string>[] imageFoders)
         {
 
-            Action<IVdeioImagePlayerService, int> action = (l, i) =>
+            Action<IVdeioImagePlayer, int> action = (l, i) =>
             {
                 l.LoadFtpImageFolder(imageFoders[i].Item1, imageFoders[i].Item2, useName, passWord);
 
@@ -498,7 +498,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
                 Debug.WriteLine("参数错误！请检查，传入的多个数组中，数量必须相等"); return;
             }
 
-            Action<IVdeioImagePlayerService, int> action = (l, i) =>
+            Action<IVdeioImagePlayer, int> action = (l, i) =>
             {
                 l.LoadImages(ImageUrls[i].Item1, ImageUrls[i].Item2);
             };
@@ -533,7 +533,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
         #region - 事件功能 -
 
-        public event Action<ImgMarkEntity, int> ImageIndexMarkOperateEvent;
+        public event Action<ImageMarkEntity, int> ImageIndexMarkOperateEvent;
 
         //public event Action<string, ImgProcessType, int> ImageIndexProcessEvent;
 
@@ -541,11 +541,11 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
         //public event Action<int> ImageIndexNextEvent;
 
-        public event Action<ImgMarkEntity, MarkType, int> ImageIndexDrawMarkedMouseUp;
+        public event Action<ImageMarkEntity, MarkType, int> ImageIndexDrawMarkedMouseUp;
 
         public event Action<string, int> ImageIndexDeletedClicked;
 
-        public event Action<ImgMarkEntity, int> ImageMarkEntitySelectChanged;
+        public event Action<ImageMarkEntity, int> ImageMarkEntitySelectChanged;
 
         public event Action<string, ImgSliderMode, int> ImageIndexChanged;
 
@@ -559,11 +559,11 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
         #region - 图片交互 -
 
-        public void AddImageIndexMark(ImgMarkEntity imgMarkEntity, int index = 0)
+        public void AddImageIndexMark(ImageMarkEntity imgMarkEntity, int index = 0)
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().AddMark(imgMarkEntity);
         }
@@ -579,7 +579,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().CancelAddMark();
         }
@@ -588,16 +588,16 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().DeleteSelectMark();
         }
 
-        public ImgMarkEntity GetImageIndexSelectMark(int index = 0)
+        public ImageMarkEntity GetImageIndexSelectMark(int index = 0)
         {
             if (!CheckCount(index)) return null;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             return service.ImagePlayerService.GetImgOperate().GetSelectMarkEntity();
         }
@@ -608,7 +608,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().ScreenShot(saveFullName);
         }
@@ -617,7 +617,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().SetEnlarge();
         }
@@ -626,7 +626,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().SetAdaptiveSize();
         }
@@ -635,7 +635,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().SetBubbleScale(value);
         }
@@ -644,16 +644,16 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().DetialText = value;
         }
 
-        public void SetImageIndexMarkOperate(ImgMarkEntity entity, int index = 0)
+        public void SetImageIndexMarkOperate(ImageMarkEntity entity, int index = 0)
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().MarkOperate(entity);
         }
@@ -662,7 +662,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.SetFullScreen(true);
         }
@@ -671,7 +671,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().SetMarkType(markType);
         }
@@ -680,7 +680,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().SetOriginalSize();
         }
@@ -689,7 +689,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().RegisterPartShotCut(shortcut);
         }
@@ -698,7 +698,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.SetPositon(postion);
         }
@@ -707,7 +707,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().SetRotateLeft();
         }
@@ -716,16 +716,16 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().SetRotateRight();
         }
 
-        public void SetImageIndexSelectMark(Predicate<ImgMarkEntity> match, int index = 0)
+        public void SetImageIndexSelectMark(Predicate<ImageMarkEntity> match, int index = 0)
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().SetSelectMarkEntity(match);
         }
@@ -734,7 +734,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().Speed = value;
         }
@@ -743,7 +743,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().SetWheelMode(value);
         }
@@ -752,7 +752,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().WheelScale = value;
         }
@@ -761,7 +761,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().SetNarrow();
         }
@@ -772,7 +772,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().ShowDefects();
         }
@@ -781,7 +781,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().ShowLocates();
         }
@@ -790,7 +790,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().ShowMarks();
         }
@@ -799,7 +799,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         {
             if (!CheckCount(index)) return;
 
-            IVdeioImagePlayerService service = services[index];
+            IVdeioImagePlayer service = services[index];
 
             service.ImagePlayerService.GetImgOperate().ShowMarks(markCodes);
         }
@@ -1009,7 +1009,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
         }
 
-        public void ImageIndexLoadMarkEntitys(List<ImgMarkEntity> markEntityList, int index)
+        public void ImageIndexLoadMarkEntitys(List<ImageMarkEntity> markEntityList, int index)
         {
             if (!this.CheckCount(index)) return;
 

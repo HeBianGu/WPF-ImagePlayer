@@ -12,58 +12,6 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
     interface IMulMediaPlayer : IDisposable
     {
 
-        //#region - 视频操作 -
-
-        ///// <summary>
-        ///// 视频路径
-        ///// </summary>
-        ///// <param name="videoPath"></param>
-        //void LoadVedio(string videoPath);
-
-        ///// <summary>
-        ///// 3）视频支持跳转，提供外部跳转接口。（帧/时间）
-        ///// </summary>
-        ///// <param name="timeSpan"></param>
-        //void SetPositon(TimeSpan timeSpan);
-
-        ///// <summary>
-        ///// 4）支持A->B点循环播放的功能（如1分10秒到1分25秒内循环播放）
-        ///// </summary>
-        ///// <param name="from"></param>
-        ///// <param name="to"></param>
-        //void RepeatFromTo(TimeSpan from, TimeSpan to);
-
-        ///// <summary>
-        ///// 7）提供截屏接口
-        ///// </summary>
-        ///// <param name="from"></param>
-        //void ScreenShot(TimeSpan from, string saveFullName);
-
-
-        ///// <summary>
-        ///// 11）提供接口返回当前播放的Url，文件夹时返回文件Url
-        ///// </summary>
-        ///// <returns></returns>
-        //string GetCurrentUrl(int index=0);
-
-        ///// <summary>
-        ///// 12）提供接口返回当前的帧数与总帧数
-        ///// </summary>
-        ///// <returns></returns>
-        //TimeSpan GetCurrentFrame();
-
-        ///// <summary>
-        ///// 12）提供接口返回当前的帧数与总帧数
-        ///// </summary>
-        ///// <returns></returns>
-        //TimeSpan GetTotalFrame();
-
-        ///// <summary>
-        ///// 音量属性控制
-        ///// </summary>
-        //void SetVolumn(double value);
-
-        //#endregion
 
         #region - 图像操作 -
 
@@ -111,28 +59,13 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         /// <summary>
         /// 新增/修改/删除图片标定事件
         /// </summary>
-        event Action<ImgMarkEntity, int> ImageIndexMarkOperateEvent;
-
-        ///// <summary>
-        ///// 图片风格化处理事件
-        ///// </summary>
-        //event Action<string, ImgProcessType, int> ImageIndexProcessEvent;
-
-        ///// <summary>
-        ///// 上一张
-        ///// </summary>
-        //event Action<int> ImageIndexPreviousEvent;
-
-        ///// <summary>
-        ///// 下一张
-        ///// </summary>
-        //event Action<int> ImageIndexNextEvent;
+        event Action<ImageMarkEntity, int> ImageIndexMarkOperateEvent;
 
         /// <summary>
         /// 绘制矩形框结束
         /// </summary>
 
-        event Action<ImgMarkEntity, MarkType, int> ImageIndexDrawMarkedMouseUp;
+        event Action<ImageMarkEntity, MarkType, int> ImageIndexDrawMarkedMouseUp;
 
         /// <summary>
         /// 删除按钮点击事件
@@ -142,7 +75,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
 
         /// <summary> 选中项改变事件 </summary>
-        event Action<ImgMarkEntity, int> ImageMarkEntitySelectChanged;
+        event Action<ImageMarkEntity, int> ImageMarkEntitySelectChanged;
 
         /// <summary> 全屏模式改变触发 true=全屏模式 false=取消全屏 </summary>
         event Action<bool> FullScreenStateChanged;
@@ -207,7 +140,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         /// 缺陷集合与样本集合模型要修改
         /// </summary>
         /// <param name="entity"></param>
-        void SetImageIndexMarkOperate(ImgMarkEntity entity, int index = 0);
+        void SetImageIndexMarkOperate(ImageMarkEntity entity, int index = 0);
 
         /// <summary>
         /// 设置当前图片的资源
@@ -225,18 +158,18 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         /// 获取当前选中图片已标定的矩形框
         /// </summary>
         /// <returns></returns>
-        ImgMarkEntity GetImageIndexSelectMark(int index = 0);
+        ImageMarkEntity GetImageIndexSelectMark(int index = 0);
 
         /// <summary>
         /// 设置当前选中图片已标定的矩形框
         /// </summary>
         /// <returns></returns>
-        void SetImageIndexSelectMark(Predicate<ImgMarkEntity> match, int index = 0);
+        void SetImageIndexSelectMark(Predicate<ImageMarkEntity> match, int index = 0);
 
         /// <summary>
         /// 添加标定(在DrawMarkedMouseUp事件时添加标定)
         /// </summary>
-        void AddImageIndexMark(ImgMarkEntity imgMarkEntity, int index = 0);
+        void AddImageIndexMark(ImageMarkEntity imgMarkEntity, int index = 0);
 
         /// <summary>
         /// 取消添加标定(在DrawMarkedMouseUp事件时取消标定)
@@ -329,7 +262,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         /// 加载图片的标定信息
         /// </summary>
         /// <param name="markEntityList">图片已标定内容</param>
-        void ImageIndexLoadMarkEntitys(List<ImgMarkEntity> markEntityList,int index);
+        void ImageIndexLoadMarkEntitys(List<ImageMarkEntity> markEntityList,int index);
 
         /// <summary> 获取当前播放图片的路径 </summary>
         List<string> GetCurrentUrl();

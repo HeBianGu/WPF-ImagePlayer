@@ -25,21 +25,21 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             InitializeComponent();
         }
 
-        public List<IVdeioImagePlayerService> MediaSources
+        public List<IVdeioImagePlayer> MediaSources
         {
-            get { return (List<IVdeioImagePlayerService>)GetValue(MediaSourcesProperty); }
+            get { return (List<IVdeioImagePlayer>)GetValue(MediaSourcesProperty); }
             set { SetValue(MediaSourcesProperty, value); }
         } 
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MediaSourcesProperty =
-            DependencyProperty.Register("MediaSources", typeof(List<IVdeioImagePlayerService>), typeof(MediaFullScreenControl), new PropertyMetadata(default(List<IVdeioImagePlayerService>), (d, e) =>
+            DependencyProperty.Register("MediaSources", typeof(List<IVdeioImagePlayer>), typeof(MediaFullScreenControl), new PropertyMetadata(default(List<IVdeioImagePlayer>), (d, e) =>
             {
                 MediaFullScreenControl control = d as MediaFullScreenControl;
 
                 if (control == null) return;
 
-                List<IVdeioImagePlayerService> config = e.NewValue as List<IVdeioImagePlayerService>; 
+                List<IVdeioImagePlayer> config = e.NewValue as List<IVdeioImagePlayer>; 
 
                 control.Init(); 
 

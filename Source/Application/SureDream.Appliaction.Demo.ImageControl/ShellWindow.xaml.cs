@@ -1,5 +1,4 @@
-﻿using CDTY.DataAnalysis.Entity;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -28,7 +27,7 @@ namespace HeBianGu.Appliaction.Demo.ImageControl
     public partial class ShellWindow : Window
     {
         //  Message：接口实现用例
-        IImgOperate _imgOperate = new ImageViews();
+        IImageView _imgOperate = new ImageViews();
 
         bool _isload = false;
 
@@ -44,7 +43,7 @@ namespace HeBianGu.Appliaction.Demo.ImageControl
             //  Do：加载图片浏览主键
             this.grid_center.Children.Add(_imgOperate.BuildEntity());
 
-            List<ImgMarkEntity> temp = new List<ImgMarkEntity>();
+            List<ImageMarkEntity> temp = new List<ImageMarkEntity>();
 
             //  Do：注册编辑标定事件
             _imgOperate.ImgMarkOperateEvent += (l, k) =>
@@ -94,7 +93,7 @@ namespace HeBianGu.Appliaction.Demo.ImageControl
                   {
                       string marks = File.ReadAllText(item);
 
-                      var list = JsonConvert.DeserializeObject<List<ImgMarkEntity>>(marks);
+                      var list = JsonConvert.DeserializeObject<List<ImageMarkEntity>>(marks);
 
                       //foreach (var c in list)
                       //{
@@ -123,13 +122,7 @@ namespace HeBianGu.Appliaction.Demo.ImageControl
                 {
                     string marks = File.ReadAllText(item);
 
-                    var list = JsonConvert.DeserializeObject<List<ImgMarkEntity>>(marks);
-
-                    //foreach (var c in list)
-                    //{
-                    //    c.Code = Guid.NewGuid().ToString();
-                    //}
-
+                    var list = JsonConvert.DeserializeObject<List<ImageMarkEntity>>(marks); 
                     _imgOperate.LoadMarkEntitys(list);
                 }
 
@@ -141,39 +134,7 @@ namespace HeBianGu.Appliaction.Demo.ImageControl
                   Debug.WriteLine(l);
                   Debug.WriteLine(k);
 
-                  //  Do：选择的责任工区
-                  l.SelectResponsibilityWorkArea = new TyeBaseDepartmentEntity();
-                  //  Do：选择的责任车间
-                  l.SelectResponsibilityWorkshop = new TyeBaseDepartmentEntity();
-                  //  Do：选择的单元
-                  l.SelectBasicUnit = new TyeBasePillarEntity();
-                  //  Do：选择的站
-                  l.SelectDedicatedStation = new TyeBaseSiteEntity();
-                  //  Do：选择的段
-                  l.SelectDedicatedLine = new TyeBaseLineEntity();
-                  //  Do：选择的铁路局顺序码
-                  l.SelectRailwaySsequence = new TyeBaseRailwaystationEntity();
-                  //  Do：选择的数据采集方式
-                  l.SelectDataAcquisitionMode = new TyeBaseDatacollecttypeEntity();
-                  //  Do：PHM编码（基本由界面属性组合而成）
-                  l.PHMCodes = "PHM编码（基本由界面属性组合而成）";
-                  //  Do：当前用户
-                  l.tyeAdminUserEntity = new TyeAdminUserEntity();
-                  //  Do：检测日期
-                  l.DetectDate = DateTime.Now;
-                  //  Do：公里标
-                  l.KmLog = "公里标";
-                  //  Do：检测车辆
-                  l.DetectionVehicles = "检测车辆";
-
-                  //  Do：选择的缺陷
-                  l.SelectDefectOrMarkCodes = new TyeEncodeDeviceEntity();
-
-                  //  Do：选择的历史信息
-                  l.SelectCommonHistoricalDefectsOrMark = new DefectCommonUsed();
-
-                  ////  Message：设置为缺陷标定
-                  //l.MarkType = 1;
+                  
 
                   _imgOperate.AddMark(l);
 
@@ -443,7 +404,7 @@ namespace HeBianGu.Appliaction.Demo.ImageControl
             {
                 string marks = File.ReadAllText(open.FileName);
 
-                var list = JsonConvert.DeserializeObject<List<ImgMarkEntity>>(marks);
+                var list = JsonConvert.DeserializeObject<List<ImageMarkEntity>>(marks);
 
                 _imgOperate.LoadMarkEntitys(list);
             }

@@ -9,7 +9,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
     /// <summary>
     /// 视频播放服务类
     /// </summary>
-    public interface IMediaPlayerService
+    public interface IMediaPlayer
     {
         /// <summary>
         /// 视频路径
@@ -35,18 +35,6 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         /// </summary>
         /// <param name="from"></param>
         void ScreenShot(TimeSpan from,string saveFullName);
-
-        ///// <summary>
-        ///// 9）播放图片集合功能（List<string> ImageUrls），将集合内的图片按顺序反复播放，默认间隔为0.5秒。
-        ///// </summary>
-        ///// <param name="ImageUrls"></param>
-        //void LoadImages(List<string> ImageUrls);
-
-        ///// <summary>
-        ///// 10）播放图片文件夹功能，按照文件名按名称排序正序播放，默认间隔为0.5秒
-        ///// </summary>
-        ///// <param name="imageFoder"></param>
-        //void LoadImageFolder(string imageFoder);
 
         /// <summary>
         /// 11）提供接口返回当前播放的Url，文件夹时返回文件Url

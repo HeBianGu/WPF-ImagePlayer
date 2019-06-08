@@ -444,7 +444,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         }
     }
 
-    public partial class MediaPlayerControl : IMediaPlayerService
+    public partial class MediaPlayerControl : IMediaPlayer
     {
 
         MediaPlayMode _mediaPlayMode = MediaPlayMode.Normal;

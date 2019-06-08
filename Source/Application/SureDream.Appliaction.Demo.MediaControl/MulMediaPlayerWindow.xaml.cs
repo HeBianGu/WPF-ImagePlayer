@@ -1,5 +1,4 @@
-﻿using CDTY.DataAnalysis.Entity;
-using HeBianGu.ImagePlayer.ImageControl;
+﻿using HeBianGu.ImagePlayer.ImageControl;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

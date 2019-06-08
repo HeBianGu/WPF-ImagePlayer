@@ -54,7 +54,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 获取图片操作控件类
         /// </summary>
         /// <returns></returns>
-        IImgOperate GetImgOperate();
+        IImageView GetImgOperate();
 
         /// <summary>
         /// 设置播放模式

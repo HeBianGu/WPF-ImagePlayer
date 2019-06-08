@@ -17,7 +17,7 @@ using HeBianGu.ImagePlayer.ImageControl;
 namespace HeBianGu.ImagePlayer.ImagePlayerControl
 {
     /// <summary> 视频播放控件 </summary>
-    public partial class VedioImagePlayerControl : UserControl, IVdeioImagePlayerService
+    public partial class VedioImagePlayerControl : UserControl, IVdeioImagePlayer
     {
         public VedioImagePlayerControl()
         {
@@ -79,14 +79,14 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
              }));
 
 
-        public IMediaPlayerService MediaPlayerService { get; set; }
+        public IMediaPlayer MediaPlayerService { get; set; }
 
         public IImagePlayerService ImagePlayerService { get; set; }
 
 
         MediaPlayType _type;
 
-        public event Action<IVdeioImagePlayerService> FullScreenHandle;
+        public event Action<IVdeioImagePlayer> FullScreenHandle;
 
         /// <summary> 更新播放类型 </summary>
         void RefreshPlayType(MediaPlayType type)

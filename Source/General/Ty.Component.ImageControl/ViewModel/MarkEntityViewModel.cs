@@ -15,13 +15,13 @@ namespace HeBianGu.ImagePlayer.ImageControl
     /// <summary>
     /// 标定绑定模型
     /// </summary>
-    public partial class SampleVieModel
+    public partial class MarkEntityViewModel
     {
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="imgMarkEntity"> 标定实体 </param>
-        public SampleVieModel(ImgMarkEntity imgMarkEntity)
+        public MarkEntityViewModel(ImageMarkEntity imgMarkEntity)
         {
             //  Do：注册明林
             RelayCommand = new RelayCommand(RelayMethod);
@@ -53,10 +53,10 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         #region - 成员属性 -
 
-        ImgMarkEntity _model = new ImgMarkEntity();
+        ImageMarkEntity _model = new ImageMarkEntity();
 
         /// <summary> 标定实体模型 </summary>
-        public ImgMarkEntity Model { get => _model; set => _model = value; }
+        public ImageMarkEntity Model { get => _model; set => _model = value; }
 
         private bool _visible = true;
         /// <summary> 是否可见  </summary>
@@ -174,11 +174,11 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
     }
 
-    partial class SampleVieModel : INotifyPropertyChanged
+    partial class MarkEntityViewModel : INotifyPropertyChanged
     {
         public RelayCommand RelayCommand { get; set; }
 
-        public SampleVieModel()
+        public MarkEntityViewModel()
         {
             RelayCommand = new RelayCommand(RelayMethod);
 

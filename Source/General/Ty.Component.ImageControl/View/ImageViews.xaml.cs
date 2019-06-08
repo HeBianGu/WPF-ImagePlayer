@@ -40,8 +40,8 @@ namespace HeBianGu.ImagePlayer.ImageControl
         TransformGroup tfGroup;
 
         #region 依赖属性
-        public static readonly DependencyProperty SourceProperty =
-         DependencyProperty.Register("Source", typeof(ImageSource),
+
+        public static readonly DependencyProperty SourceProperty = DependencyProperty.Register("Source", typeof(ImageSource),
          typeof(ImageViews),
          new PropertyMetadata(new PropertyChangedCallback(OnSourcePropertyChanged)));
 
@@ -90,9 +90,13 @@ namespace HeBianGu.ImagePlayer.ImageControl
             InitializeComponent();
 
             sb_ShowTools = this.FindResource("Sb_ShowTools") as Storyboard;
+
             sb_HideTools = this.FindResource("Sb_HideTools") as Storyboard;
+
             sb_Tip = this.FindResource("sb_Tips") as Storyboard;
+
             tfGroup = this.FindResource("TfGroup") as TransformGroup;
+
             this.Loaded += MainWindow_Loaded;
 
             //this.MouseEnter += ImageViews_MouseEnter;
@@ -124,9 +128,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             btnRotate.Click += btnRotate_Click;
 
             this.mask.LoationChanged += (l, k) =>
-              {
-
-                  //_loationFlag = true;
+              { 
 
                   var result = GetScrollWidthAndHeight();
 
@@ -136,12 +138,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
                   svImg.ScrollToHorizontalOffset(k.Left * svImg.ExtentWidth * result.Item1 + xleft);
                   svImg.ScrollToVerticalOffset(k.Top * svImg.ExtentHeight * result.Item2 + ytop);
                   //svImg.ScrollToHorizontalOffset(k.Left * svImg.ExtentWidth);
-                  //svImg.ScrollToVerticalOffset(k.Top * svImg.ExtentHeight);
-                  //_loationFlag = false;
+                  //svImg.ScrollToVerticalOffset(k.Top * svImg.ExtentHeight); 
 
-              };
-
-
+              }; 
 
             SetbtnActualsizeEnable();
 
@@ -154,8 +153,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             };
 
 
-            this.RegisterDefaltApi();
-
+            this.RegisterDefaltApi(); 
 
             //  Message：初始化时这两个方法很关键，否则图片没有平铺
             this.SetMarkType(MarkType.None);
@@ -183,31 +181,10 @@ namespace HeBianGu.ImagePlayer.ImageControl
                       default:
                           return 2;
                   }
-              };
-
-
-
-
+              };  
 
             this.LoadedAction = l => 
-            {
-
-                //this.control.Width = 100;
-
-                //this.control.Height =100;
-
-                //this.control.UpdateLayout();
-
-                //this.control.Width = this.rootGrid.ActualWidth;
-
-                //this.control.Height = this.rootGrid.ActualHeight;
-
-                ////  Message：每次加载图片都自适应大小
-                //l.GetImageWidthHeight();
-                ////l.Scale = 100;
-
-                //l.SetFullImage(); 
-
+            { 
                 //  Message：注：此处要加载两遍SetAdaptiveSize，否则会出现缩放百分比不正确的问题
                 l.SetAdaptiveSize();
 
@@ -239,9 +216,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             return Tuple.Create(xleft, ytop);
         }
 
-        public int MaxScale { get; set; } = 5;
-
-        //bool _loationFlag = false;
+        public int MaxScale { get; set; } = 5; 
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -250,19 +225,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         public void GetImageWidthHeight()
         {
-            this.UpdateLayout();
-
-            //if (imgWidth == 0.0 || imgHeight == 0.0)
-            //{
-            //    imgWidth = control.ActualWidth;
-            //    imgHeight = control.ActualHeight;
-            //}
-
-            //imgWidth = control.ActualWidth;
-            //imgHeight = control.ActualHeight;
-
-
-             
+            this.UpdateLayout(); 
 
             imgWidth = this.gridMouse.ActualWidth;
             imgHeight = this.gridMouse.ActualHeight;
@@ -282,11 +245,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                     imgHeight = this.gridMouse.ActualWidth- this.vb.ActualWidth;
                     imgWidth = this.gridMouse.ActualWidth + this.vb.ActualWidth;
                 }
-            }
-
-            //imgWidth = control.ActualWidth;
-            //imgHeight = control.ActualHeight;
-
+            } 
         }
 
         void btnRotate_Click(object sender, RoutedEventArgs e)
@@ -305,9 +264,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 //  Message：设置1:1并旋转
                 Scale = 1;
                 this.txtZoom.Text = ((int)(Scale * 100)).ToString() + "%";
-            }
-            ////  Message：设置平铺并旋转
-            //this.SetFullImage();
+            }  
 
             this.SetAdaptiveSize();
 
@@ -317,14 +274,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             btnNarrow.IsEnabled = true;
             btnEnlarge.IsEnabled = true;
             hOffSetRate = 0;
-            vOffSetRate = 0;
-
-            //imgBig.Width = imgWidth;
-            //imgBig.Height = imgHeight;
-
-            //  Message：设置平铺并旋转
-            //vb.Width = imgWidth;
-            //vb.Height = imgHeight;
+            vOffSetRate = 0; 
 
             if (tfGroup != null)
             {
@@ -334,9 +284,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             this.SetAdaptiveSize();
 
-            this.grid_mark.Visibility = Visibility.Visible;
-
-            //this.RefreshMarkVisible();
+            this.grid_mark.Visibility = Visibility.Visible; 
         }
 
         void btnNarrow_Click(object sender, RoutedEventArgs e)
@@ -354,25 +302,11 @@ namespace HeBianGu.ImagePlayer.ImageControl
             this.GetImageWidthHeight();
 
             if (imgWidth == 0 || imgHeight == 0)
-                return;
-
-            //Scale = 0.02;
-
-            //Scale = svImg.ActualWidth / imgWidth;
-
-            //Scale = Math.Min(Scale, svImg.ActualHeight / imgHeight);
-
-            ////  Message：图片缩小，最小到面板小一点
-            //Scale = Scale - 0.005;
+                return; 
 
             SetbtnActualsizeEnable();
 
-            btnNarrow.IsEnabled = false;
-
-            //Scale = this.GetFullScale();
-
-            //  Message：去掉切换时显示的缩放百分比
-            //if (sb_Tip != null) sb_Tip.Begin(); 
+            btnNarrow.IsEnabled = false; 
 
             SetImageByScale();
 
@@ -404,23 +338,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         }
 
         void btnActualsize_Click(object sender, RoutedEventArgs e)
-        {
-            //if (imgWidth == 0 || imgHeight == 0)
-            //    return;
-
-            //Scale = 1;
-
-            ////imgBig.Width = imgWidth;
-            ////imgBig.Height = imgHeight;
-
-            //vb.Width = imgWidth;
-            //vb.Height = imgHeight;
-
-            //SetbtnActualsizeEnable();
-
-
-            //this.btnActualsize.Visibility = Visibility.Collapsed;
-            //this.btnMacthsize.Visibility = Visibility.Visible;
+        { 
 
             this.SetOriginalSize();
         }
@@ -500,7 +418,6 @@ namespace HeBianGu.ImagePlayer.ImageControl
             {
                 return;
             }
-
 
 
             var img = sender as UIElement;
@@ -908,7 +825,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             }
             else
             {
-                ImgMarkEntity imgMarkEntity = new ImgMarkEntity();
+                ImageMarkEntity imgMarkEntity = new ImageMarkEntity();
 
                 imgMarkEntity.MarkType = this._markType == MarkType.Defect ? 0 : 1;
 
@@ -1120,15 +1037,15 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// <summary>
         /// 绑定模型
         /// </summary>
-        public ImageControlViewModel ViewModel
+        public ImageViewViewModel ViewModel
         {
             get
             {
                 return this.Dispatcher.Invoke(() =>
                   {
-                      if (this.DataContext is ImageControlViewModel)
+                      if (this.DataContext is ImageViewViewModel)
                       {
-                          return (ImageControlViewModel)this.DataContext;
+                          return (ImageViewViewModel)this.DataContext;
                       }
 
                       return null;
@@ -1189,7 +1106,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             if (this.ViewModel == null)
             {
-                this.ViewModel = new ImageControlViewModel(this);
+                this.ViewModel = new ImageViewViewModel(this);
             }
 
             this.ViewModel.IsBuzy = true;
@@ -1200,7 +1117,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
                 ImgPlayMode imgPlayMode = this.ImgPlayMode;
 
-                List<IImgOperate> temp = new List<IImgOperate>();
+                List<IImageView> temp = new List<IImageView>();
 
                 int count = this.ImagePaths == null ? 0 : this.ImagePaths.Count;
 
@@ -2147,16 +2064,17 @@ namespace HeBianGu.ImagePlayer.ImageControl
     }
 
 
-    partial class ImageViews : IImgOperate
+    /// <summary> 接口实现 </summary>
+    partial class ImageViews : IImageView
     {
         public event ImgMarkHandler ImgMarkOperateEvent;
         public event ImgProcessHandler ImgProcessEvent;
         public event Action PreviousImgEvent;
         public event Action NextImgEvent;
-        public event Action<ImgMarkEntity, MarkType, IImgOperate> DrawMarkedMouseUp;
-        public event Action<string, IImgOperate> DeleteImgEvent;
-        public event Action<bool, IImgOperate> FullScreenChangedEvent;
-        public event Action<ImgMarkEntity, IImgOperate> MarkEntitySelectChanged;
+        public event Action<ImageMarkEntity, MarkType, IImageView> DrawMarkedMouseUp;
+        public event Action<string, IImageView> DeleteImgEvent;
+        public event Action<bool, IImageView> FullScreenChangedEvent;
+        public event Action<ImageMarkEntity, IImageView> MarkEntitySelectChanged;
         public Func<int, double> ConvertSpeedFunction { get; set; }
         double _wheelScale = 0.5;
         public double WheelScale
@@ -2185,7 +2103,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 触发新增事件（此方法）
         /// </summary>
         /// <param name="entity"></param>
-        public void OnImgMarkOperateEvent(ImgMarkEntity entity)
+        public void OnImgMarkOperateEvent(ImageMarkEntity entity)
         {
             this.ImgMarkOperateEvent?.Invoke(entity, this);
         }
@@ -2201,9 +2119,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
             this.ViewModel.FigureCollection = imgFigures;
         }
 
-        public void AddMark(ImgMarkEntity imgMarkEntity)
+        public void AddMark(ImageMarkEntity imgMarkEntity)
         {
-            SampleVieModel sample = new SampleVieModel();
+            MarkEntityViewModel sample = new MarkEntityViewModel();
 
             //sample.Name = imgMarkEntity.Name;
 
@@ -2217,7 +2135,6 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 DefectShape resultStroke = new DefectShape(this._dynamic);
                 sample.Flag = "\xe688";
                 sample.Type = imgMarkEntity.MarkType.ToString();
-                sample.Code = imgMarkEntity.PHMCodes;
                 resultStroke.Name = sample.Name;
                 resultStroke.Code = sample.Code;
                 resultStroke.Draw(this.canvas);
@@ -2228,7 +2145,6 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 SampleShape resultStroke = new SampleShape(this._dynamic);
                 sample.Flag = "\xeaf3";
                 sample.Type = imgMarkEntity.MarkType.ToString();
-                sample.Code = imgMarkEntity.PHMCodes;
                 resultStroke.Name = sample.Name;
                 resultStroke.Code = sample.Code;
                 resultStroke.Draw(this.canvas);
@@ -2269,7 +2185,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             this.MarkOperate(entity);
         }
 
-        public ImgMarkEntity GetSelectMarkEntity()
+        public ImageMarkEntity GetSelectMarkEntity()
         {
             if (this.ViewModel == null) return null;
 
@@ -2437,7 +2353,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             }
         }
 
-        public void LoadMarkEntitys(List<ImgMarkEntity> markEntityList)
+        public void LoadMarkEntitys(List<ImageMarkEntity> markEntityList)
         {
             if (markEntityList == null)
             {
@@ -2471,12 +2387,12 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 样本缺陷模型可编辑
         /// </summary>
         /// <param name="entity"></param>
-        public void MarkOperate(ImgMarkEntity entity)
+        public void MarkOperate(ImageMarkEntity entity)
         {
             //  Do：新增
             if (entity.markOperateType == ImgMarkOperateType.Insert)
             {
-                SampleVieModel vm = new SampleVieModel(entity);
+                MarkEntityViewModel vm = new MarkEntityViewModel(entity);
 
                 //  Message：注册选中事件
                 foreach (var item in vm.RectangleLayer)
@@ -2491,7 +2407,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 //  Do：修改
                 if (entity.markOperateType == ImgMarkOperateType.Update)
                 {
-                    SampleVieModel vm = new SampleVieModel(entity);
+                    MarkEntityViewModel vm = new MarkEntityViewModel(entity);
 
                     this.ViewModel.SampleCollection.Add(vm);
 
@@ -2584,7 +2500,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         }
 
         public double LoadPercent { get; set; } = 0.0;
-        Func<int, double> IImgOperate.ConvertSpeedFunction { get; set; }
+        Func<int, double> IImageView.ConvertSpeedFunction { get; set; }
         public Action<ImageViews> LoadedAction { get; set; }
 
         /// <summary> 此方法的说明 </summary>
@@ -2825,7 +2741,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         }
 
-        public void SetSelectMarkEntity(Predicate<ImgMarkEntity> match)
+        public void SetSelectMarkEntity(Predicate<ImageMarkEntity> match)
         {
             if (this.ViewModel == null) return;
 

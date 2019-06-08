@@ -30,14 +30,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         List<ImageCacheEntity> _fileCollection = new List<ImageCacheEntity>();
 
         //  Message：下载完成等待播放的队列
-        List<ImageCacheEntity> _cache = new List<ImageCacheEntity>();
-
-        ////  Message：后台一直下载的 默认下载五分钟的数据
-        //List<ImageCacheEntity> _cacheBack = new List<ImageCacheEntity>();
-
-        //Queue<Task> _tasks = new Queue<Task>();
-
-        //Queue<Task> _taskBacks = new Queue<Task>();
+        List<ImageCacheEntity> _cache = new List<ImageCacheEntity>(); 
 
         /// <summary>
         /// 构造函数
@@ -115,20 +108,11 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         }
 
-        public Action CachePercentAction;
-
+        public Action CachePercentAction; 
 
         public void RefreshCapacity(int count)
-        {
-            //  Do：可播放队列设置15s
-            //this.Capacity = count;
-
-            this.Capacity = count * 5;
-
-            ////Do：后台缓存最多队列设置成5分钟
-            //this.CapacityTotal = count * 5 * 60;
-
-            //this.CapacityTotal = count * 1 * 10;
+        {  
+            this.Capacity = count * 5; 
 
             this.CapacityTotal = count * 5 * 5;
         }
@@ -156,10 +140,8 @@ namespace HeBianGu.ImagePlayer.ImageControl
         }
 
         //  Message：当前播放的节点
-        ImageCacheEntity _current;
-
-        //Queue<Boolean> _taskControlTemp = new Queue<Boolean>();
-
+        ImageCacheEntity _current; 
+ 
         bool flag = true;
 
         Semaphore _semaphoreWait = new Semaphore(1, 1);

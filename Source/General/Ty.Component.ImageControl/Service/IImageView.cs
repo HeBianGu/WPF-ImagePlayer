@@ -12,7 +12,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
     /// <summary>
     /// 图片操作类
     /// </summary>
-    public interface IImgOperate:IDisposable
+    public interface IImageView:IDisposable
     { 
         /// <summary> 左旋转 </summary>
         void SetRotateLeft();
@@ -67,7 +67,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 加载图片的标定信息
         /// </summary>
         /// <param name="markEntityList">图片已标定内容</param>
-        void LoadMarkEntitys(List<ImgMarkEntity> markEntityList);
+        void LoadMarkEntitys(List<ImageMarkEntity> markEntityList);
         #endregion
 
         #region 事件
@@ -95,24 +95,24 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 绘制矩形框结束
         /// </summary>
 
-        event Action<ImgMarkEntity, MarkType, IImgOperate> DrawMarkedMouseUp;
+        event Action<ImageMarkEntity, MarkType, IImageView> DrawMarkedMouseUp;
 
         /// <summary>
         /// 删除按钮点击事件
         /// </summary>
 
-        event Action<string, IImgOperate> DeleteImgEvent;
+        event Action<string, IImageView> DeleteImgEvent;
 
         /// <summary>
         /// 全屏模式切换事件 true=是全屏状态
         /// </summary>
 
-        event Action<bool, IImgOperate> FullScreenChangedEvent;
+        event Action<bool, IImageView> FullScreenChangedEvent;
 
 
 
         /// <summary> 选中项改变事件 </summary>
-        event Action<ImgMarkEntity, IImgOperate> MarkEntitySelectChanged;
+        event Action<ImageMarkEntity, IImageView> MarkEntitySelectChanged;
 
         #endregion
 
@@ -188,25 +188,25 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 缺陷集合与样本集合模型要修改
         /// </summary>
         /// <param name="entity"></param>
-        void MarkOperate(ImgMarkEntity entity);
+        void MarkOperate(ImageMarkEntity entity);
 
         /// <summary>
         /// 获取当前选中图片已标定的矩形框
         /// </summary>
         /// <returns></returns>
-        ImgMarkEntity GetSelectMarkEntity();
+        ImageMarkEntity GetSelectMarkEntity();
 
         /// <summary>
         /// 设置当前选中图片已标定的矩形框
         /// </summary>
         /// <returns></returns>
-        void SetSelectMarkEntity(Predicate<ImgMarkEntity> match);
+        void SetSelectMarkEntity(Predicate<ImageMarkEntity> match);
 
 
         /// <summary>
         /// 添加标定(在DrawMarkedMouseUp事件时添加标定)
         /// </summary>
-        void AddMark(ImgMarkEntity imgMarkEntity);
+        void AddMark(ImageMarkEntity imgMarkEntity);
 
         /// <summary>
         /// 取消添加标定(在DrawMarkedMouseUp事件时取消标定)
@@ -235,7 +235,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// <param name="shortcut"></param>
         void RegisterPartShotCut(ShortCutEntitys shortcut);
 
-        void OnImgMarkOperateEvent(ImgMarkEntity entity);
+        void OnImgMarkOperateEvent(ImageMarkEntity entity);
 
         string GetCurrentUrl();
 

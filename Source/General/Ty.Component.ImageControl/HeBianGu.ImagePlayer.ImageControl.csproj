@@ -41,10 +41,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CDTY.DataAnalysis.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Product\Dll\CDTY.DataAnalysis.Entity.dll</HintPath>
-    </Reference>
     <Reference Include="HeBianGu.Base.WpfBase, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.Base.WpfBase.1.0.1\lib\net45\HeBianGu.Base.WpfBase.dll</HintPath>
     </Reference>
@@ -73,7 +69,7 @@
     <Compile Include="Provider\ObjectRoutedEventArgs.cs" />
     <Compile Include="Service\IImagePlayerService.cs" />
     <Compile Include="Provider\Controls\ImageButton.cs" />
-    <Compile Include="Model\ImgMarkEntity.cs" />
+    <Compile Include="Model\ImageMarkEntity.cs" />
     <Compile Include="Provider\ComponetProvider.cs" />
     <Compile Include="Provider\Hook\HookApi.cs" />
     <Compile Include="Provider\Hook\HookKeyboardEngine.cs" />
@@ -84,10 +80,10 @@
     <Compile Include="Provider\Rectangle\IRectangleStroke.cs" />
     <Compile Include="Provider\Rectangle\RectangleLayer.cs" />
     <Compile Include="Provider\Rectangle\RectangleShape.cs" />
-    <Compile Include="Service\IImgOperate.cs" />
+    <Compile Include="Service\IImageView.cs" />
     <Compile Include="Provider\ImagePlay\SharedTool.cs" />
-    <Compile Include="ViewModel\ImageControlViewModel.cs" />
-    <Compile Include="ViewModel\SampleVieModel.cs" />
+    <Compile Include="ViewModel\ImageViewViewModel.cs" />
+    <Compile Include="ViewModel\MarkEntityViewModel.cs" />
     <Compile Include="View\ImageFullScreenWindow.xaml.cs">
       <DependentUpon>ImageFullScreenWindow.xaml</DependentUpon>
     </Compile>

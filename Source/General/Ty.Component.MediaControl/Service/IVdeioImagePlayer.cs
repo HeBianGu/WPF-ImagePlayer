@@ -10,13 +10,13 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
     /// <summary>
     /// 播放控件服务类（包括：视频和图片）
     /// </summary>
-   public interface IVdeioImagePlayerService:IDisposable    
+   public interface IVdeioImagePlayer:IDisposable    
     {
         /// <summary> 全屏事件 </summary>
-        event Action<IVdeioImagePlayerService> FullScreenHandle;
+        event Action<IVdeioImagePlayer> FullScreenHandle;
 
         /// <summary> 视频播放服务 </summary>
-        IMediaPlayerService MediaPlayerService { get; set; }
+        IMediaPlayer MediaPlayerService { get; set; }
 
         /// <summary> 图片播放服务 </summary>
         IImagePlayerService ImagePlayerService { get; set; }

@@ -16,7 +16,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
     /// <summary>
     /// 图片标定信息绑定模型
     /// </summary>
-    public partial class ImageControlViewModel
+    public partial class ImageViewViewModel
     {
         #region - 成员属性 -
 
@@ -34,9 +34,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
             }
         }
 
-        private ObservableCollection<SampleVieModel> _samplecollection = new ObservableCollection<SampleVieModel>();
+        private ObservableCollection<MarkEntityViewModel> _samplecollection = new ObservableCollection<MarkEntityViewModel>();
         /// <summary> 样本标定集合  </summary>
-        public ObservableCollection<SampleVieModel> SampleCollection
+        public ObservableCollection<MarkEntityViewModel> SampleCollection
         {
             get { return _samplecollection; }
             set
@@ -47,9 +47,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
         }
 
 
-        private SampleVieModel _selectSample;
+        private MarkEntityViewModel _selectSample;
         /// <summary> 当前选择的样本标定  </summary>
-        public SampleVieModel SelectSample
+        public MarkEntityViewModel SelectSample
         {
             get { return _selectSample; }
             set
@@ -104,7 +104,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 添加标定
         /// </summary>
         /// <param name="entity"></param>
-        public void Add(SampleVieModel entity)
+        public void Add(MarkEntityViewModel entity)
         {
             this.SampleCollection.Add(entity);
             
@@ -126,7 +126,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 this.SampleCollection.Clear();
                 for (int i = 0; i < 10; i++)
                 {
-                    SampleVieModel sample = new SampleVieModel();
+                    MarkEntityViewModel sample = new MarkEntityViewModel();
 
                     sample.Name = "Name" + i;
                     sample.Flag = i % 3 == 0 ? "\xe688" : "\xeaf3";
@@ -179,14 +179,14 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
     }
 
-    partial class ImageControlViewModel : INotifyPropertyChanged
+    partial class ImageViewViewModel : INotifyPropertyChanged
     {
 
         public RelayCommand RelayCommand { get; set; }
 
-        IImgOperate _iImgOperate;
+        IImageView _iImgOperate;
 
-        public ImageControlViewModel(IImgOperate iImgOperate)
+        public ImageViewViewModel(IImageView iImgOperate)
         {
             _iImgOperate = iImgOperate;
 

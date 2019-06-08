@@ -52,15 +52,15 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MediaFullScreenControl.xaml">
+    <Page Include="View\MediaFullScreenControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MulMediaPlayerControl.xaml">
+    <Page Include="View\MulMediaPlayerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VedioImagePlayerControl.xaml">
+    <Page Include="View\VedioImagePlayerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -82,20 +82,20 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ImageButton.cs" />
-    <Compile Include="MediaFullScreenControl.xaml.cs">
+    <Compile Include="Provider\ImageButton.cs" />
+    <Compile Include="View\MediaFullScreenControl.xaml.cs">
       <DependentUpon>MediaFullScreenControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MulMediaPlayerControl.xaml.cs">
+    <Compile Include="View\MulMediaPlayerControl.xaml.cs">
       <DependentUpon>MulMediaPlayerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Provider\FTPHelper.cs" />
     <Compile Include="Provider\ShareHelper.cs" />
-    <Compile Include="Service\IMediaPlayerService.cs" />
+    <Compile Include="Service\IMediaPlayer.cs" />
     <Compile Include="Provider\MediaButton.cs" />
     <Compile Include="Service\IMulMediaPlayer.cs" />
-    <Compile Include="Service\IVdeioImagePlayerService.cs" />
-    <Compile Include="VedioImagePlayerControl.xaml.cs">
+    <Compile Include="Service\IVdeioImagePlayer.cs" />
+    <Compile Include="View\VedioImagePlayerControl.xaml.cs">
       <DependentUpon>VedioImagePlayerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MediaPartControl.xaml.cs">

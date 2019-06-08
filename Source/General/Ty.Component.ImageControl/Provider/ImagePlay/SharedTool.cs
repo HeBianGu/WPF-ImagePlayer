@@ -8,18 +8,15 @@ using System.Threading.Tasks;
 namespace HeBianGu.ImagePlayer.ImageControl
 {
     public class SharedTool : IDisposable
-    {
-
-        // obtains user token       
-
+    { 
+ 
         [DllImport("advapi32.dll", SetLastError = true)]
 
         static extern bool LogonUser(string pszUsername, string pszDomain, string pszPassword,
 
             int dwLogonType, int dwLogonProvider, ref IntPtr phToken);
 
-        // closes open handes returned by LogonUser       
-
+ 
         [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
 
         extern static bool CloseHandle(IntPtr handle);

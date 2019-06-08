@@ -1,5 +1,4 @@
-﻿using CDTY.DataAnalysis.Entity;
-using HeBianGu.ImagePlayer.ImageControl;
+﻿using HeBianGu.ImagePlayer.ImageControl;
 using HeBianGu.ImagePlayer.ImageControl.Hook;
 using Newtonsoft.Json;
 using System;
@@ -30,9 +29,9 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
         {
             InitializeComponent();
 
-            IImgOperate _imgOperate = this.image.GetImgOperate();
+            IImageView _imgOperate = this.image.GetImgOperate();
 
-            List<ImgMarkEntity> temp = new List<ImgMarkEntity>();
+            List<ImageMarkEntity> temp = new List<ImageMarkEntity>();
 
             //  Do：1、注册编辑标定事件 包括新增、删除
             _imgOperate.ImgMarkOperateEvent += (l,k) =>
@@ -86,7 +85,7 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
                 {
                     string marks = File.ReadAllText(item);
 
-                    var list = JsonConvert.DeserializeObject<List<ImgMarkEntity>>(marks);
+                    var list = JsonConvert.DeserializeObject<List<ImageMarkEntity>>(marks);
 
                     _imgOperate.LoadMarkEntitys(list);
                 }
@@ -114,7 +113,7 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
                 {
                     string marks = File.ReadAllText(item);
 
-                    var list = JsonConvert.DeserializeObject<List<ImgMarkEntity>>(marks);
+                    var list = JsonConvert.DeserializeObject<List<ImageMarkEntity>>(marks);
 
                     _imgOperate.LoadMarkEntitys(list);
                 }
@@ -125,39 +124,7 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
             //  Do：5、注册绘制矩形框结束事件 需要在此处弹出缺陷管理控件，并设置如下参数
             _imgOperate.DrawMarkedMouseUp += (l, k,m) =>
             {
-                //Debug.WriteLine(l);
-                //Debug.WriteLine(k);
-
-                //  Do：选择的责任工区
-                l.SelectResponsibilityWorkArea = new TyeBaseDepartmentEntity();
-                //  Do：选择的责任车间
-                l.SelectResponsibilityWorkshop = new TyeBaseDepartmentEntity();
-                //  Do：选择的单元
-                l.SelectBasicUnit = new TyeBasePillarEntity();
-                //  Do：选择的站
-                l.SelectDedicatedStation = new TyeBaseSiteEntity();
-                //  Do：选择的段
-                l.SelectDedicatedLine = new TyeBaseLineEntity();
-                //  Do：选择的铁路局顺序码
-                l.SelectRailwaySsequence = new TyeBaseRailwaystationEntity();
-                //  Do：选择的数据采集方式
-                l.SelectDataAcquisitionMode = new TyeBaseDatacollecttypeEntity();
-                //  Do：PHM编码（基本由界面属性组合而成）
-                l.PHMCodes = "PHM编码（基本由界面属性组合而成）";
-                //  Do：当前用户
-                l.tyeAdminUserEntity = new TyeAdminUserEntity();
-                //  Do：检测日期
-                l.DetectDate = DateTime.Now;
-                //  Do：公里标
-                l.KmLog = "公里标";
-                //  Do：检测车辆
-                l.DetectionVehicles = "检测车辆";
-
-                //  Do：选择的缺陷
-                l.SelectDefectOrMarkCodes = new TyeEncodeDeviceEntity();
-
-                //  Do：选择的历史信息
-                l.SelectCommonHistoricalDefectsOrMark = new DefectCommonUsed();
+                 
 
                 _imgOperate.AddMark(l);
 
