@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}</ProjectGuid>
+    <ProjectGuid>{0AA2421B-A5BD-432E-9890-9BC98E3E0670}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>HeBianGu.Appliaction.Demo.MediaControl</RootNamespace>
-    <AssemblyName>HeBianGu.Appliaction.Demo.MediaControl</AssemblyName>
+    <RootNamespace>HeBianGu.ImagePlayer.ImageView</RootNamespace>
+    <AssemblyName>HeBianGu.ImagePlayer.ImageView</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Product\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,11 +35,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HeBianGu.Base.WpfBase, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.Base.WpfBase.1.0.1\lib\net45\HeBianGu.Base.WpfBase.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Solution\hebiangu\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="HeBianGu.General.WpfControlLib, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.General.WpfControlLib.1.0.2\lib\net45\HeBianGu.General.WpfControlLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Windows.Shell, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solution\hebiangu\packages\Microsoft.Windows.Shell.3.0.1.0\lib\net40\Microsoft.Windows.Shell.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -62,12 +64,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MulMediaPlayerWindow.xaml.cs">
-      <DependentUpon>MulMediaPlayerWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ShellWindow.xaml.cs">
-      <DependentUpon>ShellWindow.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,14 +76,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MulMediaPlayerWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ShellWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -117,13 +105,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\General\Ty.Component.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj">
+    <ProjectReference Include="..\..\General\HeBianGu.ImagePlayer.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj">
       <Project>{90678356-1ef7-4b98-90b0-754a597d872b}</Project>
       <Name>HeBianGu.ImagePlayer.ImageControl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\General\Ty.Component.MediaControl\HeBianGu.ImagePlayer.ImagePlayerControl.csproj">
-      <Project>{73cdfd21-2014-470c-b250-740852bd4eea}</Project>
-      <Name>HeBianGu.ImagePlayer.ImagePlayerControl</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

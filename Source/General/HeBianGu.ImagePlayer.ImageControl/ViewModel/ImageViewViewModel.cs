@@ -141,7 +141,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 if (this.SelectSample == null) return;
 
                 this.SelectSample.Flag = "\xe743";
-                this.SelectSample.Model.markOperateType = ImgMarkOperateType.Delete;
+                this.SelectSample.Model.markOperateType = ImageMarkOperateType.Delete;
                 this.SelectSample.Visible = false;
             }
             //  Do：更新标定
@@ -150,7 +150,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 if (this.SelectSample == null) return;
 
                 this.SelectSample.Flag = "\xe6b5";
-                this.SelectSample.Model.markOperateType = ImgMarkOperateType.Update;
+                this.SelectSample.Model.markOperateType = ImageMarkOperateType.Update;
             }
 
             //  Do：删除标定
@@ -160,7 +160,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
                 if (this.SelectSample == null) return;
 
-                this.SelectSample.Model.markOperateType = ImgMarkOperateType.Delete;
+                this.SelectSample.Model.markOperateType = ImageMarkOperateType.Delete;
 
                 //  Do：触发删除事件
                 this._iImgOperate.OnImgMarkOperateEvent(this.SelectSample.Model);

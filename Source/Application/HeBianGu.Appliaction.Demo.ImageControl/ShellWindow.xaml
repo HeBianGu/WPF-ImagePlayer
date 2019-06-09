@@ -105,7 +105,7 @@ xmlns:sys="clr-namespace:System;assembly=System"
 
             <Button  Margin="100,0" Command="{Binding Source={StaticResource Resources.Command.LoadMarkEntitys}}"/>
 
-         
+
 
         </StackPanel>
 

@@ -216,7 +216,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             return Tuple.Create(xleft, ytop);
         }
 
-        public int MaxScale { get; set; } = 5; 
+        public int MaxScale { get; set; } = 15; 
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -2067,8 +2067,8 @@ namespace HeBianGu.ImagePlayer.ImageControl
     /// <summary> 接口实现 </summary>
     partial class ImageViews : IImageView
     {
-        public event ImgMarkHandler ImgMarkOperateEvent;
-        public event ImgProcessHandler ImgProcessEvent;
+        public event Action<ImageMarkEntity, IImageView> ImgMarkOperateEvent;
+
         public event Action PreviousImgEvent;
         public event Action NextImgEvent;
         public event Action<ImageMarkEntity, MarkType, IImageView> DrawMarkedMouseUp;
@@ -2180,7 +2180,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         {
             var entity = this.GetSelectMarkEntity();
 
-            entity.markOperateType = ImgMarkOperateType.Delete;
+            entity.markOperateType = ImageMarkOperateType.Delete;
 
             this.MarkOperate(entity);
         }
@@ -2374,7 +2374,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                     //SampleVieModel vm = new SampleVieModel(item);
 
                     //this.ViewModel.SampleCollection.Add(vm);
-                    item.markOperateType = ImgMarkOperateType.Insert;
+                    item.markOperateType = ImageMarkOperateType.Insert;
                     this.MarkOperate(item);
                 }
 
@@ -2390,7 +2390,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         public void MarkOperate(ImageMarkEntity entity)
         {
             //  Do：新增
-            if (entity.markOperateType == ImgMarkOperateType.Insert)
+            if (entity.markOperateType == ImageMarkOperateType.Insert)
             {
                 MarkEntityViewModel vm = new MarkEntityViewModel(entity);
 
@@ -2405,7 +2405,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             else
             {
                 //  Do：修改
-                if (entity.markOperateType == ImgMarkOperateType.Update)
+                if (entity.markOperateType == ImageMarkOperateType.Update)
                 {
                     MarkEntityViewModel vm = new MarkEntityViewModel(entity);
 

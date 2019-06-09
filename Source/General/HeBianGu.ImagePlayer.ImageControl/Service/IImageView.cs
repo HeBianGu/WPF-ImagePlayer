@@ -5,15 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Media; 
+using System.Windows.Media;
 
 namespace HeBianGu.ImagePlayer.ImageControl
 {
     /// <summary>
     /// 图片操作类
     /// </summary>
-    public interface IImageView:IDisposable
-    { 
+    public interface IImageView : IDisposable
+    {
         /// <summary> 左旋转 </summary>
         void SetRotateLeft();
 
@@ -33,18 +33,18 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 是否鼠标滚轮进入播放模式
         /// </summary>
         bool IsWheelPlay { get; set; }
-         
+
         /// <summary>
         /// 滚轮放大到的最大倍率
         /// </summary>
         int MaxScale { get; set; }
+
         /// <summary>
         /// 创建图片浏览展示控件
         /// </summary>
         /// <returns></returns>
         Control BuildEntity();
 
-        #region 数据加载方法
         /// <summary>
         /// 图片控件加载标定使用代码和代码名称
         /// </summary>
@@ -67,19 +67,12 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 加载图片的标定信息
         /// </summary>
         /// <param name="markEntityList">图片已标定内容</param>
-        void LoadMarkEntitys(List<ImageMarkEntity> markEntityList);
-        #endregion
+        void LoadMarkEntitys(List<ImageMarkEntity> markEntityList); 
 
-        #region 事件
         /// <summary>
         /// 新增/修改/删除图片标定事件
         /// </summary>
-        event ImgMarkHandler ImgMarkOperateEvent;
-
-        /// <summary>
-        /// 图片风格化处理事件
-        /// </summary>
-        event ImgProcessHandler ImgProcessEvent;
+        event Action<ImageMarkEntity,IImageView> ImgMarkOperateEvent;
 
         /// <summary>
         /// 上一张
@@ -114,9 +107,6 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// <summary> 选中项改变事件 </summary>
         event Action<ImageMarkEntity, IImageView> MarkEntitySelectChanged;
 
-        #endregion
-
-        #region 设置方法
         /// <summary>
         /// 展示全部缺陷标注
         /// </summary>
@@ -175,8 +165,6 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 减慢图片播放速度
         /// </summary>
         void ImgPlaySpeedDown();
-
-        #endregion
 
         /// <summary>
         /// 设置一个标识位，标识该图片属于检测分析还是样本标定 默认
@@ -278,10 +266,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         /// <summary> 获取数据源列表 </summary>
         List<string> GetImageList();
+        
 
-        //double GetSpeedSplitTime();
-
-        Func<int,double>  ConvertSpeedFunction { get; set; }
+        Func<int, double> ConvertSpeedFunction { get; set; }
 
         Action<ImageViews> LoadedAction { get; set; }
 
@@ -304,29 +291,10 @@ namespace HeBianGu.ImagePlayer.ImageControl
     /// </summary>
     public enum MarkType
     {
-        /// <summary>
-        /// 样本标定
-        /// </summary>
         Sample = 0,
-
-        /// <summary>
-        /// 检测分析
-        /// </summary>
         Defect,
-
-        /// <summary>
-        /// 放大模式
-        /// </summary>
-
         Enlarge,
-
-        /// <summary>
-        /// 气泡放大模式
-        /// </summary>
         Bubble,
-        /// <summary>
-        /// 增加一个标志位，为true时，鼠标变成十字形，画区域框，增加标定；为false时，鼠标变为默认箭头形，不能画区域框，不能增加标定
-        /// </summary>
         None
     }
 

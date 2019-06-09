@@ -57,11 +57,11 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// <summary>
         /// 标注操作类型，枚举值，默认是新增
         /// </summary>
-        public ImgMarkOperateType markOperateType { get; set; }
+        public ImageMarkOperateType markOperateType { get; set; }
 
         public ImageMarkEntity()
         {
-            markOperateType = ImgMarkOperateType.Insert;
+            markOperateType = ImageMarkOperateType.Insert;
 
             ID = Guid.NewGuid().ToString();
         }  
@@ -102,55 +102,23 @@ namespace HeBianGu.ImagePlayer.ImageControl
     }
 
     /// <summary>
-    /// 图片处理类型
-    /// </summary>
-    public enum ImgProcessType
-    {
-        滤镜 = 0,
-        对比度 = 1,
-        曝光补偿 = 2,
-        夜视 = 3,
-        锐化 = 4,
-        边缘锐化 = 5,
-    }
-
-
-
-
-    /// <summary>
     /// 标定实体操作类型
     /// </summary>
-    public enum ImgMarkOperateType
+    public enum ImageMarkOperateType
     {
         /// <summary>
-        /// 新增标定
+        /// 新增
         /// </summary>
         Insert = 0,
 
         /// <summary>
-        /// 修改已有标定
+        /// 修改
         /// </summary>
         Update = 1,
 
         /// <summary>
-        /// 删除标定
+        /// 删除
         /// </summary>
         Delete = 2,
-    }
-
-    /// <summary>
-    /// 标定内容变更委托，包括：新增、修改、删除
-    /// </summary>
-    /// <param name="markEntity">标定实体，实体内包含了实体是新增、修改还是删除的相关信息</param>
-    public delegate void ImgMarkHandler(ImageMarkEntity markEntity,IImageView operate);
-
-    /// <summary>
-    /// 图片风格化处理委托，
-    /// </summary>
-    /// <param name="imgPath">图片路径</param>
-    /// <param name="imgProcessType">风格化处理类型</param>
-    public delegate void ImgProcessHandler(string imgPath, ImgProcessType imgProcessType);
-
-
-
+    }  
 }

@@ -35,12 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CDTY.DataAnalysis.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Product\Dll\CDTY.DataAnalysis.Entity.dll</HintPath>
-    </Reference>
     <Reference Include="HeBianGu.Base.WpfBase, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.Base.WpfBase.1.0.1\lib\net45\HeBianGu.Base.WpfBase.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -105,6 +100,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -114,7 +110,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\General\Ty.Component.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj">
+    <ProjectReference Include="..\..\General\HeBianGu.ImagePlayer.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj">
       <Project>{90678356-1ef7-4b98-90b0-754a597d872b}</Project>
       <Name>HeBianGu.ImagePlayer.ImageControl</Name>
     </ProjectReference>

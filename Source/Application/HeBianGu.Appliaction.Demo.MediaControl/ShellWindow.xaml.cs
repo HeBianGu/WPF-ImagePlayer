@@ -110,15 +110,7 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
 
             };
 
-            //  Do：2、注册风格化处理事件
-            _imgOperate.ImgProcessEvent += (l, k) =>
-            {
-                Debug.WriteLine("图片路径：" + l);
-
-                Debug.WriteLine("操作参数：" + k);
-
-                MessageBox.Show(k.ToString());
-            };
+      
 
             //  Do：5、注册绘制矩形框结束事件 需要在此处弹出缺陷管理控件，并设置如下参数
             _imgOperate.DrawMarkedMouseUp += (l, k,m) =>

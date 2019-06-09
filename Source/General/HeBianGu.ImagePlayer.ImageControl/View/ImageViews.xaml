@@ -173,7 +173,7 @@
         </Grid>
 
 
-        <Grid x:Name="grid_mark" Margin="0" Width="150" Height="150"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#4C000000">
+        <Grid x:Name="grid_mark" Margin="0" Width="150" Height="150"  ClipToBounds="True"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#4C000000">
 
 
           
@@ -186,7 +186,7 @@
 
          
 
-            <local:MaskCanvas x:Name="mask" ClipToBounds="True"
+            <local:MaskCanvas x:Name="mask"
                               Width="{Binding ActualWidth, ElementName=controlmask}"
                               Height="{Binding ActualHeight, ElementName=controlmask}" Margin="0"/>
 

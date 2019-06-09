@@ -66,15 +66,15 @@ namespace HeBianGu.Appliaction.Demo.ImageControl
 
               };
 
-            //  Do：注册风格化处理事件
-            _imgOperate.ImgProcessEvent += (l, k) =>
-              {
-                  Debug.WriteLine("图片路径：" + l);
+            ////  Do：注册风格化处理事件
+            //_imgOperate.ImgProcessEvent += (l, k) =>
+            //  {
+            //      Debug.WriteLine("图片路径：" + l);
 
-                  Debug.WriteLine("操作参数：" + k);
+            //      Debug.WriteLine("操作参数：" + k);
 
-                  MessageBox.Show(k.ToString());
-              };
+            //      MessageBox.Show(k.ToString());
+            //  };
 
             _imgOperate.PreviousImgEvent += () =>
               {
@@ -555,7 +555,7 @@ namespace HeBianGu.Appliaction.Demo.ImageControl
         {
             var entity = _imgOperate.GetSelectMarkEntity();
 
-            entity.markOperateType = ImgMarkOperateType.Delete;
+            entity.markOperateType = ImageMarkOperateType.Delete;
 
             _imgOperate.MarkOperate(entity);
         }

@@ -56,15 +56,7 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
 
             };
 
-            //  Do：2、注册风格化处理事件
-            _imgOperate.ImgProcessEvent += (l, k) =>
-            {
-                Debug.WriteLine("图片路径：" + l);
-
-                Debug.WriteLine("操作参数：" + k);
-
-                MessageBox.Show(k.ToString());
-            };
+         
 
             //  Do：3、注册上一页事件 需要在此处加载上一页的标定 ImgMarkEntity
             _imgOperate.PreviousImgEvent += () =>

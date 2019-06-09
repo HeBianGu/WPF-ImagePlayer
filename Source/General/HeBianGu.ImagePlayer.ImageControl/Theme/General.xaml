@@ -9,6 +9,8 @@
         <ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/HeBianGu.Themes.Resource.xaml"/>
         <ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/Color/LightThemeResource.xaml"/>
         <!--<ResourceDictionary Source="/Ty.Base.WpfBase;component/Themes/Ty.Thremes.Control.xaml"/>-->
+        <ResourceDictionary Source="FIcon.xaml"/>
+        <!--<ResourceDictionary Source="/Theme/CenterScroll.xaml"/>-->
     </ResourceDictionary.MergedDictionaries>
 
     <XmlDataProvider x:Key="Resource.XmlDataProvider.ImageControl" Source="/HeBianGu.Component.ImageControl;component/Resources/ImageConfig.xml"  XPath="root"/>
@@ -533,5 +535,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style> 
+    
 </ResourceDictionary>
