@@ -11,11 +11,9 @@
                 <ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/Color/LightThemeResource.xaml"/>
 
                 <!--自定义资源引用-->
-                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Theme/General.xaml"/>
-                
+                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Theme/Themes.ImageControl.Default.xaml"/>
                 <ResourceDictionary Source="/HeBianGu.General.WpfControlLib;component/Themes/HeBianGu.Themes.Default.xaml"/>
-
-              
+                
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>

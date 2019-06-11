@@ -8,15 +8,13 @@
               x:Class="HeBianGu.ImagePlayer.ImageControl.ImageViews" 
          xmlns:base="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
              mc:Ignorable="d" PreviewMouseDoubleClick="UserControl_MouseDoubleClick"
-             d:DesignHeight="300"  Background="Black"   d:DesignWidth="800">
-    <!--Background="#141414"-->
-
+             d:DesignHeight="300"  Background="Black" x:Name="imagecontrol"   d:DesignWidth="800">  
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <!--自定义资源引用-->
-                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Theme/General.xaml"/>
+            <ResourceDictionary.MergedDictionaries> 
+                <!--<ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Theme/General.xaml"/>-->
+                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Theme/Themes.ImageControl.Default.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="OnLoaded1"/>
             <Storyboard x:Key="OnMouseEnter1"/>
@@ -68,6 +66,18 @@
                 <MenuItem Header="图片信息"   IsEnabled="False"/>
                 <!--<MenuItem Header="删除" Click="Btn_delete_Click"/>-->
             </ContextMenu>
+
+            <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource DefaultMenu}">
+                <Setter Property="Height" Value="30"/>
+                <Setter Property="MinWidth" Value="100"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Top"/>
+            </Style>
+            <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource DefaultMenuItem}">
+                <Setter Property="Width" Value="100"/>
+            </Style>
+
+            <RoutedUICommand x:Key="Resource.Command.OpenFolder" Text="打开文件夹"/>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -88,6 +98,9 @@
             <CommandBinding Command="{x:Static local:ImageViewCommands.NextImage}" 
                         Executed="CommandBinding_NextImage_Executed" 
                         CanExecute="CommandBinding_NextImage_CanExecute"/>
+
+            <CommandBinding Command="{StaticResource Resource.Command.OpenFolder}" 
+                            Executed="CommandBinding_OpenFolder_Executed" CanExecute="CommandBinding_OpenFolder_CanExecute"/>
 
         </Grid.CommandBindings>
 
@@ -194,7 +207,7 @@
 
         </Grid>
 
-        <Border x:Name="border" BorderThickness="0" Margin="0,0,0,-46" VerticalAlignment="Bottom" HorizontalAlignment="Center" CornerRadius="5,5,0,0" Background="#66000000">
+        <Border x:Name="border" BorderThickness="0" Margin="0,0,0,-46" VerticalAlignment="Bottom" HorizontalAlignment="Center" CornerRadius="5,5,0,0" Background="{DynamicResource S_AccentBrush_MouseOver}">
 
             <Grid>
                 <StackPanel x:Name="tool_normal" HorizontalAlignment="Center"  VerticalAlignment="Bottom"   Height="46" Orientation="
@@ -329,22 +342,75 @@
         <!--上一页按钮-->
         <local:IconButton  x:Name="button_last"  
                            Grid.Column="1"
-                           FIcon="&#xe671;" 
+                           FIcon="&#xe671;"  CornerRadius="25"
                            Margin="10,0" HorizontalAlignment="Left" 
                            Command="{x:Static local:ImageViewCommands.LastImage}" 
                            ToolTip="{Binding Source={x:Static local:ImageViewCommands.LastImage},Path=Text}"
-                           Style="{StaticResource Style.IconButton.Default}"  Height="60"  Width="20"/>
+                           Style="{StaticResource Style.IconButton.Default}"  Height="50"  Width="50"/>
 
         <!--下一页按钮-->
         <local:IconButton  x:Name="button_next"  
                            Grid.Column="1" 
                            FIcon="&#xe66d;" 
-                           Margin="10,0"  
+                           Margin="10,0"  CornerRadius="25"
                            HorizontalAlignment="Right" 
                            Command="{x:Static local:ImageViewCommands.NextImage}" 
                            ToolTip="{Binding Source={x:Static local:ImageViewCommands.NextImage},Path=Text}"
                            Style="{StaticResource Style.IconButton.Default}"  
-                           Height="60"  Width="20"/>
+                           Height="50"  Width="50"/>
+
+        <!--操作模式-->
+        <Border Margin="5" Grid.RowSpan="2" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="0" CornerRadius="2" VerticalAlignment="Top">
+            <Border.Background>
+                <SolidColorBrush Color="LightGray" Opacity="0.5"/>
+            </Border.Background>
+
+            <StackPanel Margin="2">
+                <StackPanel.Resources>
+                    <Style TargetType="RadioButton" BasedOn="{StaticResource DefaultRadioButton}">
+                        <Setter Property="FontSize" Value="10"/>
+                        <Setter Property="Margin" Value="10,2"/>
+                        <Setter Property="Foreground" Value="{DynamicResource S_WhiteNotice}"/>
+                        <Setter Property="base:ControlAttachProperty.FIconSize" Value="10"/>
+                    </Style>
+                </StackPanel.Resources>
+
+                <RadioButton Checked="RadioButton_Checked" Content="常规">
+                    <RadioButton.Tag>
+                        <local:MarkType>Sample</local:MarkType>
+                    </RadioButton.Tag>
+                </RadioButton>
+                <RadioButton  Checked="RadioButton_Checked" Content="异常">
+                    <RadioButton.Tag>
+                        <local:MarkType>Defect</local:MarkType>
+                    </RadioButton.Tag>
+                </RadioButton>
+                <RadioButton  Checked="RadioButton_Checked" Content="放大">
+                    <RadioButton.Tag>
+                        <local:MarkType>Enlarge</local:MarkType>
+                    </RadioButton.Tag>
+                </RadioButton>
+                <RadioButton  Checked="RadioButton_Checked" Content="气泡">
+                    <RadioButton.Tag>
+                        <local:MarkType>Bubble</local:MarkType>
+                    </RadioButton.Tag>
+                </RadioButton>
+                <RadioButton  Checked="RadioButton_Checked" IsChecked="True" Content="无">
+                    <RadioButton.Tag>
+                        <local:MarkType>None</local:MarkType>
+                    </RadioButton.Tag>
+                </RadioButton>
+            </StackPanel>
+        </Border>
+
+        <TextBlock
+                   FontSize="12" Margin="5"
+                   Foreground="{DynamicResource S_AccentBrush}" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Bottom">
+            <Run Text="文件路径:"/>
+                 <Run Text="{Binding ElementName=imagecontrol,Path=Current.Value}"/>
+        </TextBlock>
 
         <ContentControl x:Name="grid_buzy"  Visibility="{Binding IsBuzy,Converter={x:Static base:XConverter.BooleanToVisibilityConverter}}">
             <ContentControl.Template>
@@ -394,5 +460,12 @@
         </ContentControl>
 
 
+        <!--操作菜单-->
+        <Menu>
+            <MenuItem Header="菜单">
+                <MenuItem Header="打开文件夹" Command="{StaticResource Resource.Command.OpenFolder}"/>
+                <MenuItem Header="设置" base:ControlAttachProperty.FIcon="&#xe671;"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </UserControl>

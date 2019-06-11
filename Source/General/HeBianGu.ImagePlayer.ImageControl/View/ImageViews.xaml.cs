@@ -159,29 +159,30 @@ namespace HeBianGu.ImagePlayer.ImageControl
             this.SetMarkType(MarkType.None);
 
             this.SetBubbleScale(50);
-
             this.ConvertSpeedFunction = l =>
-              {
-                  switch (l)
-                  {
-                      case -1:
-                          return 3;
-                      case -2:
-                          return 4;
-                      case -4:
-                          return 5;
-                      case 1:
-                          return 2;
-                      case 2:
-                          return 1;
-                      case 4:
-                          return 0.5;
-                      //case 8:
-                      //    return 1.0 / 20.0;
-                      default:
-                          return 2;
-                  }
-              };  
+            {
+                switch (l)
+                {
+                    case -1:
+                        return 3;
+                    case -2:
+                        return 4;
+                    case -4:
+                        return 5;
+                    case -8:
+                        return 6;
+                    case 1:
+                        return 2;
+                    case 2:
+                        return 1;
+                    case 4:
+                        return 0.5;
+                    case 8:
+                        return 0.1;
+                    default:
+                        return 2;
+                }
+            };
 
             this.LoadedAction = l => 
             { 
@@ -1191,7 +1192,8 @@ namespace HeBianGu.ImagePlayer.ImageControl
                     {
                         this.ViewModel.ImageSource = s;
 
-                        this.Source = s;
+                        this.Source = s; 
+                        
 
                         this.ViewModel.IsBuzy = false;
 
@@ -1234,13 +1236,31 @@ namespace HeBianGu.ImagePlayer.ImageControl
         LinkedList<string> _collection = new LinkedList<string>();
 
         //  Do：当前图片路径
-        LinkedListNode<string> current;
+        //LinkedListNode<string> current;
 
         ////  Do：自动播放时间处理
         //Timer timer = new Timer();
 
-        public LinkedListNode<string> Current { get => current; set => current = value; }
+        //public LinkedListNode<string> Current { get => current; set => current = value; }
 
+
+        public LinkedListNode<string> Current
+        {
+            get { return (LinkedListNode<string>)GetValue(CurrentProperty); }
+            set { SetValue(CurrentProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurrentProperty =
+            DependencyProperty.Register("Current", typeof(LinkedListNode<string>), typeof(ImageViews), new PropertyMetadata(default(LinkedListNode<string>), (d, e) =>
+             {
+                 //ImageViews control = d as ImageViews;
+
+                 //if (control == null) return;
+
+                 //LinkedListNode<string> config = e.NewValue as LinkedListNode<string>;
+
+             }));
 
 
         #endregion
@@ -1278,8 +1298,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
                 this.LoadImage(Current.Value);
             }
-
-            //  Do：触发删除事件
+             
             this.PreviousImgEvent?.Invoke();
 
             Application.Current.Dispatcher.Invoke(() =>
@@ -1294,9 +1313,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
         {
             if (this.Collection == null) return;
 
-            if (this.current == null) return;
+            if (this.Current == null) return;
 
-            var index = this.Collection.ToList().FindIndex(l => l == this.current.Value);
+            var index = this.Collection.ToList().FindIndex(l => l == this.Current.Value);
 
             this.Dispatcher.Invoke(() =>
             {
@@ -1612,6 +1631,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         //}
 
+
         public double GetCacheCount()
         {
             switch (this.Speed)
@@ -1622,14 +1642,16 @@ namespace HeBianGu.ImagePlayer.ImageControl
                     return 1.0 / 2.0;
                 case -4:
                     return 1.0 / 1.0;
+                case -8:
+                    return 1.0 / 0.5;
                 case 1:
                     return 1.0 / 5.0;
                 case 2:
                     return 1.0 / 10.0;
                 case 4:
                     return 1.0 / 20.0;
-                //case 8:
-                //    return 1.0 / 20.0;
+                case 8:
+                    return 1.0 / 40.0;
                 default:
                     return 1.0 / 5.0;
             }
@@ -2060,7 +2082,54 @@ namespace HeBianGu.ImagePlayer.ImageControl
             this.popup.Visibility = Visibility.Visible;
         }
 
+        private void CommandBinding_OpenFolder_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
 
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+
+                DirectoryInfo directory = new DirectoryInfo(dialog.SelectedPath);
+
+                var images = this.GetAllFile(directory, l => l.Extension.EndsWith("jpg") || l.Extension.EndsWith("png"));
+
+                this.LoadImg(images.ToList());
+            }
+
+        }
+
+        /// <summary> 获取当前文件夹下所有匹配的文件 </summary>
+
+        IEnumerable<string> GetAllFile(DirectoryInfo dir, Predicate<FileInfo> match = null)
+        {
+            foreach (var d in dir.GetFileSystemInfos())
+            {
+                if (d is DirectoryInfo)
+                {
+                    DirectoryInfo dd = d as DirectoryInfo;
+
+                    var result = GetAllFile(dd, match);
+
+                    foreach (var item in result)
+                    {
+                        yield return item;
+                    }
+                }
+
+                else if (d is FileInfo)
+                {
+                    FileInfo dd = d as FileInfo;
+                    if (match == null || match(dd))
+                    {
+                        yield return d.FullName;
+                    }
+                }
+            }
+        }
+        private void CommandBinding_OpenFolder_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
     }
 
 
@@ -2204,6 +2273,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
         {
             switch (this.Speed)
             {
+                case 8:
+                    this.Speed = 4;
+                    break;
                 case 4:
                     this.Speed = 2;
                     break;
@@ -2218,6 +2290,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
                     break;
                 case -2:
                     this.Speed = -4;
+                    break;
+                case -4:
+                    this.Speed = -8;
                     break;
                 default:
                     break;
@@ -2238,15 +2313,33 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         }
 
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+
+            if (radioButton.Tag == null) return;
+
+            MarkType markType = (MarkType)radioButton.Tag;
+
+            this.SetMarkType(markType);
+        }
+
+
         public void ImgPlaySpeedUp()
         {
             switch (this.Speed)
             {
+                case -8:
+                    this.Speed = -4;
+                    break;
                 case -4:
                     this.Speed = -2;
                     break;
                 case 2:
                     this.Speed = 4;
+                    break;
+                case 4:
+                    this.Speed = 8;
                     break;
                 case 1:
                     this.Speed = 2;
@@ -2941,7 +3034,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         public string GetCurrentUrl()
         {
-            return this.current?.Value;
+            return this.Current?.Value;
         }
 
         public void StartSlidePlay()

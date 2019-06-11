@@ -57,14 +57,16 @@ namespace HeBianGu.ImagePlayer.ImageControl
                         return 1.0 / 1.0;
                     case -4:
                         return 1.0 / 0.5;
+                    case -8:
+                        return 1.0 / 0.2;
                     case 1:
                         return 1.0 / 3.0;
                     case 2:
                         return 1.0 / 5.0;
                     case 4:
                         return 1.0 / 10.0;
-                    //case 8:
-                    //    return 1.0 / 20.0;
+                    case 8:
+                        return 1.0 / 1000;
                     default:
                         return 1.0 / 5.0;
                 }
