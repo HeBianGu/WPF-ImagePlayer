@@ -27,7 +27,7 @@ namespace HeBianGu.Appliaction.Demo.ImageControl
     public partial class ShellWindow : Window
     {
         //  Message：接口实现用例
-        IImageView _imgOperate = new ImageViews();
+        IImageCore _imgOperate = new ImageViews();
 
         bool _isload = false;
 

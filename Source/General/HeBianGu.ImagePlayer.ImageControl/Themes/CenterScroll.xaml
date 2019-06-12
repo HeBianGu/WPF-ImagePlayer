@@ -4,7 +4,7 @@
                     xmlns:local="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase">
 
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/Theme/FIcon.xaml"/>
+        <ResourceDictionary Source="/Themes/FIcon.xaml"/>
     </ResourceDictionary.MergedDictionaries>
     
     <sys:Double x:Key="CenterScrollBarSize">12</sys:Double>

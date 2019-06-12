@@ -38,10 +38,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HeBianGu.Base.WpfBase, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.Base.WpfBase.1.0.1\lib\net45\HeBianGu.Base.WpfBase.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\WPF-ControlBase\Product\Debug\HeBianGu.Base.WpfBase.dll</HintPath>
     </Reference>
-    <Reference Include="HeBianGu.General.WpfControlLib, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.General.WpfControlLib.1.0.2\lib\net45\HeBianGu.General.WpfControlLib.dll</HintPath>
+    <Reference Include="HeBianGu.General.WpfControlLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\WPF-ControlBase\Product\Debug\HeBianGu.General.WpfControlLib.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\..\Solution\hebiangu\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -68,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ImageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,6 +81,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ImageWindow.xaml.cs">
+      <DependentUpon>ImageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -109,12 +118,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\General\HeBianGu.ImagePlayer.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj">
-      <Project>{90678356-1ef7-4b98-90b0-754a597d872b}</Project>
-      <Name>HeBianGu.ImagePlayer.ImageControl</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Applications Movies.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +128,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Mac OS X Modern Icon 49.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\General\HeBianGu.ImagePlayer.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj">
+      <Project>{90678356-1ef7-4b98-90b0-754a597d872b}</Project>
+      <Name>HeBianGu.ImagePlayer.ImageControl</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

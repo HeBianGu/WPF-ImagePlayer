@@ -17,10 +17,10 @@
             <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
 
-        <imagecontrol:ImageViews x:Name="imageview" Grid.Row="0" Grid.RowSpan="2">
-            <imagecontrol:ImageViews.Background>
+        <imagecontrol:ImageCore x:Name="imageview" Grid.Row="0" Grid.RowSpan="2">
+            <imagecontrol:ImageCore.Background>
                 <SolidColorBrush Color="Black" Opacity="0.8"/>
-            </imagecontrol:ImageViews.Background>
-        </imagecontrol:ImageViews>
+            </imagecontrol:ImageCore.Background>
+        </imagecontrol:ImageCore>
     </Grid>
 </wpfcontrollib:WindowBase>

@@ -42,10 +42,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HeBianGu.Base.WpfBase, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.Base.WpfBase.1.0.1\lib\net45\HeBianGu.Base.WpfBase.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\WPF-ControlBase\Product\Debug\HeBianGu.Base.WpfBase.dll</HintPath>
     </Reference>
     <Reference Include="HeBianGu.General.WpfControlLib, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.General.WpfControlLib.1.0.2\lib\net45\HeBianGu.General.WpfControlLib.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\WPF-ControlBase\Product\Debug\HeBianGu.General.WpfControlLib.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
@@ -65,6 +67,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="View\ImageView.xaml.cs">
+      <DependentUpon>ImageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Provider\ImageViewCommands.cs" />
     <Compile Include="Provider\SystemUtils.cs" />
     <Compile Include="Provider\ImagePlay\FtpHelper.cs" />
@@ -83,7 +88,7 @@
     <Compile Include="Provider\Rectangle\IRectangleStroke.cs" />
     <Compile Include="Provider\Rectangle\RectangleLayer.cs" />
     <Compile Include="Provider\Rectangle\RectangleShape.cs" />
-    <Compile Include="Service\IImageView.cs" />
+    <Compile Include="Service\IImageCore.cs" />
     <Compile Include="Provider\ImagePlay\SharedTool.cs" />
     <Compile Include="ViewModel\ImageViewViewModel.cs" />
     <Compile Include="ViewModel\MarkEntityViewModel.cs" />
@@ -96,32 +101,36 @@
     <Compile Include="View\PlayerToolControl.xaml.cs">
       <DependentUpon>PlayerToolControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Theme\CenterScroll.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Theme\FIcon.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Theme\Themes.ImageControl.Default.xaml">
+    <Page Include="View\ImageView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\ImageViews.xaml">
+    <Page Include="Themes\CenterScroll.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\FIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Themes.ImageControl.Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="View\ImageViews.xaml.cs">
-      <DependentUpon>ImageViews.xaml</DependentUpon>
+    <Page Include="View\ImageCore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="View\ImageCore.xaml.cs">
+      <DependentUpon>ImageCore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Provider\Mark\IndicatorObject.cs" />
     <Compile Include="Provider\Mark\LoactionArgs.cs" />
-    <Page Include="Theme\General.xaml">
+    <Page Include="Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Theme\Slider.xaml">
+    <Page Include="Themes\Slider.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -158,7 +167,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -9,6 +9,7 @@
         <!--<ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/HeBianGu.Themes.Resource.xaml"/>
         <ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/Color/LightThemeResource.xaml"/> 
         <ResourceDictionary Source="/HeBianGu.General.WpfControlLib;component/Themes/HeBianGu.Themes.Default.xaml"/>-->
+        <!--<ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Generic.xaml"/>-->
         <ResourceDictionary Source="FIcon.xaml"/>
         <!--<ResourceDictionary Source="/Theme/CenterScroll.xaml"/>-->
     </ResourceDictionary.MergedDictionaries>
@@ -134,14 +135,7 @@
                         <TextBlock.RenderTransform>
                             <RotateTransform x:Name="transIcon" Angle="0"/>
                         </TextBlock.RenderTransform>
-                    </TextBlock>
-
-                    <!--<TextBlock VerticalAlignment="Center"  x:Name="txt" 
-                           TextDecorations="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ContentDecorations}" 
-                                               Text="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content}" 
-                                               FontSize="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=FontSize}" 
-                                               Foreground="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Foreground}"
-                           HorizontalAlignment="Center" />-->
+                    </TextBlock> 
                 </StackPanel>
             </Grid>
 
@@ -215,9 +209,7 @@
 
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, 
-                                Path=PressedForeground}" TargetName="icon"/>
-                <!--<Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, 
-                                Path=PressedForeground}" TargetName="txt"/>-->
+                                Path=PressedForeground}" TargetName="icon"/> 
 
                 <Trigger.EnterActions>
                     <BeginStoryboard>
@@ -252,12 +244,7 @@
                 <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, 
                                 Path=PressedBackground}" TargetName="border" />
                 <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, 
-                                Path=PressedForeground}" TargetName="icon"/>
-                <!--<Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, 
-                                Path=PressedForeground}" TargetName="txt"/>-->
-
-                <!--<Setter Property="Text" Value="{Binding Path=(base:ControlAttachProperty.BuzyText),RelativeSource={RelativeSource TemplatedParent}}" TargetName="txt"/>-->
-
+                                Path=PressedForeground}" TargetName="icon"/> 
                 <Setter Property="IsEnabled" Value="False"/>
 
             </Trigger>

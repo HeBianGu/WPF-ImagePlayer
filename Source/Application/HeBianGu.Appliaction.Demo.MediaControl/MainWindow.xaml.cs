@@ -29,7 +29,7 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
         {
             InitializeComponent();
 
-            IImageView _imgOperate = this.image.GetImgOperate();
+            IImageCore _imgOperate = this.image.GetImgOperate();
 
             List<ImageMarkEntity> temp = new List<ImageMarkEntity>();
 

@@ -5,16 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HeBianGu.ImagePlayer.ImageControl"
              xmlns:local1="clr-namespace:HeBianGu.ImagePlayer.ImageControl"
-              x:Class="HeBianGu.ImagePlayer.ImageControl.ImageViews" 
-         xmlns:base="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+              x:Class="HeBianGu.ImagePlayer.ImageControl.ImageCore" 
+         xmlns:base="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase"
+    xmlns:controls="clr-namespace:HeBianGu.General.WpfControlLib;assembly=HeBianGu.General.WpfControlLib"
+    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
              mc:Ignorable="d" PreviewMouseDoubleClick="UserControl_MouseDoubleClick"
-             d:DesignHeight="300"  Background="Black" x:Name="imagecontrol"   d:DesignWidth="800">  
+             d:DesignHeight="300"  Background="Black" x:Name="imagecontrol"   d:DesignWidth="800">
 
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries> 
-                <!--<ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Theme/General.xaml"/>-->
-                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Theme/Themes.ImageControl.Default.xaml"/>
+                <!--<ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Themes/Themes.ImageControl.Default.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="OnLoaded1"/>
             <Storyboard x:Key="OnMouseEnter1"/>
@@ -189,15 +190,15 @@
         <Grid x:Name="grid_mark" Margin="0" Width="150" Height="150"  ClipToBounds="True"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#4C000000">
 
 
-          
-                <ContentControl x:Name="controlmask" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
-                    <Image x:Name="imgless" 
+
+            <ContentControl x:Name="controlmask" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
+                <Image x:Name="imgless" 
                            LayoutTransform="{StaticResource TfGroup}" 
                            Margin="0" 
-                           HorizontalAlignment="Center" VerticalAlignment="Center"/> 
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </ContentControl>
 
-         
+
 
             <local:MaskCanvas x:Name="mask"
                               Width="{Binding ActualWidth, ElementName=controlmask}"
@@ -335,15 +336,15 @@
         <TextBlock x:Name="txt_detial" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"/>
 
         <Grid x:Name="gridTips" IsHitTestVisible="False" HorizontalAlignment="Center" MinWidth="75" VerticalAlignment="Center" Visibility="Collapsed" Opacity="0">
-            <Rectangle Fill="#B2000000" RadiusX="5" RadiusY="5"/>
+            <Rectangle Fill="{DynamicResource S_AccentBrush_MouseOver}" RadiusX="5" RadiusY="5"/>
             <TextBlock x:Name="txtZoom" HorizontalAlignment="Center" FontSize="18" Text="5%" VerticalAlignment="Center" Margin="10,5" Foreground="White"/>
         </Grid>
 
         <!--上一页按钮-->
         <local:IconButton  x:Name="button_last"  
                            Grid.Column="1"
-                           FIcon="&#xe671;"  CornerRadius="25"
-                           Margin="10,0" HorizontalAlignment="Left" 
+                           FIcon="&#xe671;"  CornerRadius="25" MouseOverBackground="{DynamicResource S_AccentBrush_MouseOver}"
+                           Margin="10,0" HorizontalAlignment="Left" Background="{DynamicResource S_AccentBrush_MouseOver}"
                            Command="{x:Static local:ImageViewCommands.LastImage}" 
                            ToolTip="{Binding Source={x:Static local:ImageViewCommands.LastImage},Path=Text}"
                            Style="{StaticResource Style.IconButton.Default}"  Height="50"  Width="50"/>
@@ -353,7 +354,7 @@
                            Grid.Column="1" 
                            FIcon="&#xe66d;" 
                            Margin="10,0"  CornerRadius="25"
-                           HorizontalAlignment="Right" 
+                           HorizontalAlignment="Right" MouseOverBackground="{DynamicResource S_AccentBrush_MouseOver}" Background="{DynamicResource S_AccentBrush_MouseOver}"
                            Command="{x:Static local:ImageViewCommands.NextImage}" 
                            ToolTip="{Binding Source={x:Static local:ImageViewCommands.NextImage},Path=Text}"
                            Style="{StaticResource Style.IconButton.Default}"  
@@ -403,8 +404,7 @@
             </StackPanel>
         </Border>
 
-        <TextBlock
-                   FontSize="12" Margin="5"
+        <TextBlock FontSize="12" Margin="5"
                    Foreground="{DynamicResource S_AccentBrush}" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Bottom">
@@ -412,7 +412,7 @@
                  <Run Text="{Binding ElementName=imagecontrol,Path=Current.Value}"/>
         </TextBlock>
 
-        <ContentControl x:Name="grid_buzy"  Visibility="{Binding IsBuzy,Converter={x:Static base:XConverter.BooleanToVisibilityConverter}}">
+        <ContentControl x:Name="grid_buzy" Visibility="{Binding IsBuzy,Converter={x:Static base:XConverter.BooleanToVisibilityConverter}}">
             <ContentControl.Template>
                 <ControlTemplate TargetType="ContentControl">
                     <Grid>
@@ -420,9 +420,9 @@
                             <SolidColorBrush Color="Transparent" Opacity="0.5"/>
                         </Grid.Background>
                         <TextBlock Text="正在加载... ..." 
-                           HorizontalAlignment="Left" 
+                           HorizontalAlignment="Right" 
                            VerticalAlignment="Bottom" Margin="20,5"
-                           Foreground="White" 
+                           Foreground="{DynamicResource S_AccentBrush_MouseOver}" 
                            FontSize="15">
 
                             <TextBlock.Triggers>
@@ -458,6 +458,8 @@
                 </ControlTemplate>
             </ContentControl.Template>
         </ContentControl>
+
+        <!--<controls:ModernProgressRing IsActive="{Binding IsBuzy}" Width="80" Height="80" Style="{StaticResource FThreeBounceProgressRingStyle}" />-->
 
 
         <!--操作菜单-->

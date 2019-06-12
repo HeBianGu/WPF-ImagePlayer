@@ -34,7 +34,7 @@ namespace HeBianGu.Appliaction.Demo.MediaControl
 
             this.DataContext = _vm;
 
-            IImageView _imgOperate = this.media.ImagePlayerService.GetImgOperate();
+            IImageCore _imgOperate = this.media.ImagePlayerService.GetImgOperate();
 
             _imgOperate.SetMarkType(MarkType.Defect);
 

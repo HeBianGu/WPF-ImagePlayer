@@ -12,7 +12,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
     /// <summary>
     /// 图片操作类
     /// </summary>
-    public interface IImageView : IDisposable
+    public interface IImageCore : IDisposable
     {
         /// <summary> 左旋转 </summary>
         void SetRotateLeft();
@@ -64,6 +64,12 @@ namespace HeBianGu.ImagePlayer.ImageControl
         void LoadImg(List<string> imgPathes);
 
         /// <summary>
+        /// 加载文件夹
+        /// </summary>
+        /// <param name="path"></param>
+        void LoadFolder(string path);
+
+        /// <summary>
         /// 加载图片的标定信息
         /// </summary>
         /// <param name="markEntityList">图片已标定内容</param>
@@ -72,7 +78,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// <summary>
         /// 新增/修改/删除图片标定事件
         /// </summary>
-        event Action<ImageMarkEntity,IImageView> ImgMarkOperateEvent;
+        event Action<ImageMarkEntity,IImageCore> ImgMarkOperateEvent;
 
         /// <summary>
         /// 上一张
@@ -88,24 +94,24 @@ namespace HeBianGu.ImagePlayer.ImageControl
         /// 绘制矩形框结束
         /// </summary>
 
-        event Action<ImageMarkEntity, MarkType, IImageView> DrawMarkedMouseUp;
+        event Action<ImageMarkEntity, MarkType, IImageCore> DrawMarkedMouseUp;
 
         /// <summary>
         /// 删除按钮点击事件
         /// </summary>
 
-        event Action<string, IImageView> DeleteImgEvent;
+        event Action<string, IImageCore> DeleteImgEvent;
 
         /// <summary>
         /// 全屏模式切换事件 true=是全屏状态
         /// </summary>
 
-        event Action<bool, IImageView> FullScreenChangedEvent;
+        event Action<bool, IImageCore> FullScreenChangedEvent;
 
 
 
         /// <summary> 选中项改变事件 </summary>
-        event Action<ImageMarkEntity, IImageView> MarkEntitySelectChanged;
+        event Action<ImageMarkEntity, IImageCore> MarkEntitySelectChanged;
 
         /// <summary>
         /// 展示全部缺陷标注
@@ -270,7 +276,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         Func<int, double> ConvertSpeedFunction { get; set; }
 
-        Action<ImageViews> LoadedAction { get; set; }
+        Action<ImageCore> LoadedAction { get; set; }
 
         void SetImageSource(ImageSource imageSource);
 

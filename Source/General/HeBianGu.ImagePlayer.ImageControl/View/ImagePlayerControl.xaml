@@ -13,8 +13,8 @@
                 <ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/HeBianGu.Themes.Resource.xaml"/>
                 <ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/Color/LightThemeResource.xaml"/>
                 <!--<ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/HeBianGu.Thremes.Control.xaml"/>-->
-                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Theme/General.xaml"/>
-                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Theme/Slider.xaml"/>
+                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Themes/Generic.xaml"/>
+                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Themes/Slider.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
 
@@ -44,10 +44,10 @@
     </UserControl.Resources>
 
     <Grid>
-       
-           
-                   
-                        <local:ImageViews  x:Name="image_control" 
+
+
+
+        <local:ImageCore  x:Name="image_control" 
                                            FullScreenChangedEvent="Image_control_DoubleClickFullScreenHandle"
                                            SpeedChanged="image_control_SpeedChanged"/>
                     

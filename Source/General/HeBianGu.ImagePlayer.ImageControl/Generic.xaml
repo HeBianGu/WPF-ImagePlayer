@@ -10,7 +10,7 @@
         <ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/Color/LightThemeResource.xaml"/> 
         <ResourceDictionary Source="/HeBianGu.General.WpfControlLib;component/Themes/HeBianGu.Themes.Default.xaml"/>
         <!--<ResourceDictionary Source="FIcon.xaml"/>-->
-        <ResourceDictionary Source="Themes.ImageControl.Default.xaml"/>
+        <ResourceDictionary Source="Themes/Themes.ImageControl.Default.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

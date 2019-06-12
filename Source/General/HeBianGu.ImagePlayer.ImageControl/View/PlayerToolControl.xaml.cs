@@ -46,7 +46,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         }
 
         /// <summary> 多个图片播放时用于检测播放同步 </summary>
-        public List<IImageView> IImgOperateCollection { get; set; } = new List<IImageView>();
+        public List<IImageCore> IImgOperateCollection { get; set; } = new List<IImageCore>();
 
         public void RefreshPercent()
         {
@@ -58,7 +58,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         Semaphore _semaphore = new Semaphore(1, 1);
 
         //private bool _cancel = false;
-        public void WaitForAllReady(ImgPlayMode imgPlayMode, IImageView operate)
+        public void WaitForAllReady(ImgPlayMode imgPlayMode, IImageCore operate)
         {
             //_cancel = true;
 
@@ -189,7 +189,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             Action action = () =>
             {
                 this.media_slider_cache.Value = this.media_slider_cache.Maximum * this.IImgOperateCollection
-                                                    .Cast<ImageViews>().Min(l =>
+                                                    .Cast<ImageCore>().Min(l =>
                                                         l.ImageCacheEngine == null
                                                             ? 0
                                                             : l.ImageCacheEngine.GetBufferPercent());
@@ -207,7 +207,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 return;
             }
 
-            var collection = this.IImgOperateCollection.Cast<ImageViews>();
+            var collection = this.IImgOperateCollection.Cast<ImageCore>();
 
             int index = collection.Min(l => l.ImagePaths == null ? 0 : l.ImagePaths.FindIndex(k => k == l.Current.Value));
             this.media_slider.Value = TimeSpan.FromMilliseconds(1000 * index).Ticks;

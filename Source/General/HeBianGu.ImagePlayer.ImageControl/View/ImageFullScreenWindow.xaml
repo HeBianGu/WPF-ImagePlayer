@@ -10,7 +10,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!--自定义资源引用-->
-                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Theme/General.xaml"/>
+                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Themes/Generic.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <!--动画效果-->

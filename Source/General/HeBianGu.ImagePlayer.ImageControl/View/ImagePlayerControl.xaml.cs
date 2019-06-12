@@ -292,7 +292,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             this.PlayerToolControl.media_speed.Text = this.image_control.Speed + "X";
         }
 
-        private void Image_control_DoubleClickFullScreenHandle(bool obj, IImageView arg2)
+        private void Image_control_DoubleClickFullScreenHandle(bool obj, IImageCore arg2)
         {
             this.FullScreenHandle?.Invoke();
         }
@@ -589,7 +589,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         }
 
 
-        public IImageView GetImgOperate()
+        public IImageCore GetImgOperate()
         {
             return this.image_control;
         }

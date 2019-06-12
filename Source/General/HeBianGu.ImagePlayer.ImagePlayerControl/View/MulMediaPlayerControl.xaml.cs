@@ -180,7 +180,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             Debug.WriteLine("ImgPlayModeChanged");
         }
 
-        private void Operate_FullScreenChangedEvent(bool obj, IImageView operate)
+        private void Operate_FullScreenChangedEvent(bool obj, IImageCore operate)
         {
             int index = this.MediaSources.FindIndex(l => l.ImagePlayerService?.GetImgOperate() == operate);
 
@@ -189,7 +189,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             Debug.WriteLine("Operate_FullScreenChangedEvent");
         }
 
-        private void Operate_MarkEntitySelectChanged(ImageMarkEntity obj, IImageView operate)
+        private void Operate_MarkEntitySelectChanged(ImageMarkEntity obj, IImageCore operate)
         {
             int index = this.MediaSources.FindIndex(l => l.ImagePlayerService?.GetImgOperate() == operate);
 
@@ -198,7 +198,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             Debug.WriteLine("Operate_MarkEntitySelectChanged");
         }
 
-        private void Operate_ImgMarkOperateEvent(ImageMarkEntity markEntity, IImageView operate)
+        private void Operate_ImgMarkOperateEvent(ImageMarkEntity markEntity, IImageCore operate)
         {
             int index = this.MediaSources.FindIndex(l => l.ImagePlayerService?.GetImgOperate() == operate);
 
@@ -207,7 +207,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             Debug.WriteLine("Operate_ImgMarkOperateEvent");
         }
 
-        private void Operate_DeleteImgEvent(string obj, IImageView operate)
+        private void Operate_DeleteImgEvent(string obj, IImageCore operate)
         {
             int index = this.MediaSources.FindIndex(l => l.ImagePlayerService?.GetImgOperate() == operate);
 
@@ -216,7 +216,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             Debug.WriteLine("Operate_DeleteImgEvent");
         }
 
-        private void Item_DrawMarkedMouseUp(ImageMarkEntity markEntity, MarkType type, IImageView operate)
+        private void Item_DrawMarkedMouseUp(ImageMarkEntity markEntity, MarkType type, IImageCore operate)
         {
             int index = this.MediaSources.FindIndex(l => l.ImagePlayerService?.GetImgOperate() == operate);
 

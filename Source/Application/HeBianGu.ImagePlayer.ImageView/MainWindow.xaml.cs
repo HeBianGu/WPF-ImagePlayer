@@ -25,7 +25,9 @@ namespace HeBianGu.ImagePlayer.ImageView
     /// </summary>
     public partial class MainWindow
     {
-        public MainWindow()
+
+        string[] _paths;
+        public MainWindow(params string[] paths)
         {
             InitializeComponent();
 
@@ -133,6 +135,32 @@ namespace HeBianGu.ImagePlayer.ImageView
             {
                 Debug.WriteLine("DoubleClickFullScreenHandle" + l);
             };
+
+            _paths = paths;
+
+            this.Loaded += MainWindow_Loaded;
+
+           
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_paths == null) return;
+
+            foreach (var item in _paths)
+            {
+                if (File.Exists(item))
+                {
+                    this.imageview.LoadImage(item);
+                    return;
+                }
+
+                if (Directory.Exists(item))
+                {
+                    this.imageview.LoadFolder(item);
+                    return;
+                }
+            }
         }
 
         string GetMarkFileName(string imgName,string id)
@@ -157,57 +185,8 @@ namespace HeBianGu.ImagePlayer.ImageView
 
         }
 
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
 
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-
-                DirectoryInfo directory = new DirectoryInfo(dialog.SelectedPath);
-
-                var images = this.GetAllFile(directory, l => l.Extension.EndsWith("jpg") || l.Extension.EndsWith("png"));
-
-                imageview.LoadImg(images.ToList());
-            }
-
-        }
-
-        /// <summary> 获取当前文件夹下所有匹配的文件 </summary>
-
-        IEnumerable<string> GetAllFile(DirectoryInfo dir, Predicate<FileInfo> match = null)
-        {
-            foreach (var d in dir.GetFileSystemInfos())
-            {
-                if (d is DirectoryInfo)
-                {
-                    DirectoryInfo dd = d as DirectoryInfo;
-
-                    var result = GetAllFile(dd, match);
-
-                    foreach (var item in result)
-                    {
-                        yield return item;
-                    }
-                }
-
-                else if (d is FileInfo)
-                {
-                    FileInfo dd = d as FileInfo;
-                    if (match == null || match(dd))
-                    {
-                        yield return d.FullName;
-                    }
-                }
-            }
-        }
-
-
-        private void CommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
+    
  
     }
 }

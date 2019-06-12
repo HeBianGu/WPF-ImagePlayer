@@ -184,9 +184,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         public RelayCommand RelayCommand { get; set; }
 
-        IImageView _iImgOperate;
+        IImageCore _iImgOperate;
 
-        public ImageViewViewModel(IImageView iImgOperate)
+        public ImageViewViewModel(IImageCore iImgOperate)
         {
             _iImgOperate = iImgOperate;
 
