@@ -327,26 +327,37 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         private void CommandBinding_OpenFolder_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             //  Do：根据数量初始化控件
-            int c = 4;
+            int c = 1;
 
             System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
 
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                List<Tuple<List<string>, string>> imageFoders = new List<Tuple<List<string>, string>>();
+                List<Tuple<List<string>, string>> imagepaths = new List<Tuple<List<string>, string>>();
 
 
                 for (int i = 0; i < c; i++)
                 {
-                    List<string> folders = new List<string>();
+                    //List<string> folders = new List<string>();
 
-                    folders.Add(dialog.SelectedPath);
+                    //folders.Add(dialog.SelectedPath);
 
-                    imageFoders.Add(new Tuple<List<string>, string>(folders, folders.FirstOrDefault()));
+                    //imageFoders.Add(new Tuple<List<string>, string>(folders, folders.FirstOrDefault()));
+
+                    DirectoryInfo directory = new DirectoryInfo(dialog.SelectedPath);
+
+                    var images = this.GetAllFile(directory, l => l.Extension.EndsWith("jpg") || l.Extension.EndsWith("png"));
+
+
+                    imagepaths.Add(Tuple.Create(images.ToList(), images.FirstOrDefault()));
+
 
                 }
 
-                this.LoadImageFolders(imageFoders.ToArray());
+
+                this.LoadImageList(imagepaths.ToArray());
+
+                //this.LoadImageFolders(imageFoders.ToArray());
 
                 //this.SetImageIndexMarkType(MarkType.Defect);
 
@@ -355,6 +366,8 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
                 //this.SetImageIndexBubbleScale(200);
 
                 //this.SetImagePlayMode(ImgPlayMode.正序);
+
+
             }
 
  
@@ -363,6 +376,36 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         private void CommandBinding_OpenFolder_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
+        }
+
+
+        /// <summary> 获取当前文件夹下所有匹配的文件 </summary>
+
+        IEnumerable<string> GetAllFile(DirectoryInfo dir, Predicate<FileInfo> match = null)
+        {
+            foreach (var d in dir.GetFileSystemInfos())
+            {
+                if (d is DirectoryInfo)
+                {
+                    DirectoryInfo dd = d as DirectoryInfo;
+
+                    var result = GetAllFile(dd, match);
+
+                    foreach (var item in result)
+                    {
+                        yield return item;
+                    }
+                }
+
+                else if (d is FileInfo)
+                {
+                    FileInfo dd = d as FileInfo;
+                    if (match == null || match(dd))
+                    {
+                        yield return d.FullName;
+                    }
+                }
+            }
         }
     }
 

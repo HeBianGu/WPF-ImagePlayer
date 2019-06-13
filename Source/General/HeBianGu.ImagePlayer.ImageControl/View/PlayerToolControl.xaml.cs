@@ -161,7 +161,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             Action action = () =>
             {
-                this.media_slider_cache.Value = this.media_slider_cache.Maximum * this.IImgOperateCollection
+                this.media_slider_cache.Value = this.media_slider_cache.Maximum * this.IImgOperateCollection.Select(l=>l.GetImgOperate())
                                                     .Cast<ImageCore>().Min(l =>
                                                         l.ImageCacheEngine == null
                                                             ? 0
