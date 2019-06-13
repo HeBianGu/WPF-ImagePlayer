@@ -4,16 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HeBianGu.ImagePlayer.ImageControl"
+             xmlns:wpfcontrollib="clr-namespace:HeBianGu.General.WpfControlLib;assembly=HeBianGu.General.WpfControlLib"
              mc:Ignorable="d"  d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <!--自定义资源引用-->
-                <ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/HeBianGu.Themes.Resource.xaml"/>
-                <ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/Color/LightThemeResource.xaml"/>
-                <!--<ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/HeBianGu.Thremes.Control.xaml"/>-->
-                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Themes/Generic.xaml"/>
-                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Themes/Slider.xaml"/>
+                <!--<ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/HeBianGu.Themes.Resource.xaml"/>
+                <ResourceDictionary Source="/HeBianGu.Base.WpfBase;component/Themes/Color/LightThemeResource.xaml"/>-->
+                
+                <!--<ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Themes/Generic.xaml"/>-->
+                <!--<ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Themes/Slider.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
 
             <!--Slider模板-->
@@ -53,16 +54,11 @@
 
                                 <Border Background="{DynamicResource S_AccentBrush}"/>
 
-                                <!--<Border Grid.ColumnSpan="2" 
-                                    CornerRadius="4" 
-                                    Background="{TemplateBinding Foreground}" 
-                                    Width="8" Height="8" Margin="-8"/>-->
-
                                 <Ellipse  Grid.ColumnSpan="2" 
                                           StrokeThickness="2" 
                                           Width="8" Height="8"
                                           Margin="-8" 
-                                          Fill="White"
+                                          Fill="{DynamicResource S_AccentBrush}"
                                           Stroke="{TemplateBinding Foreground}" />
 
 
@@ -78,10 +74,6 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="Slider">
                             <Grid>
-                                <!--<Grid.Effect>
-                                <DropShadowEffect BlurRadius="20" ShadowDepth="1" />
-                            </Grid.Effect>-->
-
                                 <Border Grid.Column="1"  BorderBrush="Transparent" BorderThickness="1" CornerRadius="8,0,0,8">
 
                                     <Track Grid.Column="1" Name="PART_Track">
@@ -199,7 +191,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <DockPanel Height="50" DockPanel.Dock="Bottom"  Background="#242424">
+        <DockPanel Height="50" DockPanel.Dock="Bottom"  Background="{DynamicResource S_AccentBrush_Opacity_5}"><!--Background="#242424"-->
 
             <!--播放按钮-->
             <DockPanel Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -244,23 +236,26 @@
             <!--音量-->
             <DockPanel Grid.Column="0" DockPanel.Dock="Right" Margin="10,0" VerticalAlignment="Center" HorizontalAlignment="Right">
 
-                <!--<local:MediaButton Style="{StaticResource Style.Slider.FButton}"  FIconSize="15"  Margin="5,0"   FIcon="&#xeada;" ToolTip="打開文件夾"/>-->
                 <!--<local:MediaButton Style="{StaticResource Style.Slider.FButton}"  FIconSize="15"  FIcon="&#xe664;"/>-->
                 <local:ImageButton Margin="0,0,0,0" Width="30"  ImageSource="../Resources/声音.png"  ToolTip="音量"  />
 
-                <!--<Slider x:Name="slider_sound" x:FieldModifier="public" Style="{DynamicResource SliderStyle1}"  
-                            VerticalAlignment="Center" IsMoveToPointEnabled="True"
-                            Width="100" 
-                            Minimum="0" Maximum="1" SmallChange="0.01" />-->
 
                 <Slider  x:Name="slider_sound" Height="5" 
                          x:FieldModifier="public"  
                          VerticalAlignment="Center"
                          Width="100"  
-                         Minimum="0" Maximum="1" SmallChange="0.01"  
-                         Background="#3B3B3B"   Foreground="#5682DD"  
+                         Minimum="0" Maximum="1" SmallChange="0.01" 
+                          Background="Gray"
+                          Foreground="{DynamicResource S_WhiteNotice}" 
                          IsMoveToPointEnabled="True"
                          Style="{StaticResource Slider_CustomStyle}" />
+
+
+                <!--<local:IconButton Style="{StaticResource Style.IconButton.Default}"  
+                                  FIconSize="18"  
+                                  Margin="5,0"   Background="Transparent" MouseOverBackground="Transparent"
+                                  FIcon="&#xeada;"  Click="IconButton_Click"
+                                  ToolTip="打开文件夹"/>-->
 
             </DockPanel>
 
@@ -272,43 +267,69 @@
 
             <!--进度条-->
             <DockPanel>
+               
                 <DockPanel  DockPanel.Dock="Bottom" HorizontalAlignment="Stretch" >
-                    <TextBlock Text="{Binding ElementName=media_slider,Path=Value,Converter={StaticResource Convert.TimeSpan}}" Margin="5,0" VerticalAlignment="Center" DockPanel.Dock="Left"/>
-                    <!--<local:MediaButton x:Name="btn_stop" Style="{StaticResource Style.Slider.FButton}"  FIcon="&#xe609;"  FIconSize="12" Width="18"  ToolTip="停止" DockPanel.Dock="Right" Click="Btn_stop_Click" VerticalAlignment="Center"/>-->
-                    <!--<local:MediaButton x:Name="btn_addspeed" Style="{StaticResource Style.Slider.FButton}"  FIcon="&#xe9bb;"  FIconSize="15" ToolTip="加速" Width="20"  DockPanel.Dock="Right"   Click="Btn_addspeed_Click" VerticalAlignment="Center"/>-->
+                 
 
                     <TextBlock  x:Name="media_speed"  x:FieldModifier="public" Text="1X" Margin="15,0" VerticalAlignment="Center" DockPanel.Dock="Right"/>
 
+
+                    <local:ImageButton x:Name="btn_mulstep"  Width="27"  ImageSource="../Resources/快进.png" ToolTip="快退"  Click="Btn_mulstep_Click" >
+                        <local:ImageButton.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="180" CenterX="10" CenterY="10"/>
+                            </TransformGroup>
+                        </local:ImageButton.RenderTransform>
+                    </local:ImageButton>
+                    
+                    <local:ImageButton x:Name="btn_mulspeed" Width="20" Height="20" ImageSource="../Resources/开始.png" ToolTip="减速" Click="Btn_mulspeed_Click">
+                        <local:ImageButton.RenderTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="180" CenterX="5" CenterY="10"/>
+                            </TransformGroup>
+                        </local:ImageButton.RenderTransform>
+                    </local:ImageButton>
+
+                    <TextBlock Text="{Binding ElementName=media_slider,Path=Value,Converter={StaticResource Convert.TimeSpan}}" Margin="5,0" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+
+                    <local:ImageButton x:Name="btn_stop" FIcon="&#xe609;" Click="Btn_stop_Click"  DockPanel.Dock="Right" Width="27"  ImageSource="../Resources/停止.png"  ToolTip="停止"  />
+
+
+                    <local:ImageButton x:Name="btn_addstep" Width="27"  ImageSource="../Resources/快进.png"  ToolTip="快进"  Click="Btn_addstep_Click"  DockPanel.Dock="Right" />
+                    <local:ImageButton x:Name="btn_addspeed" Width="20"  ImageSource="../Resources/开始.png"  ToolTip="加速" Click="Btn_addspeed_Click" DockPanel.Dock="Right" />
+
+                    
+                    <!--<local:IconButton x:Name="btn_stop" FIcon="&#xe609;" ToolTip="停止" Click="Btn_stop_Click"  DockPanel.Dock="Right"/>
+                    <local:IconButton x:Name="btn_mulstep"  FIcon="&#xe9ba;" ToolTip="快退"  Click="Btn_mulstep_Click"/>
+                    <local:IconButton x:Name="btn_mulspeed" FIcon="&#xe9be;" ToolTip="减速" Click="Btn_mulspeed_Click"/>
+                    <local:IconButton x:Name="btn_addstep"  FIcon="&#xe9bb;" ToolTip="快进"  Click="Btn_addstep_Click"  DockPanel.Dock="Right"/>
+                    
+                    <local:IconButton x:Name="btn_addspeed"  FIcon="&#xe9bf;" ToolTip="加速"  Click="Btn_addspeed_Click" DockPanel.Dock="Right"/>-->
+
+
+
                     <TextBlock Text="{Binding ElementName=media_slider,Path=Maximum,Converter={StaticResource Convert.TimeSpan}}" Margin="15,0" VerticalAlignment="Center" DockPanel.Dock="Right"/>
 
-
-                    <!--<Slider x:Name="media_slider"  x:FieldModifier="public"
-                                Style="{DynamicResource SliderStyle1}"   
-                                Minimum="0"
-                                Maximum="0" Thumb.DragStarted="media_slider_DragStarted" 
-                                Thumb.DragCompleted="media_slider_DragCompleted"
-                                Value="0"  IsMoveToPointEnabled="True"
-                                VerticalAlignment="Center"/>-->
 
                     <Grid >
                         <Slider  x:Name="media_slider_cache"  Height="5"  x:FieldModifier="public" 
                             Maximum="{Binding ElementName=media_slider,Path=Maximum}" 
                             Minimum="{Binding ElementName=media_slider,Path=Minimum}" 
                             SmallChange="{Binding ElementName=media_slider,Path=SmallChange}"
-                            Background="#3C4045" Value="0"
-                            Foreground="Gray"
+                            Background="Gray"
+                            Foreground="LightGray" 
                             Style="{StaticResource Slider_CustomStyle1}" VerticalAlignment="Center"
                             IsHitTestVisible="False"/>
 
                         <Slider  x:Name="media_slider"  x:FieldModifier="public" 
                              Height="5" Value="0"  Maximum="100"   Minimum="0" 
                              Thumb.DragStarted="media_slider_DragStarted" 
-                             Thumb.DragCompleted="media_slider_DragCompleted"
-                             Background="Transparent"  Foreground="#7CA4E8"  IsMoveToPointEnabled="True"
+                             Thumb.DragCompleted="media_slider_DragCompleted" 
+                             Background="Transparent"  Foreground="{StaticResource S_WhiteNotice}"  IsMoveToPointEnabled="True"
                              Style="{StaticResource Slider_CustomStyle}" VerticalAlignment="Center"/>
                     </Grid>
-                    <!--Thumb.DragStarted="media_slider_DragStarted" 
-                                Thumb.DragCompleted="media_slider_DragCompleted"-->
+
+
                 </DockPanel>
             </DockPanel>
         </DockPanel>

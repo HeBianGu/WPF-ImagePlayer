@@ -113,7 +113,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Themes\Themes.ImageControl.Default.xaml">
+    <Page Include="Themes\Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,7 +126,7 @@
     </Compile>
     <Compile Include="Provider\Mark\IndicatorObject.cs" />
     <Compile Include="Provider\Mark\LoactionArgs.cs" />
-    <Page Include="Generic.xaml">
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -182,6 +182,16 @@
     <Resource Include="Resources\暂停.png" />
     <Resource Include="Resources\进度条位置-声音.png" />
     <Resource Include="Resources\进度条位置-视频播放.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\快进.png" />
+    <Resource Include="Resources\快退.png" />
+    <Resource Include="Resources\左.png" />
+    <Resource Include="Resources\停止.png" />
+    <Resource Include="Resources\右.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\zuo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2050
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F0B44989-BF14-41A4-83E8-95BC99504412}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.ImagePlayer.ImageControl", "..\..\Source\General\HeBianGu.ImagePlayer.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj", "{90678356-1EF7-4B98-90B0-754A597D872B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.ImagePlayer.ImagePlayerControl", "..\..\Source\General\HeBianGu.ImagePlayer.ImagePlayerControl\HeBianGu.ImagePlayer.ImagePlayerControl.csproj", "{73CDFD21-2014-470C-B250-740852BD4EEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.ImagePlayer.ImagePlayer", "..\..\Source\Application\HeBianGu.ImagePlayer.ImagePlayer\HeBianGu.ImagePlayer.ImagePlayer.csproj", "{8331CE5B-24DD-4C29-A4DC-204E827CA865}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{73CDFD21-2014-470C-B250-740852BD4EEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73CDFD21-2014-470C-B250-740852BD4EEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73CDFD21-2014-470C-B250-740852BD4EEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8331CE5B-24DD-4C29-A4DC-204E827CA865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8331CE5B-24DD-4C29-A4DC-204E827CA865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8331CE5B-24DD-4C29-A4DC-204E827CA865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8331CE5B-24DD-4C29-A4DC-204E827CA865}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F} = {F0B44989-BF14-41A4-83E8-95BC99504412}
 		{90678356-1EF7-4B98-90B0-754A597D872B} = {DB155184-ECA0-4D07-93BF-4AEDD2D90A88}
 		{73CDFD21-2014-470C-B250-740852BD4EEA} = {DB155184-ECA0-4D07-93BF-4AEDD2D90A88}
+		{8331CE5B-24DD-4C29-A4DC-204E827CA865} = {F0B44989-BF14-41A4-83E8-95BC99504412}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5EF2E071-0F99-4784-A498-CEC7A6A02A3B}

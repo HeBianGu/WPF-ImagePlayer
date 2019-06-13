@@ -1,7 +1,8 @@
-﻿<Application x:Class="HeBianGu.ImagePlayer.ImageView.App"
+﻿<Application x:Class="HeBianGu.ImagePlayer.ImagePlayer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:HeBianGu.ImagePlayer.ImageView">
+             xmlns:local="clr-namespace:HeBianGu.ImagePlayer.ImagePlayer"
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -12,8 +13,8 @@
                 <!--自定义资源引用-->
                 <ResourceDictionary Source="/HeBianGu.General.WpfControlLib;component/Themes/HeBianGu.Themes.Default.xaml"/>
                 <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Themes/Default.xaml"/>
-            
-                
+                <ResourceDictionary Source="/HeBianGu.ImagePlayer.ImagePlayerControl;component/Themes/Default.xaml"/>
+
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>

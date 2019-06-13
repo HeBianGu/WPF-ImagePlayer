@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
-namespace HeBianGu.ImagePlayer.ImageView
+namespace HeBianGu.ImagePlayer.ImagePlayer
 {
     /// <summary>
     /// App.xaml 的交互逻辑
@@ -25,7 +25,7 @@ namespace HeBianGu.ImagePlayer.ImageView
 
         void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            Application.Current.Dispatcher.Invoke(() => MessageWindow.ShowSumit(e.Exception.Message,"系统异常",5));
+            Application.Current.Dispatcher.Invoke(() => MessageWindow.ShowSumit(e.Exception.Message, "系统异常", 5));
 
             e.Handled = true;
         }
@@ -36,16 +36,14 @@ namespace HeBianGu.ImagePlayer.ImageView
             Exception error = (Exception)e.ExceptionObject;
 
             Application.Current.Dispatcher.Invoke(() => MessageWindow.ShowSumit("当前应用程序遇到一些问题，该操作已经终止，请进行重试，如果问题继续存在，请联系管理员", "意外的操作"));
-        } 
-
-        protected override void OnStartup(StartupEventArgs e)
-        {  
-            //  Do：设置默认主题
-            ThemeService.Current.AccentColor = Color.FromRgb(0x1b, 0xa1, 0xe2);
-
-            ImageWindow imageWindow = new ImageWindow();
-            imageWindow.ShowDialog();
         }
 
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            //  Do：设置默认主题
+            ThemeService.Current.AccentColor = Color.FromRgb(0x33, 0x99, 0x33);
+
+            base.OnStartup(e);
+        }
     }
 }

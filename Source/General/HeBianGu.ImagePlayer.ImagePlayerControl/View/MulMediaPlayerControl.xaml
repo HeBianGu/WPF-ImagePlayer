@@ -6,16 +6,40 @@
              xmlns:local="clr-namespace:HeBianGu.ImagePlayer.ImagePlayerControl"
              xmlns:base="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase"
              xmlns:imagecontrol="clr-namespace:HeBianGu.ImagePlayer.ImageControl;assembly=HeBianGu.ImagePlayer.ImageControl"
-             mc:Ignorable="d" x:Name="control"  Background="Black"
+             mc:Ignorable="d" x:Name="control" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource DefaultMenu}">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="MinWidth" Value="100"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource DefaultMenuItem}">
+            <Setter Property="Width" Value="100"/>
+        </Style>
+
+        <RoutedUICommand x:Key="Resource.Command.OpenFolder" Text="打开文件夹"/>
+        
+        
+    </UserControl.Resources>
+
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{StaticResource Resource.Command.OpenFolder}" 
+                            Executed="CommandBinding_OpenFolder_Executed" CanExecute="CommandBinding_OpenFolder_CanExecute"/>
+
+    </UserControl.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
+        <Border  Background="{DynamicResource S_Black_Dark_8}" />
 
-        <ListBox x:Name="control_normal">
+
+        <ListBox x:Name="control_normal" Background="Black">
             <ListBox.Resources>
                 <Style TargetType="{x:Type ListBoxItem}">
                     <Setter Property="Height" Value="Auto"/>
@@ -106,6 +130,15 @@
             </TextBlock.Triggers>
             </TextBlock> 
         </Grid>
+
+
+        <!--操作菜单-->
+        <Menu>
+            <MenuItem Header="菜单">
+                <MenuItem Header="打开文件夹" Command="{StaticResource Resource.Command.OpenFolder}"/>
+                <MenuItem Header="设置" IsEnabled="False" base:ControlAttachProperty.FIcon="&#xe671;"/>
+            </MenuItem>
+        </Menu>
 
     </Grid>
 </UserControl>

@@ -46,43 +46,35 @@ namespace HeBianGu.ImagePlayer.ImageControl
         }
 
         /// <summary> 多个图片播放时用于检测播放同步 </summary>
-        public List<IImageCore> IImgOperateCollection { get; set; } = new List<IImageCore>();
+        public List<IImagePlayerService> IImgOperateCollection { get; set; } = new List<IImagePlayerService>();
 
         public void RefreshPercent()
         {
-            var percent = (int)(this.IImgOperateCollection.Sum(m => m.LoadPercent) / Convert.ToDouble(this.IImgOperateCollection.Count) * 100);
+            var percent = (int)(this.IImgOperateCollection.Sum(m => m.GetImgOperate().LoadPercent) / Convert.ToDouble(this.IImgOperateCollection.Count) * 100);
             this.Message = percent.ToString()=="0"?"Loading": percent.ToString()+"%";
             this.IsBuzy = percent != 100;
         }
 
-        Semaphore _semaphore = new Semaphore(1, 1);
-
-        //private bool _cancel = false;
+        Semaphore _semaphore = new Semaphore(1, 1); 
         public void WaitForAllReady(ImgPlayMode imgPlayMode, IImageCore operate)
-        {
-            //_cancel = true;
-
-            //_semaphore.WaitOne();
+        { 
 
             int count = operate.GetImageList().Count;
 
+            var operates = this.IImgOperateCollection.Select(l=>l.GetImgOperate()).ToList();
+
             while (true)
-            {
-                //if (_cancel)
-                //{
-                //    _cancel = false;
-                //    break;
-                //}
+            { 
                 int cindex = operate.CurrentIndex;
-                int max = this.IImgOperateCollection.Max(k => k.CurrentIndex);
-                int min = this.IImgOperateCollection.Min(k => k.CurrentIndex);
+                int max = operates.Max(k => k.CurrentIndex);
+                int min = operates.Min(k => k.CurrentIndex);
                 if (Math.Abs(cindex - max) > 1) break;
                 if (Math.Abs(cindex - min) > 1) break;
 
                 if (imgPlayMode == ImgPlayMode.正序)
                 {
-                    if (this.IImgOperateCollection.TrueForAll(
-                            l => l.IsImageLoaded) && operate.IsImageLoaded && operate.CurrentIndex == this.IImgOperateCollection.Min(k => k.CurrentIndex))
+                    if (operates.TrueForAll(
+                            l => l.IsImageLoaded) && operate.IsImageLoaded && operate.CurrentIndex == operates.Min(k => k.CurrentIndex))
                     {
                         break;
                     }
@@ -90,9 +82,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 else if (imgPlayMode == ImgPlayMode.倒叙)
                 {
                     //  Message：播放到第一个位置单独处理 如:0 和32
-                    if (this.IImgOperateCollection.Exists(l => l.CurrentIndex == 0) && this.IImgOperateCollection.Exists(l => l.CurrentIndex == count - 1))
+                    if (operates.Exists(l => l.CurrentIndex == 0) && operates.Exists(l => l.CurrentIndex == count - 1))
                     {
-                        if (this.IImgOperateCollection.TrueForAll(l => l.IsImageLoaded) && operate.CurrentIndex == this.IImgOperateCollection.Min(k => k.CurrentIndex))
+                        if (operates.TrueForAll(l => l.IsImageLoaded) && operate.CurrentIndex == operates.Min(k => k.CurrentIndex))
                         {
                             break;
                         }
@@ -102,7 +94,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
                         try
                         {
-                            if (this.IImgOperateCollection.TrueForAll(l => l.IsImageLoaded) && cindex == min)
+                            if (operates.TrueForAll(l => l.IsImageLoaded) && cindex == min)
                             {
                                 break;
                             }
@@ -120,11 +112,8 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 }
 
                 Thread.Sleep(20);
-            }
-
-            //_semaphore.Release();
+            } 
         }
-
 
         public bool IsBuzy
         {
@@ -138,9 +127,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
              {
                  PlayerToolControl control = d as PlayerToolControl;
 
-                 if (control == null) return;
-
-                 //bool config = e.NewValue as bool;
+                 if (control == null) return; 
 
              }));
 
@@ -163,11 +150,6 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
              }));
 
-        //public void SetCacheValue(double percent)
-        //{
-        //    this.media_slider_cache.Value = this.media_slider_cache.Maximum * percent;
-        //}
-
 
         public void RefersCacheValue()
         {  
@@ -175,16 +157,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             {
                 this.media_slider_cache.Value = 0;
                 return;
-            }
-
-            //this.Dispatcher.Invoke(() =>
-            //{
-            //    //this.media_slider_cache.Value = this.media_slider_cache.Maximum * this.IImgOperateCollection
-            //    //                                    .Cast<ImageViews>().Min(l =>
-            //    //                                        l.ImageCacheEngine == null
-            //    //                                            ? 0
-            //    //                                            : l.ImageCacheEngine.GetBufferPercent());
-            //});
+            } 
 
             Action action = () =>
             {
@@ -207,33 +180,106 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 return;
             }
 
-            var collection = this.IImgOperateCollection.Cast<ImageCore>();
+            var collection = this.IImgOperateCollection.Select(l=>l.GetImgOperate()).Cast<ImageCore>();
 
             int index = collection.Min(l => l.ImagePaths == null ? 0 : l.ImagePaths.FindIndex(k => k == l.Current.Value));
+
             this.media_slider.Value = TimeSpan.FromMilliseconds(1000 * index).Ticks;
+        }
 
-            //if (collection.FirstOrDefault().ImgPlayMode==ImgPlayMode.倒叙)
-            //{
-            //    int index = collection.Min(l => l.ImagePaths.FindIndex(k => k == l.Current.Value));
-            //    this.media_slider.Value = TimeSpan.FromMilliseconds(1000 * index).Ticks;
-            //}
-            //else
-            //{
+        private void Btn_stop_Click(object sender, RoutedEventArgs e)
+        {
+            this.Stop();
+        }
 
-            //    int index = collection.Max(l => l.ImagePaths.FindIndex(k => k == l.Current.Value));
-            //    this.media_slider.Value = TimeSpan.FromMilliseconds(1000 * index).Ticks;
-            //}
+        private void Btn_addspeed_Click(object sender, RoutedEventArgs e)
+        {
+            this.ImgPlaySpeedUp();
+        }
 
+        private void Btn_mulspeed_Click(object sender, RoutedEventArgs e)
+        {
+            this.ImgPlaySpeedDown();
+        }
 
+        private void Btn_addstep_Click(object sender, RoutedEventArgs e)
+        {
+            this.PlayStepUp();
+        }
 
+        private void Btn_mulstep_Click(object sender, RoutedEventArgs e)
+        {
+            this.PlayStepDown();
+        }
 
+        public void PlayStepUp()
+        {
 
+            if (this.IImgOperateCollection == null || this.IImgOperateCollection.Count == 0) return;
 
+            var find = this.IImgOperateCollection.First();
 
-            ////  Do：设置进度条位置
-            //var index = this.image_control.ImagePaths.FindIndex(l => l == this.image_control.Current.Value);
+            var operate = find.GetImgOperate() as ImageCore;
 
-            //TimeSpan.FromMilliseconds(1000 * index).Ticks
+            double speed = operate.ConvertSpeedFunction(operate.Speed);
+
+            this.media_slider.Value += TimeSpan.FromSeconds(speed).Ticks;
+
+            foreach (var item in this.IImgOperateCollection)
+            {
+                item.PlayStepUp();
+            }
+        }
+
+        public void PlayStepDown()
+        {
+            if (this.IImgOperateCollection == null || this.IImgOperateCollection.Count == 0) return;
+
+            var find = this.IImgOperateCollection.First();
+
+            var operate = find.GetImgOperate() as ImageCore; ;
+
+            double speed = operate.ConvertSpeedFunction(operate.Speed);
+
+            //double speed = 5 / find.ImagePlayerService.GetImgOperate().GetSpeedSplitTime();
+
+            this.media_slider.Value -= TimeSpan.FromSeconds(speed).Ticks;
+
+            foreach (var item in this.IImgOperateCollection)
+            {
+                item.PlayStepUp();
+            }
+        }
+
+        public void ImgPlaySpeedDown()
+        {
+            if (this.IImgOperateCollection == null || this.IImgOperateCollection.Count == 0) return;
+
+            foreach (var item in this.IImgOperateCollection)
+            {
+                item.ImgPlaySpeedDown();
+            }
+        }
+
+        public void ImgPlaySpeedUp()
+        {
+            if (this.IImgOperateCollection == null || this.IImgOperateCollection.Count == 0) return;
+
+            foreach (var item in this.IImgOperateCollection)
+            {
+                item.ImgPlaySpeedUp();
+            }
+        } 
+
+        public void Stop()
+        {
+            if (this.IImgOperateCollection == null || this.IImgOperateCollection.Count == 0) return;
+
+            foreach (var item in this.IImgOperateCollection)
+            {
+                item.SetImgPlay(ImgPlayMode.停止播放);
+                item.SetPositon(0);
+            }
         }
 
     }

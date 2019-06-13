@@ -27,7 +27,7 @@ namespace HeBianGu.ImagePlayer.ImageView
         {
             InitializeComponent();
 
-
+            this.InitHandle();
         }
 
         string[] _paths;
@@ -35,8 +35,34 @@ namespace HeBianGu.ImagePlayer.ImageView
         {
             InitializeComponent();
 
+            this.InitHandle();
+
+
+            if (_paths == null) return;
+
+            foreach (var item in _paths)
+            {
+                if (File.Exists(item))
+                {
+                    this.imageview.LoadFile = item;
+                    return;
+                }
+
+                if (Directory.Exists(item))
+                {
+                    this.imageview.LoadFolderPath = item;
+                    return;
+                }
+            }
+
+
+        }
+
+        void InitHandle()
+        {
+
             //  Do：注册编辑标定事件
-            this.imageview.MarkChanged += (l,k) =>
+            this.imageview.MarkChanged += (l, k) =>
             {
                 string fn = System.IO.Path.GetFileNameWithoutExtension(this.imageview.GetCurrentImage());
 
@@ -62,7 +88,7 @@ namespace HeBianGu.ImagePlayer.ImageView
 
                     Debug.WriteLine(str + "：" + entity.ID + "-" + entity.Name + "-" + entity.Code + $"({entity.X},{entity.Y}) {entity.Width}*{entity.Height}");
 
-                    string result = JsonConvert.SerializeObject(l);
+                    string result = JsonConvert.SerializeObject(entity);
 
                     File.WriteAllText(file, result);
 
@@ -70,7 +96,7 @@ namespace HeBianGu.ImagePlayer.ImageView
                 }
             };
 
-            this.imageview.ImageIndexChanged += (s,e) =>
+            this.imageview.ImageIndexChanged += (s, e) =>
             {
                 string current = this.imageview.GetCurrentImage();
 
@@ -90,27 +116,6 @@ namespace HeBianGu.ImagePlayer.ImageView
                     this.imageview.LoadMarks(list);
                 }
             };
-
-
-
-            if (_paths == null) return;
-
-            foreach (var item in _paths)
-            {
-                if (File.Exists(item))
-                {
-                    this.imageview.LoadFile = item;
-                    return;
-                }
-
-                if (Directory.Exists(item))
-                {
-                    this.imageview.LoadFolderPath = item;
-                    return;
-                }
-            }
-
-
         }
 
 
@@ -135,5 +140,6 @@ namespace HeBianGu.ImagePlayer.ImageView
         {
 
         }
+ 
     }
 }

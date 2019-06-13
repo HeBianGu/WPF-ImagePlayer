@@ -1279,16 +1279,6 @@ namespace HeBianGu.ImagePlayer.ImageControl
             this.popup.Visibility = Visibility.Visible;
         }
 
-        private void CommandBinding_OpenFolder_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
-
-            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                LoadFolder(dialog.SelectedPath);
-            }
-        }
-
         public void LoadFolder(string path)
         {
             DirectoryInfo directory = new DirectoryInfo(path);
@@ -1297,6 +1287,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             this.LoadImg(images.ToList());
         }
+
 
         /// <summary> 获取当前文件夹下所有匹配的文件 </summary>
 
@@ -1326,11 +1317,6 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 }
             }
         }
-        private void CommandBinding_OpenFolder_CanExecute(object sender, CanExecuteRoutedEventArgs e)
-        {
-            e.CanExecute = true;
-        }
-
         #endregion 
 
         #region - 播放相关 -  
@@ -1467,8 +1453,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
             }
         }
 
-        #endregion 
+        #endregion
 
+     
     }
 
     /// <summary> 接口实现 </summary>
@@ -1645,16 +1632,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-            RadioButton radioButton = sender as RadioButton;
-
-            if (radioButton.Tag == null) return;
-
-            MarkType markType = (MarkType)radioButton.Tag;
-
-            this.SetMarkType(markType);
-        }
+       
 
         public void ImgPlaySpeedUp()
         {
@@ -1795,6 +1773,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
                 foreach (var item in markEntityList)
                 {
+                    if (item == null) continue;
                     item.markOperateType = ImageMarkOperateType.Insert;
                     this.MarkOperate(item);
                 }
@@ -2767,14 +2746,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
                 ImgPlayMode imgPlayMode = this.ImgPlayMode;
 
-                List<IImageCore> temp = new List<IImageCore>();
-
                 int count = this.ImagePaths == null ? 0 : this.ImagePaths.Count;
-
-                if (flag)
-                {
-                    temp = this.PlayerToolControl.IImgOperateCollection;
-                }
 
                 Action<bool, int, int> action = (l, k, v) =>
                 {
@@ -2785,7 +2757,6 @@ namespace HeBianGu.ImagePlayer.ImageControl
                         this.PlayerToolControl?.RefreshPercent();
                     });
                 };
-
 
                 this.IsImageLoaded = false;
 

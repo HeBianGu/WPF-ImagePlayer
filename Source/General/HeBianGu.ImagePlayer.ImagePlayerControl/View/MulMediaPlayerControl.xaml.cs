@@ -29,24 +29,6 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         public MulMediaPlayerControl()
         {
             InitializeComponent();
-
-            ////  Do：改变窗口自适应大小
-            //this.SizeChanged += (l, k) =>
-            //{
-
-            //    foreach (var item in this.MediaSources)
-            //    {
-            //        //var operate = item.ImagePlayerService.GetImgOperate().SetAdaptiveSize();
-            //        var operate = item.ImagePlayerService.GetImgOperate();
-
-            //        operate.SetAdaptiveSize();
-
-            //        //operate.Scale = operate.GetFullScale();
-
-            //        //operate.SetAdaptiveSize();
-            //    }
-            //};
-
         }
 
         private void MulMediaPlayerControl_ImageIndexFullScreenEvent(int obj)
@@ -289,7 +271,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
             this.control_fullscreen.Index = index;
 
-            (this.MediaSources[index] as Control).Height=double.NaN;
+            (this.MediaSources[index] as Control).Height = double.NaN;
 
             var collection = this.MediaSources.Where(l => l != this.MediaSources[index]);
 
@@ -297,7 +279,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             {
                 Control element = item as Control;
 
-                element.Height = 200; 
+                element.Height = 200;
             }
 
             this.RefreshSize();
@@ -340,6 +322,47 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
         private void Control_fullscreen_CloseClicked()
         {
             this.SetNormal();
+        }
+
+        private void CommandBinding_OpenFolder_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            //  Do：根据数量初始化控件
+            int c = 4;
+
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                List<Tuple<List<string>, string>> imageFoders = new List<Tuple<List<string>, string>>();
+
+
+                for (int i = 0; i < c; i++)
+                {
+                    List<string> folders = new List<string>();
+
+                    folders.Add(dialog.SelectedPath);
+
+                    imageFoders.Add(new Tuple<List<string>, string>(folders, folders.FirstOrDefault()));
+
+                }
+
+                this.LoadImageFolders(imageFoders.ToArray());
+
+                //this.SetImageIndexMarkType(MarkType.Defect);
+
+                //this.SetImageIndexMarkType(MarkType.Defect, 1);
+
+                //this.SetImageIndexBubbleScale(200);
+
+                //this.SetImagePlayMode(ImgPlayMode.正序);
+            }
+
+ 
+        }
+
+        private void CommandBinding_OpenFolder_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
     }
 
@@ -393,44 +416,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
             this.AsyncLoadImages(action, imageFoders);
 
-            return;
-
-
-            //if (imageFoders == null) return;
-
-            //this.InitControl(imageFoders.Length);
-
-            ////for (int i = 0; i < imageFoders.Length; i++)
-            ////{    
-            ////    services[i].LoadImageFolder(imageFoders[i].Item1, imageFoders[i].Item2); 
-            ////}
-
-            //this.grid_load.Visibility = Visibility.Visible;
-
-            //Task.Run(() =>
-            //{
-
-            //    for (int i = 0; i < imageFoders.Length; i++)
-            //    {
-            //        Thread.Sleep(2000);
-
-            //        //this.Dispatcher.Invoke(() =>
-            //        //{
-            //        //    this.text_loadMessage.Text = ((int)(Convert.ToDouble(i) * 100 / Convert.ToDouble(imageFoders.Length))).ToString();
-            //        //});
-
-            //        services[i].LoadImageFolder(imageFoders[i].Item1, imageFoders[i].Item2);
-
-            //    }
-
-            //    Application.Current.Dispatcher.Invoke(() =>
-            //    {
-            //        this.grid_load.Visibility = Visibility.Collapsed;
-            //    });
-
-
-            //});
-
+            this.SetImagePlayStepUp
         }
 
         /// <summary> 异步加载 </summary>
@@ -817,14 +803,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
         public void SetImagePlayMode(ImgPlayMode imgPlayMode)
         {
-            if (this.services == null) return;
-
-            //foreach (var item in this.services)
-            //{
-            //    item.ImagePlayerService.SetImgPlay(ImgPlayMode.停止播放);
-            //}
-
-            //Thread.Sleep(5000);
+            if (this.services == null) return; 
 
             foreach (var item in this.services)
             {
@@ -834,43 +813,47 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
         public void SetImagePlayStepDown()
         {
-            if (this.services == null || this.services.Count == 0) return;
+            //if (this.services == null || this.services.Count == 0) return;
 
-            var find = this.services.First();
+            //var find = this.services.First();
 
-            var operate = find.ImagePlayerService.GetImgOperate();
+            //var operate = find.ImagePlayerService.GetImgOperate();
 
-            double speed = operate.ConvertSpeedFunction(operate.Speed);
+            //double speed = operate.ConvertSpeedFunction(operate.Speed);
 
-            //double speed = 5 / find.ImagePlayerService.GetImgOperate().GetSpeedSplitTime();
+            ////double speed = 5 / find.ImagePlayerService.GetImgOperate().GetSpeedSplitTime();
 
-            this.playtool.media_slider.Value -= TimeSpan.FromSeconds(speed).Ticks;
+            //this.playtool.media_slider.Value -= TimeSpan.FromSeconds(speed).Ticks;
 
-            foreach (var item in this.services)
-            {
-                item.PlayStepUp();
-            }
+            //foreach (var item in this.services)
+            //{
+            //    item.PlayStepUp();
+            //}
+
+            this.playtool.PlayStepDown();
         }
 
         public void SetImagePlayStepUp()
         {
-            if (this.services == null || this.services.Count == 0) return;
+            //if (this.services == null || this.services.Count == 0) return;
 
-            var find = this.services.First();
+            //var find = this.services.First();
 
-            //double speed = 5 / find.ImagePlayerService.GetImgOperate().GetSpeedSplitTime();
+            ////double speed = 5 / find.ImagePlayerService.GetImgOperate().GetSpeedSplitTime();
 
-            var operate = find.ImagePlayerService.GetImgOperate();
+            //var operate = find.ImagePlayerService.GetImgOperate();
 
-            double speed = operate.ConvertSpeedFunction(operate.Speed);
+            //double speed = operate.ConvertSpeedFunction(operate.Speed);
 
+            //this.playtool.media_slider.Value += TimeSpan.FromSeconds(speed).Ticks;
 
-            this.playtool.media_slider.Value += TimeSpan.FromSeconds(speed).Ticks;
+            //foreach (var item in this.services)
+            //{
+            //    item.PlayStepUp();
+            //}
 
-            foreach (var item in this.services)
-            {
-                item.PlayStepUp();
-            }
+            this.playtool.PlayStepUp();
+
         }
 
         public void SetImageScale(double value, int index = 0)

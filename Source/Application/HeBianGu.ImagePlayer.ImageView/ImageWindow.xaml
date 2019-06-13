@@ -7,13 +7,12 @@
         xmlns:base="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase"
         xmlns:wpfcontrollib="clr-namespace:HeBianGu.General.WpfControlLib;assembly=HeBianGu.General.WpfControlLib"
         xmlns:imagecontrol="clr-namespace:HeBianGu.ImagePlayer.ImageControl;assembly=HeBianGu.ImagePlayer.ImageControl"
-        mc:Ignorable="d"
+        mc:Ignorable="d" FIcon=""
          CaptionHeight="50" FIconSize="30" Style="{StaticResource DefaultWindowStyle}"
         Title=" 图片浏览器 - By HeBianGu"  Height="600" Width="1000">
     <Grid>
 
         <imagecontrol:ImageView x:Name="imageview"/>
-
 
     </Grid>
 </wpfcontrollib:WindowBase>

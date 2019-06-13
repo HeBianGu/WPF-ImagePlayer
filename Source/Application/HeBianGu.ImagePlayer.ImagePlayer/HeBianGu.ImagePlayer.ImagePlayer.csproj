@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{73CDFD21-2014-470C-B250-740852BD4EEA}</ProjectGuid>
-    <OutputType>library</OutputType>
-    <RootNamespace>HeBianGu.ImagePlayer.ImagePlayerControll</RootNamespace>
-    <AssemblyName>HeBianGu.ImagePlayer.ImagePlayerControl</AssemblyName>
+    <ProjectGuid>{8331CE5B-24DD-4C29-A4DC-204E827CA865}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HeBianGu.ImagePlayer.ImagePlayer</RootNamespace>
+    <AssemblyName>HeBianGu.ImagePlayer.ImagePlayer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -15,6 +15,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,12 +25,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\movies.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="HeBianGu.Base.WpfBase, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -43,7 +48,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -58,62 +62,24 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Themes\Default.xaml">
-      <SubType>Designer</SubType>
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MediaFullScreenControl.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MulMediaPlayerControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\VedioImagePlayerControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MediaPartControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MediaPlayerControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Slider.xaml">
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Provider\ImageButton.cs" />
-    <Compile Include="View\MediaFullScreenControl.xaml.cs">
-      <DependentUpon>MediaFullScreenControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MulMediaPlayerControl.xaml.cs">
-      <DependentUpon>MulMediaPlayerControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Provider\FTPHelper.cs" />
-    <Compile Include="Provider\ShareHelper.cs" />
-    <Compile Include="Service\IMediaPlayer.cs" />
-    <Compile Include="Provider\MediaButton.cs" />
-    <Compile Include="Service\IMulMediaPlayer.cs" />
-    <Compile Include="Service\IVdeioImagePlayer.cs" />
-    <Compile Include="View\VedioImagePlayerControl.xaml.cs">
-      <DependentUpon>VedioImagePlayerControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MediaPartControl.xaml.cs">
-      <DependentUpon>MediaPartControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MediaPlayerControl.xaml.cs">
-      <DependentUpon>MediaPlayerControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -127,7 +93,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Provider\RectangleShape.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -138,31 +103,29 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\暂停.png" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\放大.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\进度条位置-声音.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\进度条位置-视频播放.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\开始.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\声音.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\循环播放.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HeBianGu.ImagePlayer.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj">
-      <Project>{90678356-1EF7-4B98-90B0-754A597D872B}</Project>
+    <ProjectReference Include="..\..\General\HeBianGu.ImagePlayer.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj">
+      <Project>{90678356-1ef7-4b98-90b0-754a597d872b}</Project>
       <Name>HeBianGu.ImagePlayer.ImageControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\General\HeBianGu.ImagePlayer.ImagePlayerControl\HeBianGu.ImagePlayer.ImagePlayerControl.csproj">
+      <Project>{73cdfd21-2014-470c-b250-740852bd4eea}</Project>
+      <Name>HeBianGu.ImagePlayer.ImagePlayerControl</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movies.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\movies2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photos.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\00010.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

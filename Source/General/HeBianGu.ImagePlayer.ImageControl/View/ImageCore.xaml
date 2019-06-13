@@ -5,16 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HeBianGu.ImagePlayer.ImageControl"
              xmlns:local1="clr-namespace:HeBianGu.ImagePlayer.ImageControl"
-              x:Class="HeBianGu.ImagePlayer.ImageControl.ImageCore" 
-         xmlns:base="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase"
-    xmlns:controls="clr-namespace:HeBianGu.General.WpfControlLib;assembly=HeBianGu.General.WpfControlLib"
-    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+             x:Class="HeBianGu.ImagePlayer.ImageControl.ImageCore" 
+             xmlns:base="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase"
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
              mc:Ignorable="d" PreviewMouseDoubleClick="UserControl_MouseDoubleClick"
              d:DesignHeight="300"  Background="Black" x:Name="imagecontrol"   d:DesignWidth="800">
 
     <UserControl.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries> 
+            <ResourceDictionary.MergedDictionaries>
                 <!--<ResourceDictionary Source="/HeBianGu.ImagePlayer.ImageControl;component/Themes/Themes.ImageControl.Default.xaml"/>-->
             </ResourceDictionary.MergedDictionaries>
             <Storyboard x:Key="OnLoaded1"/>
@@ -68,15 +67,7 @@
                 <!--<MenuItem Header="删除" Click="Btn_delete_Click"/>-->
             </ContextMenu>
 
-            <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource DefaultMenu}">
-                <Setter Property="Height" Value="30"/>
-                <Setter Property="MinWidth" Value="100"/>
-                <Setter Property="HorizontalAlignment" Value="Left"/>
-                <Setter Property="VerticalAlignment" Value="Top"/>
-            </Style>
-            <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource DefaultMenuItem}">
-                <Setter Property="Width" Value="100"/>
-            </Style>
+
 
             <RoutedUICommand x:Key="Resource.Command.OpenFolder" Text="打开文件夹"/>
         </ResourceDictionary>
@@ -88,10 +79,6 @@
                         CanExecute="CommandBinding_FullScreen_CanExecute"
                         Executed="CommandBinding_FullScreen_Executed"/>
 
-            <!--<CommandBinding Command="{StaticResource Resource.Command.CloseFullScreen}" 
-                        CanExecute="CommandBinding_CloseFullScreen_CanExecute"
-                        Executed="CommandBinding_CloseFullScreen_Executed"/>-->
-
             <CommandBinding Command="{x:Static local:ImageViewCommands.LastImage}" 
                         Executed="CommandBinding_LastImage_Executed" 
                         CanExecute="CommandBinding_LastImage_CanExecute"/>
@@ -99,9 +86,6 @@
             <CommandBinding Command="{x:Static local:ImageViewCommands.NextImage}" 
                         Executed="CommandBinding_NextImage_Executed" 
                         CanExecute="CommandBinding_NextImage_CanExecute"/>
-
-            <CommandBinding Command="{StaticResource Resource.Command.OpenFolder}" 
-                            Executed="CommandBinding_OpenFolder_Executed" CanExecute="CommandBinding_OpenFolder_CanExecute"/>
 
         </Grid.CommandBindings>
 
@@ -360,49 +344,7 @@
                            Style="{StaticResource Style.IconButton.Default}"  
                            Height="50"  Width="50"/>
 
-        <!--操作模式-->
-        <Border Margin="5" Grid.RowSpan="2" HorizontalAlignment="Right" BorderBrush="Black" BorderThickness="0" CornerRadius="2" VerticalAlignment="Top">
-            <Border.Background>
-                <SolidColorBrush Color="LightGray" Opacity="0.5"/>
-            </Border.Background>
 
-            <StackPanel Margin="2">
-                <StackPanel.Resources>
-                    <Style TargetType="RadioButton" BasedOn="{StaticResource DefaultRadioButton}">
-                        <Setter Property="FontSize" Value="10"/>
-                        <Setter Property="Margin" Value="10,2"/>
-                        <Setter Property="Foreground" Value="{DynamicResource S_WhiteNotice}"/>
-                        <Setter Property="base:ControlAttachProperty.FIconSize" Value="10"/>
-                    </Style>
-                </StackPanel.Resources>
-
-                <RadioButton Checked="RadioButton_Checked" Content="常规">
-                    <RadioButton.Tag>
-                        <local:MarkType>Sample</local:MarkType>
-                    </RadioButton.Tag>
-                </RadioButton>
-                <RadioButton  Checked="RadioButton_Checked" Content="异常">
-                    <RadioButton.Tag>
-                        <local:MarkType>Defect</local:MarkType>
-                    </RadioButton.Tag>
-                </RadioButton>
-                <RadioButton  Checked="RadioButton_Checked" Content="放大">
-                    <RadioButton.Tag>
-                        <local:MarkType>Enlarge</local:MarkType>
-                    </RadioButton.Tag>
-                </RadioButton>
-                <RadioButton  Checked="RadioButton_Checked" Content="气泡">
-                    <RadioButton.Tag>
-                        <local:MarkType>Bubble</local:MarkType>
-                    </RadioButton.Tag>
-                </RadioButton>
-                <RadioButton  Checked="RadioButton_Checked" IsChecked="True" Content="无">
-                    <RadioButton.Tag>
-                        <local:MarkType>None</local:MarkType>
-                    </RadioButton.Tag>
-                </RadioButton>
-            </StackPanel>
-        </Border>
 
         <TextBlock FontSize="12" Margin="5"
                    Foreground="{DynamicResource S_AccentBrush}" 
@@ -462,12 +404,5 @@
         <!--<controls:ModernProgressRing IsActive="{Binding IsBuzy}" Width="80" Height="80" Style="{StaticResource FThreeBounceProgressRingStyle}" />-->
 
 
-        <!--操作菜单-->
-        <Menu>
-            <MenuItem Header="菜单">
-                <MenuItem Header="打开文件夹" Command="{StaticResource Resource.Command.OpenFolder}"/>
-                <MenuItem Header="设置" base:ControlAttachProperty.FIcon="&#xe671;"/>
-            </MenuItem>
-        </Menu>
     </Grid>
 </UserControl>

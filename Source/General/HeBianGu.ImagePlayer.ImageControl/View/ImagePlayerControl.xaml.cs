@@ -261,7 +261,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             this.PlayerToolControl.DragCompleted += media_slider_DragCompleted;
 
-            this.PlayerToolControl.IImgOperateCollection.Add(this.GetImgOperate());
+            this.PlayerToolControl.IImgOperateCollection.Add(this);
 
 
             //config.slider_sound.ValueChanged += control.Slider_sound_ValueChanged;
@@ -279,7 +279,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             this.PlayerToolControl.DragCompleted -= media_slider_DragCompleted;
 
-            this.PlayerToolControl.IImgOperateCollection.Remove(this.GetImgOperate());
+            this.PlayerToolControl.IImgOperateCollection.Remove(this);
 
             this.ImageCacheEngine?.Dispose();
 

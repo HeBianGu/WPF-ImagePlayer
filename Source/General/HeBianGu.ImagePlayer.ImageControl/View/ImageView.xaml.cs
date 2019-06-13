@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -305,6 +306,35 @@ namespace HeBianGu.ImagePlayer.ImageControl
         {
             this._core.LoadMarkEntitys(marks?.ToList());
         }
+
+        #region - 操作菜单 -
+
+        private void CommandBinding_OpenFolder_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog dialog = new System.Windows.Forms.FolderBrowserDialog();
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+               this._core.LoadFolder(dialog.SelectedPath);
+            }
+        } 
+
+        private void CommandBinding_OpenFolder_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+
+            if (radioButton.Tag == null) return;
+
+            MarkType markType = (MarkType)radioButton.Tag;
+
+            this._core.SetMarkType(markType);
+        }
+        #endregion
     }
 
     public class ObjectArgs<T>: RoutedEventArgs
