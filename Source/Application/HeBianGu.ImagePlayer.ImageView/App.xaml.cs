@@ -39,9 +39,12 @@ namespace HeBianGu.ImagePlayer.ImageView
         } 
 
         protected override void OnStartup(StartupEventArgs e)
-        {  
+        {
             //  Do：设置默认主题
-            ThemeService.Current.AccentColor = Color.FromRgb(0x1b, 0xa1, 0xe2);
+            //  Do：设置默认主题
+            ThemeService.Current.AccentColor = Color.FromRgb(0x33, 0x99, 0x33);
+
+            ThemeService.Current.StartAnimationTheme(2000);
 
             ImageWindow imageWindow = new ImageWindow();
             imageWindow.ShowDialog();

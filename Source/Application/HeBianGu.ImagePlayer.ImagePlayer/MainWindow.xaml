@@ -7,7 +7,7 @@
          xmlns:wpfcontrollib="clr-namespace:HeBianGu.General.WpfControlLib;assembly=HeBianGu.General.WpfControlLib"
         xmlns:mediacontrol="clr-namespace:HeBianGu.ImagePlayer.ImagePlayerControl;assembly=HeBianGu.ImagePlayer.ImagePlayerControl"
         mc:Ignorable="d"  CaptionHeight="50" FIconSize="30" Style="{StaticResource DefaultWindowStyle}"
-        Title=" 图片播放器 - By HeBianGu"  Height="600" Width="1000">
+        Title=" 多屏图片播放器 - By HeBianGu"  Height="600" Width="1000">
     <Grid>
         <mediacontrol:MulMediaPlayerControl x:Name="media" Grid.Row="1"/>
     </Grid>

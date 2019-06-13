@@ -415,8 +415,6 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
                };
 
             this.AsyncLoadImages(action, imageFoders);
-
-            this.SetImagePlayStepUp
         }
 
         /// <summary> 异步加载 </summary>
