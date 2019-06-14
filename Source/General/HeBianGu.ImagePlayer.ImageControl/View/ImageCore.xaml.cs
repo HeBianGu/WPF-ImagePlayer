@@ -1455,7 +1455,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         #endregion
 
-     
+
     }
 
     /// <summary> 接口实现 </summary>
@@ -1632,7 +1632,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         }
 
-       
+
 
         public void ImgPlaySpeedUp()
         {
@@ -2643,6 +2643,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                     view.imgless.Source = imgSource;
 
                     view.LoadedAction?.Invoke(view);
+
                 }
             }
         }
@@ -2785,12 +2786,18 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 var s = new BitmapImage();
                 s.BeginInit();
                 s.CacheOption = BitmapCacheOption.OnLoad;
-                //Thread.Sleep(4 * 1000);
-
                 s.UriSource = new Uri(p, UriKind.RelativeOrAbsolute);
+
+                //s.DecodePixelWidth = 2048;
+
                 s.EndInit();
                 //这一句很重要，少了UI线程就不认了。
                 s.Freeze();
+
+                //s.BeginInit();
+                //s.StreamSource = new MemoryStream(File.ReadAllBytes(p));
+                //s.EndInit();
+                //s.Freeze();
 
                 this.IsImageLoaded = true;
 
@@ -2800,11 +2807,11 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 }
 
                 Application.Current.Dispatcher.Invoke(() =>
-                {
+                { 
+
                     this.ViewModel.ImageSource = s;
 
                     this.Source = s;
-                    this.ViewModel.IsBuzy = false;
 
                     this.IsEnabled = true;
 
