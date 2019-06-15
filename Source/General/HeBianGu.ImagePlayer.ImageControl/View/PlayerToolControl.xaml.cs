@@ -180,20 +180,23 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 return;
             }
 
-            DateTime time = DateTime.Now;
+        
 
             var collection = this.IImgOperateCollection.Select(l=>l.GetImgOperate()).Cast<ImageCore>();
 
             //int index = collection.Min(l => l.ImagePaths == null ? 0 : l.ImagePaths.FindIndex(k => k == l.Current.Value));
 
+      
+
             int index = collection.Min(l=>l.CurrentIndex);
 
+            //DateTime time = DateTime.Now;
 
             this.media_slider.Value = TimeSpan.FromMilliseconds(1000 * index).Ticks;
 
 
 
-          System.Diagnostics.Debug.WriteLine("间隔:"+ (DateTime.Now - time).Ticks);
+            //System.Diagnostics.Debug.WriteLine("间隔:"+ (DateTime.Now - time).Ticks);
 
         }
 

@@ -202,7 +202,10 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             int index = this._fileCollection.FindIndex(l => l.FilePath == path);
 
-            var isdown = _fileCollection.Skip(index).LastOrDefault(l => l.IsLoaded == 2);
+            var isdown = _fileCollection.Skip(index).FirstOrDefault(l => l.IsLoaded != 2);
+
+            //var isdown = _fileCollection.Skip(index).LastOrDefault(l => l.IsLoaded == 2);
+
 
             if (isdown == null) return 0;
 
