@@ -99,7 +99,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             if (this.image_control.Current == null) return;
 
             //  Do：设置进度条位置
-            var index = this.image_control.ImagePaths.FindIndex(l => l == this.image_control.Current.Value);
+            //var index = this.image_control.ImagePaths.FindIndex(l => l == this.image_control.Current.Value);
 
             //this.PlayerToolControl.media_slider.Value = this.GetSliderValue(index);
 
@@ -583,9 +583,9 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         public Tuple<int, int> GetIndexWithTotal()
         {
-            var index = this.image_control.ImagePaths.FindIndex(l => l == this.image_control.Current.Value);
+            //var index = this.image_control.ImagePaths.FindIndex(l => l == this.image_control.Current.Value);
 
-            return new Tuple<int, int>(index, this.image_control.ImagePaths.Count());
+            return new Tuple<int, int>(this.image_control.CurrentIndex, this.image_control.ImagePaths.Count());
         }
 
 
@@ -618,6 +618,8 @@ namespace HeBianGu.ImagePlayer.ImageControl
             if (this.image_control.Current == current) return;
 
             this.image_control.Current = current;
+
+            this.image_control.CurrentIndex = index;
 
             Task.Run(() =>
             {

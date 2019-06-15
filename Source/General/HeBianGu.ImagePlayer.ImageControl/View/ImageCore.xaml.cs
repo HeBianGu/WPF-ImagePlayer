@@ -1007,6 +1007,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                });
             }
         }
+        
 
         // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty CurrentProperty =
@@ -1047,9 +1048,13 @@ namespace HeBianGu.ImagePlayer.ImageControl
             {
                 Current = Current.Previous;
 
+                this.CurrentIndex--;
+
                 if (Current == null)
                 {
                     Current = Collection.Last;
+
+                    this.CurrentIndex = Collection.Count;
                 }
 
                 this.LoadImage(Current.Value);
@@ -1071,11 +1076,11 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             if (this.Current == null) return;
 
-            var index = this.Collection.ToList().FindIndex(l => l == this.Current.Value);
+            //var index = this.Collection.ToList().FindIndex(l => l == this.Current.Value);
 
             this.Dispatcher.Invoke(() =>
             {
-                this.btn_play_current.Content = $"第{(index + 1).ToString()}/{this.Collection?.Count}张";
+                this.btn_play_current.Content = $"第{(this.CurrentIndex + 1).ToString()}/{this.Collection?.Count}张";
             });
 
         }
@@ -1102,9 +1107,13 @@ namespace HeBianGu.ImagePlayer.ImageControl
             {
                 Current = Current.Next;
 
+                this.CurrentIndex++;
+
                 if (Current == null)
                 {
                     Current = Collection.First;
+
+                    this.CurrentIndex = 0;
                 }
 
                 this.LoadImage(Current.Value);
@@ -1878,22 +1887,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         public bool IsImageLoaded { get; set; }
 
-        public int CurrentIndex
-        {
-            get
-            {
-
-                return this.Dispatcher.Invoke(() =>
-                 {
-                     if (this.ImagePaths == null)
-                     {
-                         return 0;
-                     }
-                     //  Do：设置进度条位置
-                     return this.ImagePaths.FindIndex(l => l == this.Current.Value);
-                 });
-            }
-        }
+        public int CurrentIndex { get; set; } = 0;
 
         public double LoadPercent { get; set; } = 0.0;
         Func<int, double> IImageCore.ConvertSpeedFunction { get; set; }
@@ -2801,7 +2795,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
                 this.IsImageLoaded = true;
 
-                if (flag)
+                if (false)
                 {
                     this.PlayerToolControl.WaitForAllReady(this.ImgPlayMode, this);
                 }
