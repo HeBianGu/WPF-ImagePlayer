@@ -21,15 +21,21 @@ namespace HeBianGu.ImagePlayer.ImageControl
         public string Code { get; set; }
         public string Name { get; set; }
 
-        protected double NormalStrokeThickness { get; set; }
+        public double NormalStrokeThickness { get; set; } = 5;
+
+        public double MouseOverStrokeThickness { get; set; } = 8;
+
+        public double SelectedStrokeThickness { get; set; } = 10;
+
+        public double SeletedAndMouseOverStrokeThickness { get; set; } = 15;
         /// <summary>
         /// 无参数构造函数
         /// </summary>
         public RectangleShape() : base()
         {
-
             this.InitComponent();
 
+            this.StrokeThickness = this.NormalStrokeThickness;
         }
 
         void RefreshStrokeThickness()
@@ -40,11 +46,11 @@ namespace HeBianGu.ImagePlayer.ImageControl
             {
                 if (this.IsMouseOver)
                 {
-                    this.StrokeThickness = this.NormalStrokeThickness * 5 * 8;
+                    this.StrokeThickness = SeletedAndMouseOverStrokeThickness;// this.NormalStrokeThickness * 5 * 8;
                 }
                 else
                 {
-                    this.StrokeThickness = this.NormalStrokeThickness * 5 * 5;
+                    this.StrokeThickness = SelectedStrokeThickness;// this.NormalStrokeThickness * 5 * 5;
                 }
 
                 this.Fill = new SolidColorBrush() { Color = ((SolidColorBrush)this.Fill).Color, Opacity = 0.3 };
@@ -56,11 +62,11 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
                 if (this.IsMouseOver)
                 {
-                    this.StrokeThickness = this.NormalStrokeThickness * 5 * 3;
+                    this.StrokeThickness = MouseOverStrokeThickness;// this.NormalStrokeThickness * 5 * 3;
                 }
                 else
                 {
-                    this.StrokeThickness = this.NormalStrokeThickness * 5 ;
+                    this.StrokeThickness = NormalStrokeThickness;// this.NormalStrokeThickness * 5;
                 }
             }
         }

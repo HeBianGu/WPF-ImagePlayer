@@ -260,7 +260,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             foreach (var item in this.IImgOperateCollection)
             {
-                item.PlayStepUp();
+                item.PlayStepDown();
             }
         }
 
@@ -284,6 +284,22 @@ namespace HeBianGu.ImagePlayer.ImageControl
             }
         } 
 
+        public void Next()
+        {
+            foreach (var item in this.IImgOperateCollection)
+            {
+                item.NextImg();
+            }
+        }
+
+        public void Last()
+        {
+            foreach (var item in this.IImgOperateCollection)
+            {
+                item.PreviousImg();
+            }
+        }
+
         public void Stop()
         {
             if (this.IImgOperateCollection == null || this.IImgOperateCollection.Count == 0) return;
@@ -293,6 +309,26 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 item.SetImgPlay(ImgPlayMode.停止播放);
                 item.SetPositon(0);
             }
+        }
+
+        public ImgPlayMode RefreshPlayState()
+        {
+            this.toggle_play.IsChecked = !this.toggle_play.IsChecked;
+
+            foreach (var item in this.IImgOperateCollection)
+            {
+                if (this.toggle_play.IsChecked.Value)
+                {
+                    item.SetImgPlay(ImgPlayMode.停止播放);
+                }
+                else
+                {
+                    item.SetImgPlay(ImgPlayMode.正序);
+                }
+
+            }
+
+            return this.toggle_play.IsChecked.Value ? ImgPlayMode.停止播放 : ImgPlayMode.正序;
         }
 
     }

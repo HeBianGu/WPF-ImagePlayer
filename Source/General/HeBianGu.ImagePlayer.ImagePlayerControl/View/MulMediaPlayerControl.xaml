@@ -21,13 +21,21 @@
         </Style>
 
         <RoutedUICommand x:Key="Resource.Command.OpenFolder" Text="打开文件夹"/>
-        
-        
+
+        <RoutedUICommand x:Key="Resource.Command.Next" Text="上一个"/>
+
+        <RoutedUICommand x:Key="Resource.Command.Last" Text="下一个"/>
     </UserControl.Resources>
 
     <UserControl.CommandBindings>
         <CommandBinding Command="{StaticResource Resource.Command.OpenFolder}" 
                             Executed="CommandBinding_OpenFolder_Executed" CanExecute="CommandBinding_OpenFolder_CanExecute"/>
+
+        <CommandBinding Command="{StaticResource Resource.Command.Next}" 
+                            Executed="CommandBinding_Next_Executed" CanExecute="CommandBinding_Next_CanExecute"/>
+
+        <CommandBinding Command="{StaticResource Resource.Command.Last}" 
+                            Executed="CommandBinding_Last_Executed" CanExecute="CommandBinding_Last_CanExecute"/>
 
     </UserControl.CommandBindings>
     <Grid>
@@ -39,7 +47,8 @@
         <Border  Background="{DynamicResource S_Black_Dark_8}" />
 
 
-        <ListBox x:Name="control_normal" Background="Black">
+
+        <ListBox x:Name="control_normal" Background="Black" PreviewMouseDown="UserControl_PreviewMouseDown" PreviewMouseUp="UserControl_PreviewMouseUp">
             <ListBox.Resources>
                 <Style TargetType="{x:Type ListBoxItem}">
                     <Setter Property="Height" Value="Auto"/>
@@ -81,7 +90,11 @@
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
-      
+
+        <!--<Border Background="Transparent" Margin="100,0" PreviewMouseDown="UserControl_PreviewMouseDown" MouseUp="UserControl_PreviewMouseUp"/>-->
+
+
+
 
         <local:MediaFullScreenControl x:Name="control_fullscreen"  
                                       Visibility="Collapsed" CloseClicked="Control_fullscreen_CloseClicked"/>
@@ -132,6 +145,26 @@
         </Grid>
 
 
+        <!--上一页按钮-->
+        <imagecontrol:IconButton  x:Name="button_last"  
+                           Grid.Column="1"
+                           FIcon="&#xe671;"  CornerRadius="25" MouseOverBackground="{DynamicResource S_AccentBrush_MouseOver}"
+                           Margin="10,0" HorizontalAlignment="Left" Background="{DynamicResource S_AccentBrush_MouseOver}"
+                           Command="{StaticResource Resource.Command.Last}"
+                           ToolTip="{Binding Source={x:Static imagecontrol:ImageViewCommands.LastImage},Path=Text}"
+                           Style="{StaticResource Style.IconButton.Default}"  Height="50"  Width="50"/>
+
+        <!--下一页按钮-->
+        <imagecontrol:IconButton  x:Name="button_next"  
+                           Grid.Column="1" 
+                           FIcon="&#xe66d;" 
+                           Margin="10,0"  CornerRadius="25"
+                           HorizontalAlignment="Right" MouseOverBackground="{DynamicResource S_AccentBrush_MouseOver}" Background="{DynamicResource S_AccentBrush_MouseOver}"
+                           Command="{StaticResource Resource.Command.Next}" 
+                           ToolTip="{Binding Source={x:Static imagecontrol:ImageViewCommands.NextImage},Path=Text}"
+                           Style="{StaticResource Style.IconButton.Default}"  
+                           Height="50"  Width="50"/>
+        
         <!--操作菜单-->
         <Menu>
             <MenuItem Header="菜单">

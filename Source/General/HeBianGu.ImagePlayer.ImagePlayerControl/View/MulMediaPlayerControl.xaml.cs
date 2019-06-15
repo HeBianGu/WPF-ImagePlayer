@@ -367,7 +367,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
 
                 //this.SetImagePlayMode(ImgPlayMode.正序);
 
-
+                this._flag = true;
             }
 
  
@@ -407,6 +407,43 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
                 }
             }
         }
+
+        bool _flag;
+
+        DateTime _downtime;
+        private void UserControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            _downtime = DateTime.Now;
+        }
+
+        private void UserControl_PreviewMouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if ((DateTime.Now - _downtime).TotalSeconds > 0.2) return;
+
+            var result = this.playtool.RefreshPlayState();
+
+            this.ImgPlayModeChanged?.Invoke(result);
+        } 
+
+        private void CommandBinding_Next_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.playtool.Next();
+        }
+
+        private void CommandBinding_Last_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.playtool.Last();
+        }
+
+        private void CommandBinding_Next_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = this._flag;
+        }
+
+        private void CommandBinding_Last_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = this._flag;
+        }
     }
 
     public partial class MulMediaPlayerControl : IMulMediaPlayer
@@ -443,7 +480,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             //  Do：设置默认缩放灵敏度为0.1
             for (int i = 0; i < services.Count; i++)
             {
-                this.SetImageIndexWheelScale(0.1, i);
+                this.SetImageIndexWheelScale(1, i);
             }
 
 
