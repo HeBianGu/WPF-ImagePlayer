@@ -480,7 +480,7 @@ namespace HeBianGu.ImagePlayer.ImagePlayerControl
             //  Do：设置默认缩放灵敏度为0.1
             for (int i = 0; i < services.Count; i++)
             {
-                this.SetImageIndexWheelScale(1, i);
+                this.SetImageIndexWheelScale(0.5, i);
             }
 
 

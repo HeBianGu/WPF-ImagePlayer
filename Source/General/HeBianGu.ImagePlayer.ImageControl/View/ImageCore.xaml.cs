@@ -1486,7 +1486,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
         public Func<int, double> ConvertSpeedFunction { get; set; }
 
 
-        double _wheelScale = 1;
+        double _wheelScale = 0.5;
 
         public double WheelScale
         {
