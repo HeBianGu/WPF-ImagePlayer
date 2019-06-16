@@ -2826,6 +2826,8 @@ namespace HeBianGu.ImagePlayer.ImageControl
                     this.ViewModel.IsBuzy = false;
 
                 });
+
+                GC.Collect();
             }
 
         }

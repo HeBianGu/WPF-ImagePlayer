@@ -73,7 +73,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             };
 
             this.image_control.LoadedAction = l =>
-            {  
+            {
                 //  Message：只加载的第一遍设置自适应
                 if (!l.IsAutoFullImage)
                 {
@@ -81,7 +81,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
                     l.SetFullImage();
 
-                    l.IsAutoFullImage = true; 
+                    l.IsAutoFullImage = true;
                 }
             };
 
@@ -528,39 +528,34 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         public void LoadImages(List<string> ImageUrls, string start)
         {
-
-            //Application.Current.Dispatcher.Invoke(() =>
+            //Task.Run(() =>
             //{
-
-            Task.Run(() =>
+            if (ImageUrls != null && ImageUrls.Count > 0)
             {
-                if (ImageUrls != null && ImageUrls.Count > 0)
+                if (ImageUrls.FirstOrDefault().ToUpper().StartsWith("FTP:"))
                 {
-                    if (ImageUrls.FirstOrDefault().ToUpper().StartsWith("FTP:"))
-                    {
-                        ImageCacheEngine =
-                            new ImageCacheEngine(ImageUrls, this.GetCacheFolder(), start, SourceType.Ftp);
+                    ImageCacheEngine =
+                        new ImageCacheEngine(ImageUrls, this.GetCacheFolder(), start, SourceType.Ftp);
 
-                        this.image_control.SetImageCacheEngine(this.ImageCacheEngine);
-                    }
-                    else if (ImageUrls.FirstOrDefault().ToUpper().StartsWith("\\"))
-                    {
-                        ImageCacheEngine =
-                            new ImageCacheEngine(ImageUrls, this.GetCacheFolder(), start, SourceType.Share);
-
-                        this.image_control.SetImageCacheEngine(this.ImageCacheEngine);
-                    }
-                    else
-                    {
-                        this.image_control.SetImageCacheEngine(null);
-                    }
+                    this.image_control.SetImageCacheEngine(this.ImageCacheEngine);
                 }
+                else if (ImageUrls.FirstOrDefault().ToUpper().StartsWith("\\"))
+                {
+                    ImageCacheEngine =
+                        new ImageCacheEngine(ImageUrls, this.GetCacheFolder(), start, SourceType.Share);
 
-                this.InitImages(ImageUrls);
+                    this.image_control.SetImageCacheEngine(this.ImageCacheEngine);
+                }
+                else
+                {
+                    this.image_control.SetImageCacheEngine(null);
+                }
+            }
 
-                //  Do：设置起始文件
-                this.SetPositon(ImageUrls.IndexOf(start));
-            });
+            this.InitImages(ImageUrls);
+
+            //  Do：设置起始文件
+            this.SetPositon(ImageUrls.IndexOf(start));
             //});
 
 
