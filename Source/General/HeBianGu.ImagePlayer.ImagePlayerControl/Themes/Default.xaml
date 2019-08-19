@@ -147,11 +147,11 @@
 
             <Trigger Property="IsChecked" Value="true">
 
-                <Setter Property="Background" Value="{DynamicResource S_AccentBrush}" TargetName="border" />
+                <Setter Property="Background" Value="{DynamicResource S.Brush.Accent}" TargetName="border" />
 
-                <Setter Property="Foreground" Value="{DynamicResource S_WhiteNotice}" TargetName="icon"/>
+                <Setter Property="Foreground" Value="{DynamicResource S.Brush.White.Notice}" TargetName="icon"/>
 
-                <Setter Property="Foreground" Value="{DynamicResource S_WhiteNotice}" TargetName="txt"/>
+                <Setter Property="Foreground" Value="{DynamicResource S.Brush.White.Notice}" TargetName="txt"/>
 
                 <!--<Setter Property="Text" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content,Converter={x:Static local:XConverter.SelectTextConverter}}" TargetName="txt"/>-->
             </Trigger>
@@ -396,12 +396,12 @@
                         <!--<Trigger Property="IsChecked" Value="true">
 
                             -->
-                        <!--<Setter Property="Background" Value="{DynamicResource S_AccentBrush}" TargetName="border" />-->
+                        <!--<Setter Property="Background" Value="{DynamicResource S.Brush.Accent}" TargetName="border" />-->
 
-                        <!--<Setter Property="Foreground" Value="{DynamicResource S_AccentBrush}" TargetName="icon"/>-->
+                        <!--<Setter Property="Foreground" Value="{DynamicResource S.Brush.Accent}" TargetName="icon"/>-->
                         <!--
 
-                            <Setter Property="Foreground" Value="{DynamicResource S_AccentBrush}" TargetName="txt"/>
+                            <Setter Property="Foreground" Value="{DynamicResource S.Brush.Accent}" TargetName="txt"/>
 
                             -->
                         <!--<Setter Property="Text" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content,Converter={x:Static local:XConverter.SelectTextConverter}}" TargetName="txt"/>-->

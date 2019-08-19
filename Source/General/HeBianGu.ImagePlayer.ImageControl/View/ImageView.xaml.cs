@@ -246,9 +246,13 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
         protected void OnImageIndexChanged()
         {
-            RoutedEventArgs args = new RoutedEventArgs(ImageIndexChangedRoutedEvent, this);
+            RoutedEventArgs args = new RoutedEventArgs(ImageIndexChangedRoutedEvent, this); 
 
-            this.RaiseEvent(args);
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                this.RaiseEvent(args);
+            });
+
         }
 
 

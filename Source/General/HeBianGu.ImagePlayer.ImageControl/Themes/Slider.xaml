@@ -56,8 +56,8 @@
                                             <Rectangle
                                                 Name="PART_SelectionRange"
                                                 Width="4"
-                                                Fill="{DynamicResource S_AccentBrush}"
-                                                Stroke="{DynamicResource S_AccentBrush}"
+                                                Fill="{DynamicResource S.Brush.Accent}"
+                                                Stroke="{DynamicResource S.Brush.Accent}"
                                                 StrokeThickness="1"
                                                 Visibility="Hidden" />
                                         </Canvas>
@@ -762,7 +762,7 @@
                                     <Rectangle
                                         Name="PART_SelectionRange"
                                         Height="5"
-                                        Fill="{DynamicResource S_AccentBrush}"
+                                        Fill="{DynamicResource S.Brush.Accent}"
                                         Visibility="Hidden" />
                                 </Canvas>
                             </Border>
@@ -867,7 +867,7 @@
                                                                     Height="5"
                                                                     HorizontalAlignment="Center"
                                                                     VerticalAlignment="Center"
-                                                                    Fill="{DynamicResource S_AccentBrush}" />
+                                                                    Fill="{DynamicResource S.Brush.Accent}" />
                                                             </Grid>
                                                             <!--<ControlTemplate.Triggers>
                                                                 <Trigger Property="UIElement.IsMouseOver">

@@ -98,23 +98,23 @@ namespace HeBianGu.ImagePlayer.ImageView
 
             this.imageview.ImageIndexChanged += (s, e) =>
             {
-                string current = this.imageview.GetCurrentImage();
+                //string current = this.imageview.GetCurrentImage();
 
 
-                string fileName = System.IO.Path.GetFileNameWithoutExtension(current);
+                //string fileName = System.IO.Path.GetFileNameWithoutExtension(current);
 
-                var foder = Directory.CreateDirectory(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "\\Marks"));
+                //var foder = Directory.CreateDirectory(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory + "\\Marks"));
 
-                var collection = foder.GetFiles().Where(l => l.Name.StartsWith(fileName)).Select(l => l.FullName);
+                //var collection = foder.GetFiles().Where(l => l.Name.StartsWith(fileName)).Select(l => l.FullName);
 
-                foreach (var item in collection)
-                {
-                    string marks = File.ReadAllText(item);
+                //foreach (var item in collection)
+                //{
+                //    string marks = File.ReadAllText(item);
 
-                    var list = JsonConvert.DeserializeObject<ImageMarkEntity>(marks);
+                //    var list = JsonConvert.DeserializeObject<ImageMarkEntity>(marks);
 
-                    this.imageview.LoadMarks(list);
-                }
+                //    this.imageview.LoadMarks(list);
+                //}
             };
         }
 

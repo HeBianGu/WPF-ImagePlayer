@@ -1,17 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.452
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F0B44989-BF14-41A4-83E8-95BC99504412}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gereral", "Gereral", "{DB155184-ECA0-4D07-93BF-4AEDD2D90A88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.ImagePlayer.ImageView", "..\..\Source\Application\HeBianGu.ImagePlayer.ImageView\HeBianGu.ImagePlayer.ImageView.csproj", "{0AA2421B-A5BD-432E-9890-9BC98E3E0670}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.Appliaction.Demo.ImageControl", "..\..\Source\Application\HeBianGu.Appliaction.Demo.ImageControl\HeBianGu.Appliaction.Demo.ImageControl.csproj", "{E6A6995F-0865-4EE4-86C8-D7B5245859B0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.Appliaction.Demo.MediaControl", "..\..\Source\Application\HeBianGu.Appliaction.Demo.MediaControl\HeBianGu.Appliaction.Demo.MediaControl.csproj", "{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.ImagePlayer.ImageControl", "..\..\Source\General\HeBianGu.ImagePlayer.ImageControl\HeBianGu.ImagePlayer.ImageControl.csproj", "{90678356-1EF7-4B98-90B0-754A597D872B}"
 EndProject
@@ -29,14 +25,6 @@ Global
 		{0AA2421B-A5BD-432E-9890-9BC98E3E0670}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AA2421B-A5BD-432E-9890-9BC98E3E0670}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AA2421B-A5BD-432E-9890-9BC98E3E0670}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6A6995F-0865-4EE4-86C8-D7B5245859B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6A6995F-0865-4EE4-86C8-D7B5245859B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6A6995F-0865-4EE4-86C8-D7B5245859B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6A6995F-0865-4EE4-86C8-D7B5245859B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90678356-1EF7-4B98-90B0-754A597D872B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90678356-1EF7-4B98-90B0-754A597D872B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90678356-1EF7-4B98-90B0-754A597D872B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -55,8 +43,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0AA2421B-A5BD-432E-9890-9BC98E3E0670} = {F0B44989-BF14-41A4-83E8-95BC99504412}
-		{E6A6995F-0865-4EE4-86C8-D7B5245859B0} = {F0B44989-BF14-41A4-83E8-95BC99504412}
-		{2372EF20-227E-44BE-BD85-0FACFC8EFF7F} = {F0B44989-BF14-41A4-83E8-95BC99504412}
 		{90678356-1EF7-4B98-90B0-754A597D872B} = {DB155184-ECA0-4D07-93BF-4AEDD2D90A88}
 		{73CDFD21-2014-470C-B250-740852BD4EEA} = {DB155184-ECA0-4D07-93BF-4AEDD2D90A88}
 		{8331CE5B-24DD-4C29-A4DC-204E827CA865} = {F0B44989-BF14-41A4-83E8-95BC99504412}

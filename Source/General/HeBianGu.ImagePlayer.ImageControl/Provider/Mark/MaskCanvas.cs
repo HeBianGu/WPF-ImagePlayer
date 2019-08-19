@@ -207,6 +207,12 @@ namespace HeBianGu.ImagePlayer.ImageControl
             {
                 HandleIndicatorMouseDown(e);
             }
+            else
+            {
+                var mouse = e.GetPosition(this); 
+
+                this.Indicator.MoveCenter(mouse);
+            }
             base.OnMouseLeftButtonDown(e);
         }
 
@@ -224,9 +230,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             this.UpdateDynimicRect();
 
-            base.OnMouseMove(e);
-
-
+            base.OnMouseMove(e); 
 
         }
 

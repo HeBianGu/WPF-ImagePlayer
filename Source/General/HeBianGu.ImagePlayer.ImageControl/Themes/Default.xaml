@@ -250,8 +250,8 @@
             </Trigger>
 
             <Trigger Property="IsChecked" Value="true">
-                <Setter Property="Background" Value="{DynamicResource S_AccentBrush}" TargetName="border" />
-                <Setter Property="Foreground" Value="{DynamicResource S_WhiteNotice}" TargetName="icon"/>
+                <Setter Property="Background" Value="{DynamicResource S.Brush.Accent}" TargetName="border" />
+                <Setter Property="Foreground" Value="{DynamicResource S.Brush.White.Notice}" TargetName="icon"/>
                 <Setter Property="Opacity" Value="1"/>
             </Trigger>
 
@@ -269,12 +269,12 @@
 
     <!--矢量图标按钮样式-->
     <Style x:Key="Style.IconButton.Default" TargetType="{x:Type local:IconButton}">
-        <Setter Property="Background" Value="{StaticResource S_BlackNotice}" />
-        <Setter Property="MouseOverForeground"  Value="{StaticResource S_WhiteNotice}"/>
-        <Setter Property="MouseOverBackground"  Value="{StaticResource S_BlackNotice}"/>
+        <Setter Property="Background" Value="{StaticResource S.Brush.Black.Notice}" />
+        <Setter Property="MouseOverForeground"  Value="{StaticResource S.Brush.White.Notice}"/>
+        <Setter Property="MouseOverBackground"  Value="{StaticResource S.Brush.Black.Notice}"/>
         <Setter Property="PressedBackground" Value="Transparent" />
-        <Setter Property="Foreground" Value="{StaticResource S_WhiteNotice}" />
-        <Setter Property="PressedForeground" Value="{StaticResource S_GrayNotice}" />
+        <Setter Property="Foreground" Value="{StaticResource S.Brush.White.Notice}" />
+        <Setter Property="PressedForeground" Value="{StaticResource S.Brush.Gray.Notice}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="Width" Value="45" />

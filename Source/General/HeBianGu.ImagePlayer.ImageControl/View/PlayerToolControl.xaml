@@ -52,13 +52,13 @@
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
 
-                                <Border Background="{DynamicResource S_AccentBrush}"/>
+                                <Border Background="{DynamicResource S.Brush.Accent}"/>
 
                                 <Ellipse  Grid.ColumnSpan="2" 
                                           StrokeThickness="2" 
                                           Width="8" Height="8"
                                           Margin="-8" 
-                                          Fill="{DynamicResource S_AccentBrush}"
+                                          Fill="{DynamicResource S.Brush.Accent}"
                                           Stroke="{TemplateBinding Foreground}" />
 
 
@@ -191,12 +191,12 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <DockPanel Height="50" DockPanel.Dock="Bottom"  Background="{DynamicResource S_AccentBrush_Opacity_5}"><!--Background="#242424"-->
+        <DockPanel Height="50" DockPanel.Dock="Bottom"  Background="{DynamicResource S.Brush.Accent_Opacity_5}"><!--Background="#242424"-->
 
             <!--播放按钮-->
             <DockPanel Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                <ToggleButton x:Name="toggle_play" x:FieldModifier="public" Margin="30,0"  Foreground="{DynamicResource S_GrayLight}" IsChecked="True">
+                <ToggleButton x:Name="toggle_play" x:FieldModifier="public" Margin="30,0"  Foreground="{DynamicResource S.Brush.LightGray.Notice}" IsChecked="True">
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
@@ -211,7 +211,7 @@
                                     <Setter Property="Opacity" Value="0.8" TargetName="image"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <!--<Setter Property="Fill" Value="{DynamicResource S_AccentBrush}" TargetName="ellipse"/>-->
+                                    <!--<Setter Property="Fill" Value="{DynamicResource S.Brush.Accent}" TargetName="ellipse"/>-->
                                     <Setter Property="Opacity" Value="0.86" TargetName="image"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
@@ -246,7 +246,7 @@
                          Width="100"  
                          Minimum="0" Maximum="1" SmallChange="0.01" 
                           Background="Gray"
-                          Foreground="{DynamicResource S_WhiteNotice}" 
+                          Foreground="{DynamicResource S.Brush.White.Notice}" 
                          IsMoveToPointEnabled="True"
                          Style="{StaticResource Slider_CustomStyle}" />
 
@@ -316,7 +316,7 @@
                              Height="5" Value="0"  Maximum="100"   Minimum="0" 
                              Thumb.DragStarted="media_slider_DragStarted" 
                              Thumb.DragCompleted="media_slider_DragCompleted" 
-                             Background="Transparent"  Foreground="{StaticResource S_WhiteNotice}"  IsMoveToPointEnabled="True"
+                             Background="Transparent"  Foreground="{StaticResource S.Brush.White.Notice}"  IsMoveToPointEnabled="True"
                              Style="{StaticResource Slider_CustomStyle}" VerticalAlignment="Center"/>
                     </Grid>
 

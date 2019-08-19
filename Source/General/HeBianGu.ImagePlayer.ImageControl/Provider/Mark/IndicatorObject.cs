@@ -31,7 +31,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
             var x = Canvas.GetLeft(this) + offset.X;
             var y = Canvas.GetTop(this) + offset.Y;
 
-           
+
 
             //if (x<0)
             //{
@@ -48,6 +48,18 @@ namespace HeBianGu.ImagePlayer.ImageControl
 
             //x = Math.Min(x, this.canvasOwner.Width - this.Width);
             //y = Math.Min(y, this.canvasOwner.Height - this.Height);
+
+            Canvas.SetLeft(this, x);
+            Canvas.SetTop(this, y);
+
+            canvasOwner.UpdateSelectionRegion(new Rect(x, y, Width, Height), true);
+        }
+
+
+        public void MoveCenter(System.Windows.Point offset)
+        {
+            var x =  offset.X- this.Width / 2;
+            var y =   offset.Y- this.Height / 2;
 
             Canvas.SetLeft(this, x);
             Canvas.SetTop(this, y);

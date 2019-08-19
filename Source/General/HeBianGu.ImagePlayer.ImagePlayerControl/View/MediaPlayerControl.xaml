@@ -64,7 +64,7 @@
                 --><!--播放按钮--><!--
                 <DockPanel Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center">
 
-                    <ToggleButton x:Name="toggle_play" Margin="30,0"  Foreground="{DynamicResource S_GrayLight}" IsChecked="True" Click="ToggleButton_Click">
+                    <ToggleButton x:Name="toggle_play" Margin="30,0"  Foreground="{DynamicResource S.Brush.LightGray.Notice}" IsChecked="True" Click="ToggleButton_Click">
                         <ToggleButton.Template>
                             <ControlTemplate TargetType="{x:Type ToggleButton}">
                                 <Grid>
@@ -79,7 +79,7 @@
                                         <Setter Property="Opacity" Value="0.8" TargetName="image"/>
                                     </Trigger>
                                     <Trigger Property="IsPressed" Value="True">
-                                        --><!--<Setter Property="Fill" Value="{DynamicResource S_AccentBrush}" TargetName="ellipse"/>--><!--
+                                        --><!--<Setter Property="Fill" Value="{DynamicResource S.Brush.Accent}" TargetName="ellipse"/>--><!--
                                         <Setter Property="Opacity" Value="0.86" TargetName="image"/>
                                     </Trigger>
                                     <Trigger Property="IsEnabled" Value="false">
@@ -211,7 +211,7 @@
                     <ToggleButton.Template>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
                             <Grid>
-                                <!--<Ellipse x:Name="ellipse" Height="40" Width="40" Fill="{DynamicResource S_AccentBrush}" IsHitTestVisible="False">
+                                <!--<Ellipse x:Name="ellipse" Height="40" Width="40" Fill="{DynamicResource S.Brush.Accent}" IsHitTestVisible="False">
 
                                     </Ellipse>
                                     <TextBlock Text="&#xe76e;" Style="{StaticResource FIcon}" x:Name="txt" Foreground="{TemplateBinding Foreground}"
@@ -229,7 +229,7 @@
                                     <Setter Property="Opacity" Value="0.8" TargetName="image"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <!--<Setter Property="Fill" Value="{DynamicResource S_AccentBrush}" TargetName="ellipse"/>-->
+                                    <!--<Setter Property="Fill" Value="{DynamicResource S.Brush.Accent}" TargetName="ellipse"/>-->
                                     <Setter Property="Opacity" Value="0.86" TargetName="image"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">

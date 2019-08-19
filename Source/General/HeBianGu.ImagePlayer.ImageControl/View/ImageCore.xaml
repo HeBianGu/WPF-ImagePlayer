@@ -192,7 +192,7 @@
 
         </Grid>
 
-        <Border x:Name="border" BorderThickness="0" Margin="0,0,0,-46" VerticalAlignment="Bottom" HorizontalAlignment="Center" CornerRadius="5,5,0,0" Background="{DynamicResource S_AccentBrush_MouseOver}">
+        <Border x:Name="border" BorderThickness="0" Margin="0,0,0,-46" VerticalAlignment="Bottom" HorizontalAlignment="Center" CornerRadius="5,5,0,0" Background="{DynamicResource S.Brush.Accent.MouseOver}">
 
             <Grid>
                 <StackPanel x:Name="tool_normal" HorizontalAlignment="Center"  VerticalAlignment="Bottom"   Height="46" Orientation="
@@ -282,10 +282,10 @@
                         Height="46" Orientation="
                         Horizontal" 
                         Margin="0">
-                    <Button x:Name="btn_play_current" ToolTip="当前索引" FontSize="15" Margin="10,0,5,0" Style="{DynamicResource ImageToolBtn}" Cursor="Hand"/>
+                    <Button x:Name="btn_play_current" ToolTip="当前索引" IsHitTestVisible="False" FontSize="15" Margin="10,0,5,0" Style="{DynamicResource ImageToolBtn}" Cursor="Hand"/>
 
                     <Button x:Name="btn_play_addspeed"  Click="Btn_play_addspeed_Click" Content="-" ToolTip="减速" FontSize="20" Margin="10,0,5,0" Style="{DynamicResource ImageToolBtn}" Cursor="Hand"/>
-                    <Button x:Name="btn_play_speed" Content="间隔2秒" ToolTip="当前速度" FontSize="15" Margin="10,0,5,0" Style="{DynamicResource ImageToolBtn}" Cursor="Hand"/>
+                    <Button x:Name="btn_play_speed" Content="间隔2秒" ToolTip="当前速度" IsHitTestVisible="False"  FontSize="15" Margin="10,0,5,0" Style="{DynamicResource ImageToolBtn}" Cursor="Hand"/>
                     <Button  x:Name="btn_play_mulspeed" Click="Btn_play_mulspeed_Click"  Content="+" ToolTip="加速" FontSize="20" Margin="10,0,5,0" Style="{DynamicResource ImageToolBtn}" Cursor="Hand"/>
 
                     <Button x:Name="btn_play_preview" ToolTip="上一张" Click="Btn_preview_Click" Margin="5,0" Style="{DynamicResource ImageToolBtn}" Cursor="Hand">
@@ -320,15 +320,15 @@
         <TextBlock x:Name="txt_detial" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"/>
 
         <Grid x:Name="gridTips" IsHitTestVisible="False" HorizontalAlignment="Center" MinWidth="75" VerticalAlignment="Center" Visibility="Collapsed" Opacity="0">
-            <Rectangle Fill="{DynamicResource S_AccentBrush_MouseOver}" RadiusX="5" RadiusY="5"/>
+            <Rectangle Fill="{DynamicResource S.Brush.Accent.MouseOver}" RadiusX="5" RadiusY="5"/>
             <TextBlock x:Name="txtZoom" HorizontalAlignment="Center" FontSize="18" Text="5%" VerticalAlignment="Center" Margin="10,5" Foreground="White"/>
         </Grid>
 
         <!--上一页按钮-->
         <local:IconButton  x:Name="button_last"  
                            Grid.Column="1"
-                           FIcon="&#xe671;"  CornerRadius="25" MouseOverBackground="{DynamicResource S_AccentBrush_MouseOver}"
-                           Margin="10,0" HorizontalAlignment="Left" Background="{DynamicResource S_AccentBrush_MouseOver}"
+                           FIcon="&#xe671;"  CornerRadius="25" MouseOverBackground="{DynamicResource S.Brush.Accent.MouseOver}"
+                           Margin="10,0" HorizontalAlignment="Left" Background="{DynamicResource S.Brush.Accent.MouseOver}"
                            Command="{x:Static local:ImageViewCommands.LastImage}" 
                            ToolTip="{Binding Source={x:Static local:ImageViewCommands.LastImage},Path=Text}"
                            Style="{StaticResource Style.IconButton.Default}"  Height="50"  Width="50"/>
@@ -338,7 +338,7 @@
                            Grid.Column="1" 
                            FIcon="&#xe66d;" 
                            Margin="10,0"  CornerRadius="25"
-                           HorizontalAlignment="Right" MouseOverBackground="{DynamicResource S_AccentBrush_MouseOver}" Background="{DynamicResource S_AccentBrush_MouseOver}"
+                           HorizontalAlignment="Right" MouseOverBackground="{DynamicResource S.Brush.Accent.MouseOver}" Background="{DynamicResource S.Brush.Accent.MouseOver}"
                            Command="{x:Static local:ImageViewCommands.NextImage}" 
                            ToolTip="{Binding Source={x:Static local:ImageViewCommands.NextImage},Path=Text}"
                            Style="{StaticResource Style.IconButton.Default}"  
@@ -347,7 +347,7 @@
 
 
         <TextBlock FontSize="12" Margin="5"
-                   Foreground="{DynamicResource S_AccentBrush}" 
+                   Foreground="{DynamicResource S.Brush.Accent}" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Bottom">
             <Run Text="文件路径:"/>
@@ -364,7 +364,7 @@
                         <TextBlock Text="正在加载... ..." 
                            HorizontalAlignment="Right" 
                            VerticalAlignment="Bottom" Margin="20,5"
-                           Foreground="{DynamicResource S_AccentBrush_MouseOver}" 
+                           Foreground="{DynamicResource S.Brush.Accent.MouseOver}" 
                            FontSize="15">
 
                             <TextBlock.Triggers>

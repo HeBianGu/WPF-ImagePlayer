@@ -1,4 +1,4 @@
-﻿<wpfcontrollib:WindowBase x:Class="HeBianGu.ImagePlayer.ImageView.ImageWindow"
+﻿<wpfcontrollib:BlurWindowBase x:Class="HeBianGu.ImagePlayer.ImageView.ImageWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,12 +7,12 @@
         xmlns:base="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase"
         xmlns:wpfcontrollib="clr-namespace:HeBianGu.General.WpfControlLib;assembly=HeBianGu.General.WpfControlLib"
         xmlns:imagecontrol="clr-namespace:HeBianGu.ImagePlayer.ImageControl;assembly=HeBianGu.ImagePlayer.ImageControl"
-        mc:Ignorable="d" FIcon=""
-         CaptionHeight="50" FIconSize="30" Style="{StaticResource DefaultWindowStyle}"
+        mc:Ignorable="d" FIcon="" 
+        CaptionHeight="50" FIconSize="30" Style="{DynamicResource DefaultWindowStyle}"
         Title=" 图片浏览器 - By HeBianGu"  Height="600" Width="1000">
     <Grid>
 
         <imagecontrol:ImageView x:Name="imageview"/>
 
     </Grid>
-</wpfcontrollib:WindowBase>
+</wpfcontrollib:BlurWindowBase>

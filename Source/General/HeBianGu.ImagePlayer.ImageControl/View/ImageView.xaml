@@ -45,7 +45,7 @@
                     <Style TargetType="RadioButton" BasedOn="{StaticResource DefaultRadioButton}">
                         <Setter Property="FontSize" Value="10"/>
                         <Setter Property="Margin" Value="10,2"/>
-                        <Setter Property="Foreground" Value="{DynamicResource S_WhiteNotice}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource S.Brush.White.Notice}"/>
                         <Setter Property="base:ControlAttachProperty.FIconSize" Value="10"/>
                     </Style>
                 </StackPanel.Resources>

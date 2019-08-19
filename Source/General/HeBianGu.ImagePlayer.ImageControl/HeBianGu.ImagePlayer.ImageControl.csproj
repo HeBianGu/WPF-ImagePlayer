@@ -41,11 +41,12 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HeBianGu.Base.WpfBase, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.Base.WpfBase.1.0.3\lib\net45\HeBianGu.Base.WpfBase.dll</HintPath>
+    <Reference Include="HeBianGu.Base.WpfBase, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.Base.WpfBase.2.0.1\lib\net45\HeBianGu.Base.WpfBase.dll</HintPath>
     </Reference>
-    <Reference Include="HeBianGu.General.WpfControlLib, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.General.WpfControlLib.1.0.3\lib\net45\HeBianGu.General.WpfControlLib.dll</HintPath>
+    <Reference Include="HeBianGu.General.WpfControlLib, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.General.WpfControlLib.2.0.1\lib\net45\HeBianGu.General.WpfControlLib.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
@@ -191,6 +192,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\zuo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\demo_index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

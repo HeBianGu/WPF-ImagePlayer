@@ -15,9 +15,14 @@
             <Setter Property="MinWidth" Value="100"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="White"/>
         </Style>
         <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource DefaultMenuItem}">
             <Setter Property="Width" Value="100"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="White"/>
+
         </Style>
 
         <RoutedUICommand x:Key="Resource.Command.OpenFolder" Text="打开文件夹"/>
@@ -44,7 +49,7 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Border  Background="{DynamicResource S_Black_Dark_8}" />
+        <Border  Background="{DynamicResource S.Brush.Dark.8}" />
 
 
 
@@ -148,8 +153,8 @@
         <!--上一页按钮-->
         <imagecontrol:IconButton  x:Name="button_last"  
                            Grid.Column="1"
-                           FIcon="&#xe671;"  CornerRadius="25" MouseOverBackground="{DynamicResource S_AccentBrush_MouseOver}"
-                           Margin="10,0" HorizontalAlignment="Left" Background="{DynamicResource S_AccentBrush_MouseOver}"
+                           FIcon="&#xe671;"  CornerRadius="25" MouseOverBackground="{DynamicResource S.Brush.Accent.MouseOver}"
+                           Margin="10,0" HorizontalAlignment="Left" Background="{DynamicResource S.Brush.Accent.MouseOver}"
                            Command="{StaticResource Resource.Command.Last}"
                            ToolTip="{Binding Source={x:Static imagecontrol:ImageViewCommands.LastImage},Path=Text}"
                            Style="{StaticResource Style.IconButton.Default}"  Height="50"  Width="50"/>
@@ -159,16 +164,16 @@
                            Grid.Column="1" 
                            FIcon="&#xe66d;" 
                            Margin="10,0"  CornerRadius="25"
-                           HorizontalAlignment="Right" MouseOverBackground="{DynamicResource S_AccentBrush_MouseOver}" Background="{DynamicResource S_AccentBrush_MouseOver}"
+                           HorizontalAlignment="Right" MouseOverBackground="{DynamicResource S.Brush.Accent.MouseOver}" Background="{DynamicResource S.Brush.Accent.MouseOver}"
                            Command="{StaticResource Resource.Command.Next}" 
                            ToolTip="{Binding Source={x:Static imagecontrol:ImageViewCommands.NextImage},Path=Text}"
                            Style="{StaticResource Style.IconButton.Default}"  
                            Height="50"  Width="50"/>
         
         <!--操作菜单-->
-        <Menu>
+        <Menu  Background="Red">
             <MenuItem Header="菜单">
-                <MenuItem Header="打开文件夹" Command="{StaticResource Resource.Command.OpenFolder}"/>
+                <MenuItem Header="打开文件夹" Foreground="White" Command="{StaticResource Resource.Command.OpenFolder}"/>
                 <MenuItem Header="设置" IsEnabled="False" base:ControlAttachProperty.FIcon="&#xe671;"/>
             </MenuItem>
         </Menu>
