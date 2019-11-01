@@ -32,11 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HeBianGu.Base.WpfBase, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.Base.WpfBase.1.0.3\lib\net45\HeBianGu.Base.WpfBase.dll</HintPath>
+    <Reference Include="HeBianGu.Base.WpfBase, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.Base.WpfBase.2.0.2\lib\net45\HeBianGu.Base.WpfBase.dll</HintPath>
     </Reference>
-    <Reference Include="HeBianGu.General.WpfControlLib, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.General.WpfControlLib.1.0.3\lib\net45\HeBianGu.General.WpfControlLib.dll</HintPath>
+    <Reference Include="HeBianGu.General.WpfControlLib, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.General.WpfControlLib.2.0.2\lib\net45\HeBianGu.General.WpfControlLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -162,6 +162,12 @@
       <Project>{90678356-1EF7-4B98-90B0-754A597D872B}</Project>
       <Name>HeBianGu.ImagePlayer.ImageControl</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\demo.css" />
+    <Content Include="Resources\demo_index.html" />
+    <Content Include="Resources\iconfont.css" />
+    <Content Include="Resources\iconfont.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

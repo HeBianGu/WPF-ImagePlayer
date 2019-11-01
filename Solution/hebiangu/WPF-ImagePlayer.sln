@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F0B44989-BF14-41A4-83E8-95BC99504412}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.ImagePlayer.ImagePlayerControl", "..\..\Source\General\HeBianGu.ImagePlayer.ImagePlayerControl\HeBianGu.ImagePlayer.ImagePlayerControl.csproj", "{73CDFD21-2014-470C-B250-740852BD4EEA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.ImagePlayer.ImagePlayer", "..\..\Source\Application\HeBianGu.ImagePlayer.ImagePlayer\HeBianGu.ImagePlayer.ImagePlayer.csproj", "{8331CE5B-24DD-4C29-A4DC-204E827CA865}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupProject", "..\..\Source\SetUp\SetupProject\SetupProject.vdproj", "{105CD7AB-DCB8-413F-869A-945F7C3C205C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,8 @@ Global
 		{8331CE5B-24DD-4C29-A4DC-204E827CA865}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8331CE5B-24DD-4C29-A4DC-204E827CA865}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8331CE5B-24DD-4C29-A4DC-204E827CA865}.Release|Any CPU.Build.0 = Release|Any CPU
+		{105CD7AB-DCB8-413F-869A-945F7C3C205C}.Debug|Any CPU.ActiveCfg = Debug
+		{105CD7AB-DCB8-413F-869A-945F7C3C205C}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
