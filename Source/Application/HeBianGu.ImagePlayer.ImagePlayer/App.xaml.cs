@@ -1,4 +1,4 @@
-﻿using HeBianGu.Base.WpfBase.Color;
+﻿using HeBianGu.Base.WpfBase;
 using HeBianGu.General.WpfControlLib;
 using System;
 using System.Collections.Generic;
@@ -45,7 +45,8 @@ namespace HeBianGu.ImagePlayer.ImagePlayer
             //  Do：设置默认主题
             ThemeService.Current.AccentColor = Color.FromRgb(0x33, 0x99, 0x33);
 
-            ThemeService.Current.StartAnimationTheme(2000);
+            ThemeService.Current.AnimalSpeed = 1000 * 5;
+            ThemeService.Current.IsUseAnimal = true;
 
 
             base.OnStartup(e);

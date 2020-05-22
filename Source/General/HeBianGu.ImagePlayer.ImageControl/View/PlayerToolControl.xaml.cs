@@ -79,7 +79,8 @@ namespace HeBianGu.ImagePlayer.ImageControl
                         break;
                     }
                 }
-                else if (imgPlayMode == ImgPlayMode.倒叙)
+                else if (imgPlayMode == ImgPlayMode.倒序)
+                    
                 {
                     //  Message：播放到第一个位置单独处理 如:0 和32
                     if (operates.Exists(l => l.CurrentIndex == 0) && operates.Exists(l => l.CurrentIndex == count - 1))

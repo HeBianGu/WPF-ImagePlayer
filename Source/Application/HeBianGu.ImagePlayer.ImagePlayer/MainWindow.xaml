@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:HeBianGu.ImagePlayer.ImagePlayer"
          xmlns:wpfcontrollib="clr-namespace:HeBianGu.General.WpfControlLib;assembly=HeBianGu.General.WpfControlLib"
         xmlns:mediacontrol="clr-namespace:HeBianGu.ImagePlayer.ImagePlayerControl;assembly=HeBianGu.ImagePlayer.ImagePlayerControl"
-        mc:Ignorable="d"  CaptionHeight="50" FIconSize="30" Style="{StaticResource DefaultWindowStyle}"
+        mc:Ignorable="d"  CaptionHeight="50" FIconSize="30" Style="{StaticResource DefaultWindowStyle}"  CaptionBackground="{DynamicResource S.Brush.Accent}"
         Title=" 多屏图片播放器 - By HeBianGu"  Height="600" Width="1000">
     <Grid>
-        <mediacontrol:MulMediaPlayerControl x:Name="media" Grid.Row="1"/>
+        <mediacontrol:MulMediaPlayerControl x:Name="media" Grid.Row="1" Background="{DynamicResource S.Brush.Accent}"/>
     </Grid>
 </wpfcontrollib:BlurWindowBase >

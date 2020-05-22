@@ -7,7 +7,7 @@
         xmlns:base="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase"
         xmlns:wpfcontrollib="clr-namespace:HeBianGu.General.WpfControlLib;assembly=HeBianGu.General.WpfControlLib"
         xmlns:imagecontrol="clr-namespace:HeBianGu.ImagePlayer.ImageControl;assembly=HeBianGu.ImagePlayer.ImageControl"
-        mc:Ignorable="d" FIcon="" 
+        mc:Ignorable="d" FIcon=""  CaptionBackground="{DynamicResource S.Brush.Accent}"
         CaptionHeight="50" FIconSize="30" Style="{DynamicResource DefaultWindowStyle}"
         Title=" 图片浏览器 - By HeBianGu"  Height="600" Width="1000">
     <Grid>

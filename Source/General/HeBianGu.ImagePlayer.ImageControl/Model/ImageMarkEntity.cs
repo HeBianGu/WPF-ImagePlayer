@@ -82,7 +82,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
     public enum ImgPlayMode
     {
         正序 = 0,
-        倒叙 = 1,
+        倒序 = 1,
         停止播放 = 2,
     }
 

@@ -1421,7 +1421,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                         this.OnNextClick(ImgSliderMode.System);
                     }
                 }
-                else if (playMode == ImgPlayMode.倒叙)
+                else if (playMode == ImgPlayMode.倒序)
                 {
                     if (!isBuzy)
                     {
@@ -2531,7 +2531,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 ImgPlayMode config = (ImgPlayMode)e.NewValue;
 
                 //  Do：设置自动播放模式
-                if (config == ImgPlayMode.正序 || config == ImgPlayMode.倒叙)
+                if (config == ImgPlayMode.正序 || config == ImgPlayMode.倒序)
                 {
                     //  Message：刷新缓存播放机制
                     if (control._imageCacheEngine != null)
@@ -2541,7 +2541,7 @@ namespace HeBianGu.ImagePlayer.ImageControl
                 if ((ImgPlayMode)e.OldValue != ImgPlayMode.停止播放 && (ImgPlayMode)e.NewValue != ImgPlayMode.停止播放) return;
 
                 //  Do：设置自动播放模式
-                if (config == ImgPlayMode.正序 || config == ImgPlayMode.倒叙)
+                if (config == ImgPlayMode.正序 || config == ImgPlayMode.倒序)
                 {
                     control.Start();
 

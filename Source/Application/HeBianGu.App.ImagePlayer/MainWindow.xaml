@@ -1,0 +1,19 @@
+﻿<Window x:Class="HeBianGu.App.ImagePlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HeBianGu.App.ImagePlayer"
+        xmlns:h="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase"
+        xmlns:imageview="clr-namespace:HeBianGu.General.ImageView;assembly=HeBianGu.General.ImageView"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800">
+    <Grid Background="Red">
+        <imageview:ImageBase ImageSource="https://mtl.gzhuibei.com/images/img/21566/10.jpg">
+            <h:Interaction.Behaviors>
+                <imageview:ImageBaseMouseDragBehavior/>
+                <imageview:ImageBaseMouseWheelBehavior/>
+            </h:Interaction.Behaviors>
+        </imageview:ImageBase>
+    </Grid>
+</Window>

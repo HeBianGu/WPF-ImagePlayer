@@ -6,22 +6,22 @@
              xmlns:local="clr-namespace:HeBianGu.ImagePlayer.ImagePlayerControl"
              xmlns:base="clr-namespace:HeBianGu.Base.WpfBase;assembly=HeBianGu.Base.WpfBase"
              xmlns:imagecontrol="clr-namespace:HeBianGu.ImagePlayer.ImageControl;assembly=HeBianGu.ImagePlayer.ImageControl"
-             mc:Ignorable="d" x:Name="control" 
+             mc:Ignorable="d" x:Name="control"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource DefaultMenu}">
-            <Setter Property="Height" Value="30"/>
+            <!--<Setter Property="Height" Value="30"/>
             <Setter Property="MinWidth" Value="100"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="White"/>
+            <Setter Property="Background" Value="White"/>-->
         </Style>
         <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource DefaultMenuItem}">
-            <Setter Property="Width" Value="100"/>
+            <!--<Setter Property="Width" Value="100"/>
             <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Background" Value="White"/>
+            <Setter Property="Background" Value="White"/>-->
 
         </Style>
 
@@ -49,7 +49,7 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Border  Background="{DynamicResource S.Brush.Dark.8}" />
+        <Border  Background="Black" />
 
 
 
@@ -113,16 +113,7 @@
 
             <TextBlock  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40">
                 <Run Text="{Binding ElementName=playtool,Path=Message}"/>
-            </TextBlock>
-            <!--<Grid.Triggers>
-                <EventTrigger RoutedEvent="Loaded">
-                    <BeginStoryboard>
-                        <Storyboard  RepeatBehavior="Forever" AutoReverse="True" >
-                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.5" To="1" Duration="0:0:01"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Grid.Triggers>-->
+            </TextBlock> 
         </Grid>
 
         <imagecontrol:PlayerToolControl x:Name="playtool" Grid.Row="1"/>
@@ -171,7 +162,7 @@
                            Height="50"  Width="50"/>
         
         <!--操作菜单-->
-        <Menu  Background="Red">
+        <Menu Background="Transparent">
             <MenuItem Header="菜单">
                 <MenuItem Header="打开文件夹" Foreground="White" Command="{StaticResource Resource.Command.OpenFolder}"/>
                 <MenuItem Header="设置" IsEnabled="False" base:ControlAttachProperty.FIcon="&#xe671;"/>
