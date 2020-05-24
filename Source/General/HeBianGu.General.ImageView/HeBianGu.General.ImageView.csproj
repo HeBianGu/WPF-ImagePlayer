@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HeBianGu.Base.WpfBase">
-      <HintPath>..\..\..\..\WPF-ControlBase\Product\Debug\HeBianGu.Base.WpfBase.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -71,12 +68,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Provider\Behavior\MouseRect\ImageBaseMouseDrawRectBehaviorBase.cs" />
+    <Compile Include="Provider\Behavior\MouseRect\ImageBaseMouseSignBehavior.cs" />
+    <Compile Include="Provider\Behavior\MouseRect\ImageBaseMouseEnlargeBehavior.cs" />
+    <Compile Include="Provider\Behavior\ImageBaseMouseBubbleBehavior.cs" />
     <Compile Include="Provider\Behavior\ImageBaseMouseWheelBehavior.cs" />
     <Compile Include="Provider\Behavior\ImageBaseMouseDragBehavior.cs" />
-    <Compile Include="Provider\MarkType.cs" />
+    <Compile Include="Provider\OperateType.cs" />
     <Compile Include="Provider\Mark\IndicatorObject.cs" />
     <Compile Include="Provider\Mark\LoactionArgs.cs" />
     <Compile Include="Provider\Mark\MaskCanvas.cs" />
+    <Compile Include="Provider\Rectangle\IRectangleStroke.cs" />
+    <Compile Include="Provider\Rectangle\RectangleLayer.cs" />
+    <Compile Include="Provider\Rectangle\RectangleShape.cs" />
     <Compile Include="View\ImageBase.xaml.cs">
       <DependentUpon>ImageBase.xaml</DependentUpon>
     </Compile>

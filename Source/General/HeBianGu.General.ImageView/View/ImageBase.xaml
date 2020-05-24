@@ -8,7 +8,38 @@
         <RotateTransform Angle="0"/>
         <TranslateTransform/>
     </TransformGroup>
-    
+
+    <Style TargetType="{x:Type local:SampleShape}">
+        <Setter Property="StrokeThickness" Value="8"/>
+        <Setter Property="Stroke" Value="Blue"/>
+        <Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu>
+                    <MenuItem Command="local:ImageBaseCommands.DefaultCommand" Header="放大" CommandParameter="放大"/>
+                    <MenuItem Command="local:ImageBaseCommands.DefaultCommand" Header="删除" CommandParameter="删除"/>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Fill">
+            <Setter.Value>
+                <SolidColorBrush Color="Blue" Opacity="0.3"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:DynamicShape}">
+        <Setter Property="StrokeDashArray" Value="8,8"/>
+        <Setter Property="StrokeDashCap" Value="Triangle"/>
+        <Setter Property="Stroke" Value="Red"/>
+        <Setter Property="StrokeThickness" Value="6"/>
+        <Setter Property="Fill">
+            <Setter.Value>
+                <SolidColorBrush Color="Red" Opacity="0.3"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
     <Style  TargetType="{x:Type local:ImageBase}">
         <Setter Property="Background" Value="Black"/>
         <Setter Property="Template">
@@ -17,17 +48,18 @@
                     <Grid>
                         <Grid x:Name="grid_all"  Margin="0"  ClipToBounds="True" Background="{TemplateBinding Background}">
                             <!--用于鼠标按下拖动图片-->
-                            <ContentControl x:Name="PART_Grid_Mouse_Drag" >
+                            <ContentControl x:Name="PART_Grid_Mouse_Drag">
                                 <Grid>
-                                    <ScrollViewer x:Name="svImg" IsEnabled="True" VerticalScrollBarVisibility="hidden" Background="Transparent" HorizontalScrollBarVisibility="hidden" >
+                                    <ScrollViewer x:Name="svImg" IsEnabled="True" VerticalScrollBarVisibility="hidden" HorizontalScrollBarVisibility="hidden" >
 
-                                        <Grid x:Name="rootGrid" Background="Transparent">
-                                            <ContentControl x:Name="control"  HorizontalAlignment="Center" Background="Blue"  VerticalAlignment="Center">
+                                        <Grid x:Name="rootGrid">
+                                            <ContentControl x:Name="control"  HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <!--绘图区域   Background="#141414" -->
                                                 <Viewbox x:Name="vb" Stretch="Uniform"  HorizontalAlignment="Center" VerticalAlignment="Center">
                                                     <!--LayoutTransform="{StaticResource TfGroup}"-->
-                                                    <Grid HorizontalAlignment="Center"  Background="Gray"  VerticalAlignment="Center">
-                                                        <InkCanvas x:Name="PART_CenterCanvas"  Background="#141414"   HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand" MinHeight="0" MinWidth="0" ForceCursor="True"  EditingMode="None">
+                                                    <Grid HorizontalAlignment="Center"  VerticalAlignment="Center">
+                                                        <InkCanvas x:Name="PART_CenterCanvas"  Background="{TemplateBinding Background}"   HorizontalAlignment="Center" 
+                                                                   VerticalAlignment="Center"  MinHeight="0" MinWidth="0" ForceCursor="True"  EditingMode="None">
                                                             <InkCanvas.DefaultDrawingAttributes>
                                                                 <DrawingAttributes Color="Transparent"/>
                                                             </InkCanvas.DefaultDrawingAttributes>
@@ -39,10 +71,10 @@
 
                                                             <Image x:Name="imgBig"  Source="{TemplateBinding ImageSource}"  Stretch="Uniform"  LayoutTransform="{StaticResource TfGroup}"/>
 
-                                                            <!--<local1:DynamicShape x:Name="_dynamic"  Visibility="Collapsed"  WidthMatch="{Binding Source={StaticResource Resource.XmlDataProvider.ImageControl},XPath=DynamicMatch/@Width}" HeightMatch="{Binding Source={StaticResource Resource.XmlDataProvider.ImageControl},XPath=DynamicMatch/@Height}"/>-->
+                                                            <local:DynamicShape x:Name="_dynamic"  Visibility="Collapsed"  WidthMatch="50" HeightMatch="50"/>
 
-                                                            <!--半透明矩形框--><!--
-                                                            <Ellipse x:Name="MoveRect" Fill="White" Opacity="0.0"  Stroke="Red" Width="500" Height="500" Visibility="Visible" InkCanvas.Top="1000" InkCanvas.Left="2000"  MouseEnter="MoveRect_MouseEnter"   MouseLeave="MoveRect_MouseLeave"/>-->
+                                                            <!--半透明矩形框-->
+                                                            <Ellipse x:Name="MoveRect" Fill="White" Visibility="Collapsed" Opacity="0.0"  Stroke="Red" Width="500" Height="500" />
 
                                                         </InkCanvas>
                                                     </Grid>
@@ -53,16 +85,16 @@
                                 </Grid>
                             </ContentControl>
 
-                            <!--<Grid x:Name="popup"  Width="500" Height="500" Background="Transparent"  HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="False">
+                            <Grid x:Name="popup" Visibility="Collapsed" Width="500" Height="500" Background="Transparent"  HorizontalAlignment="Left" VerticalAlignment="Top" IsHitTestVisible="False">
                                 <Viewbox>
                                     <Grid Width="500" Height="500">
                                         <Grid.Clip>
                                             <EllipseGeometry Center="250,250" RadiusX="250" RadiusY="250"/>
                                         </Grid.Clip>
                                         <Viewbox Width="500" Height="500">
-                                            --><!--右侧大图--><!--
+                                            <!--右侧大图-->
                                             <Canvas x:Name="BigBox" Width="500" Height="500">
-                                                --><!--右侧原图片 注意尺寸--><!--
+                                                <!--右侧原图片 注意尺寸-->
                                                 <Image x:Name="bigImg"  Canvas.Left="0" Canvas.Top="-780" Source="{Binding ElementName=imgBig,Path=Source}" />
                                                 <Canvas.Clip>
                                                     <RectangleGeometry x:Name="bigrect" Rect="0,0,500,500" />
@@ -71,8 +103,7 @@
                                         </Viewbox>
                                     </Grid>
                                 </Viewbox>
-                            </Grid>-->
-
+                            </Grid>
 
                             <Grid x:Name="grid_mark" Margin="0" Width="150" Height="150"  ClipToBounds="True"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#4C000000">
 
@@ -87,6 +118,44 @@
                             </Grid>
                         </Grid>
                     </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="OperateType" Value="None">
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="popup"/>
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="MoveRect"/>
+                            <Setter Property="Visibility" Value="Collapsed"  TargetName="_dynamic"/>
+                            <Setter Property="Cursor" Value="Arrow" TargetName="PART_CenterCanvas"/>
+                        </Trigger>
+
+                        <Trigger Property="OperateType" Value="Default" >
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="popup"/>
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="MoveRect"/>
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="_dynamic"/>
+                            <Setter Property="Cursor" Value="Arrow" TargetName="PART_CenterCanvas"/>
+                        </Trigger>
+
+                        <Trigger Property="OperateType" Value="Bubble" >
+                            <Setter Property="Visibility" Value="Visible" TargetName="popup"/>
+                            <Setter Property="Visibility" Value="Visible" TargetName="MoveRect"/>
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="_dynamic"/>
+                            <Setter Property="Cursor" Value="None" TargetName="PART_CenterCanvas"/>
+                        </Trigger>
+
+                        <Trigger Property="OperateType" Value="Enlarge" >
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="popup"/>
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="MoveRect"/>
+                            <Setter Property="Visibility" Value="Visible" TargetName="_dynamic"/>
+                            <Setter Property="Cursor" Value="Cross" TargetName="PART_CenterCanvas"/>
+                        </Trigger>
+
+                        <Trigger Property="OperateType" Value="Sign" >
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="popup"/>
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="MoveRect"/>
+                            <Setter Property="Visibility" Value="Visible" TargetName="_dynamic"/>
+                            <Setter Property="Cursor" Value="Cross" TargetName="PART_CenterCanvas"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

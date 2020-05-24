@@ -1,5 +1,4 @@
-﻿using HeBianGu.Base.WpfBase;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +11,10 @@ namespace HeBianGu.General.ImageView
     /// <summary> 但点击当前控件时ListBoxItem项值也选中 </summary>
     public class ImageBaseMouseDragBehavior : Behavior<ImageBase>
     {
+        public ImageBaseMouseDragBehavior(ImageBase imageBase) : base(imageBase)
+        {
 
+        }
         protected override void OnAttached()
         {
             AssociatedObject.Loaded += AssociatedObject_Loaded;
@@ -20,15 +22,15 @@ namespace HeBianGu.General.ImageView
 
         private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
         {
-            AssociatedObject.grid_Mouse_drag.PreviewMouseDown += control_MouseLeftButtonDown;
-            AssociatedObject.grid_Mouse_drag.PreviewMouseUp += control_MouseLeftButtonUp;
+            AssociatedObject.grid_Mouse_drag.PreviewMouseDown += control_MouseDown;
+            AssociatedObject.grid_Mouse_drag.PreviewMouseUp += control_MouseUp;
             AssociatedObject.grid_Mouse_drag.PreviewMouseMove += control_MouseMove;
         }
 
         protected override void OnDetaching()
         {
-            AssociatedObject.grid_Mouse_drag.PreviewMouseDown -= control_MouseLeftButtonDown;
-            AssociatedObject.grid_Mouse_drag.PreviewMouseUp -= control_MouseLeftButtonUp;
+            AssociatedObject.grid_Mouse_drag.PreviewMouseDown -= control_MouseDown;
+            AssociatedObject.grid_Mouse_drag.PreviewMouseUp -= control_MouseUp;
             AssociatedObject.grid_Mouse_drag.PreviewMouseMove -= control_MouseMove;
 
             AssociatedObject.Loaded -= AssociatedObject_Loaded;
@@ -36,17 +38,13 @@ namespace HeBianGu.General.ImageView
 
         #region - 鸟撖图操作 -
 
-        private bool mouseDown;
+        bool mouseDown;
 
-        private System.Windows.Point mouseXY;
-
-
-        MarkType _markType;
+        Point mouseXY;
 
         void control_MouseMove(object sender, MouseEventArgs e)
         {
-
-            if ((this._markType != MarkType.None) && e.MiddleButton == MouseButtonState.Released)
+            if ((AssociatedObject.OperateType != OperateType.Default) && e.MiddleButton == MouseButtonState.Released)
             {
                 return;
             }
@@ -67,11 +65,10 @@ namespace HeBianGu.General.ImageView
 
         private void Domousemove(UIElement img, MouseEventArgs e)
         {
-            if ((this._markType != MarkType.None) && e.MiddleButton == MouseButtonState.Released)
+            if ((AssociatedObject.OperateType != OperateType.Default) && e.MiddleButton == MouseButtonState.Released)
             {
                 return;
-            }
-
+            } 
 
             var position = e.GetPosition(img);
             double X = mouseXY.X - position.X;
@@ -85,13 +82,12 @@ namespace HeBianGu.General.ImageView
             AssociatedObject.GetOffSetRate();
         }
 
-        void control_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        void control_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if ((this._markType != MarkType.None && e.ChangedButton != MouseButton.Middle))
+            if ((AssociatedObject.OperateType != OperateType.Default && e.ChangedButton != MouseButton.Middle))
             {
                 return;
-            }
-
+            } 
 
             var img = sender as UIElement;
 
@@ -101,26 +97,31 @@ namespace HeBianGu.General.ImageView
                 return;
             }
             img.ReleaseMouseCapture();
+
             mouseDown = false;
 
 
             //this.RefreshCursor();
         }
 
-        void control_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        void control_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Middle)
+            if ((AssociatedObject.OperateType != OperateType.Default && e.ChangedButton != MouseButton.Middle))
             {
-                AssociatedObject.Cursor = Cursors.Hand;
-            }
-            else
-            {
-                if ((this._markType != MarkType.None))
-                {
-                    return;
-                }
+                return;
             }
 
+            AssociatedObject.Cursor = Cursors.Hand;
+
+            //if (e.ChangedButton == MouseButton.Middle)
+            //{
+            //    AssociatedObject.Cursor = Cursors.Hand;
+            //}
+            //else
+            //{
+            //    if ((AssociatedObject.OperateType != OperateType.Default)) return;
+            //}
+             
             var img = sender as UIElement;
 
             if (img == null)
@@ -135,7 +136,7 @@ namespace HeBianGu.General.ImageView
             mouseXY = e.GetPosition(img);
 
         }
-
+       
         #endregion 
     }
 }

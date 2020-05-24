@@ -1,5 +1,4 @@
-﻿using HeBianGu.Base.WpfBase;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -14,7 +13,10 @@ namespace HeBianGu.General.ImageView
     /// <summary> 但点击当前控件时ListBoxItem项值也选中 </summary>
     public class ImageBaseMouseWheelBehavior : Behavior<ImageBase>
     {
+        public ImageBaseMouseWheelBehavior(ImageBase imageBase) : base(imageBase)
+        {
 
+        }
         protected override void OnAttached()
         {
             AssociatedObject.Loaded += AssociatedObject_Loaded;
@@ -46,6 +48,8 @@ namespace HeBianGu.General.ImageView
 
         private void Mask_LoationChanged(object sender, LoactionArgs e)
         {
+            if (AssociatedObject.OperateType == OperateType.Bubble) return;
+
             var result = GetScrollWidthAndHeight();
 
             double xleft = (AssociatedObject.rootGrid.ActualWidth - AssociatedObject.vb.ActualWidth) / 2;
@@ -59,6 +63,7 @@ namespace HeBianGu.General.ImageView
         /// <summary> 滚动条放大缩小和新方法 </summary>
         void svImg_MouseWheel(object sender, MouseWheelEventArgs e)
         {
+            if (AssociatedObject.OperateType == OperateType.Bubble) return;
 
             if (AssociatedObject.imgWidth == 0 || AssociatedObject.imgHeight == 0) return;
 
@@ -96,6 +101,7 @@ namespace HeBianGu.General.ImageView
 
         void svImg_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
+            if (AssociatedObject.OperateType == OperateType.Bubble) return;
 
             if (AssociatedObject.imgWidth == 0 || AssociatedObject.imgHeight == 0)
                 return;

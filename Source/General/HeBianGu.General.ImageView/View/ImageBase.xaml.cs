@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
@@ -27,6 +28,17 @@ namespace HeBianGu.General.ImageView
     [TemplatePart(Name = "rootGrid", Type = typeof(Grid))]
     [TemplatePart(Name = "controlmask", Type = typeof(ContentControl))]
     [TemplatePart(Name = "mask", Type = typeof(MaskCanvas))]
+    [TemplatePart(Name = "popup", Type = typeof(Grid))]
+
+    //  Do ：放大镜效果应用
+    [TemplatePart(Name = "BigBox", Type = typeof(Canvas))]
+    [TemplatePart(Name = "bigImg", Type = typeof(Image))]
+    [TemplatePart(Name = "bigrect", Type = typeof(RectangleGeometry))]
+    [TemplatePart(Name = "MoveRect", Type = typeof(Ellipse))]
+    [TemplatePart(Name = "grid_all", Type = typeof(Grid))]
+
+    //  Do ：局部放大效果应用
+    [TemplatePart(Name = "_dynamic", Type = typeof(DynamicShape))]
 
     public partial class ImageBase : ContentControl
     {
@@ -58,6 +70,21 @@ namespace HeBianGu.General.ImageView
 
         TransformGroup tfGroup;
 
+        internal Grid popup = null;
+
+        internal Canvas BigBox = null;
+
+        internal Image bigImg = null;
+
+        internal RectangleGeometry bigrect = null;
+
+        internal Ellipse MoveRect = null;
+
+        internal Grid grid_all = null;
+
+        internal DynamicShape _dynamic = null;
+
+
         double hOffSetRate = 0;//滚动条横向位置横向百分比
 
         double vOffSetRate = 0;//滚动条位置纵向百分比
@@ -68,45 +95,54 @@ namespace HeBianGu.General.ImageView
         /// <summary> 图片的高度 </summary>
         internal double imgHeight;
 
+        List<IBehavior> behaviors = new List<IBehavior>();
+
         #endregion
 
         #region - 初始化 -
 
         public ImageBase()
         {
-            this.Loaded += (l, k) =>
-            {
-                //  Do ：初始化宽度高度
-                this.InitWidthHeight();
-
-                //  Do ：初始化设置平铺
-                this.SetFullImage();
-
-                this.NoticeMessaged += (m, n) => Debug.WriteLine(this.Message);
-
-            };
-
             //  Do：改变窗口自适应大小
             this.SizeChanged += (l, k) =>
             {
-                //this.SetAdaptiveSize();
-
-                //this.Scale = this.GetFullScale();
-
-                //this.SetAdaptiveSize();
-
                 this.SetFullImage();
 
             };
-        }
 
-  
+            //  Do ：绑定菜单命令
+            CommandBinding command = new CommandBinding(ImageBaseCommands.DefaultCommand, (l, k) =>
+               {
+                   string commond = k.Parameter?.ToString();
+
+                   if (commond == "删除")
+                   {
+                       this.DeleteShape();
+                   }
+                   else if (commond == "放大")
+                   {
+                       this.ShowShape();
+                   }
+
+               });
+
+            this.CommandBindings.Add(command);
+
+            //  Do ：绑定自定义行为
+
+            this.behaviors.Add(new ImageBaseMouseWheelBehavior(this));
+            this.behaviors.Add(new ImageBaseMouseEnlargeBehavior(this));
+            this.behaviors.Add(new ImageBaseMouseDragBehavior(this));
+            this.behaviors.Add(new ImageBaseMouseSignBehavior(this));
+            this.behaviors.Add(new ImageBaseMouseBubbleBehavior(this));
+        }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
             this._centerCanvas = Template.FindName("PART_CenterCanvas", this) as InkCanvas;
+
             this._imageCenter = Template.FindName("PART_ImageCenter", this) as Image;
 
             grid_Mouse_drag = Template.FindName("PART_Grid_Mouse_Drag", this) as ContentControl;
@@ -123,6 +159,29 @@ namespace HeBianGu.General.ImageView
 
             controlmask = Template.FindName("controlmask", this) as ContentControl;
 
+            popup = Template.FindName("popup", this) as Grid;
+
+            BigBox = Template.FindName("BigBox", this) as Canvas;
+
+            bigImg = Template.FindName("bigImg", this) as Image;
+
+            bigrect = Template.FindName("bigrect", this) as RectangleGeometry;
+
+            grid_all = Template.FindName("grid_all", this) as Grid;
+
+            MoveRect = Template.FindName("MoveRect", this) as Ellipse;
+
+            _dynamic = Template.FindName("_dynamic", this) as DynamicShape;
+
+            //  Do ：初始化宽度高度
+            this.InitWidthHeight();
+
+            //  Do ：初始化设置平铺
+            this.SetFullImage();
+
+            this.NoticeMessaged += (m, n) => Debug.WriteLine(this.Message);
+
+            this.behaviors.ForEach(l=>l.RegisterBehavior());
         }
 
         #endregion
@@ -132,9 +191,33 @@ namespace HeBianGu.General.ImageView
         public double WheelScale { get; set; } = 0.5;
 
         /// <summary> 设置最大放大倍数 </summary>
-        public int MaxScale { get; set; } = 15;
+        public int MaxScale { get; set; } = 25;
 
         #endregion
+
+        [Browsable(false)]
+        [Category("Appearance")]
+        [ReadOnly(true)]
+        public OperateType OperateType
+        {
+            get { return (OperateType)GetValue(OperateTypeProperty); }
+            set { SetValue(OperateTypeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OperateTypeProperty =
+            DependencyProperty.Register("OperateType", typeof(OperateType), typeof(ImageBase), new PropertyMetadata(default(OperateType), (d, e) =>
+             {
+                 ImageBase control = d as ImageBase;
+
+                 if (control == null) return;
+
+                 OperateType config = (OperateType)e.NewValue;
+
+             }));
+
+
+
 
         /// <summary> 当前图片资源 </summary>
         public ImageSource ImageSource
@@ -152,6 +235,10 @@ namespace HeBianGu.General.ImageView
                  if (control == null) return;
 
                  ImageSource config = e.NewValue as ImageSource;
+
+                 if (control.grid_Mouse_drag == null) return;
+
+                 control.SetFullImage();
 
 
              }));
@@ -260,9 +347,6 @@ namespace HeBianGu.General.ImageView
 
             this.RaiseEvent(args);
         }
-
-
-
         #region - 通用方法 -
 
         /// <summary> 当初始化时初始化图片的宽和高 </summary>
@@ -314,7 +398,6 @@ namespace HeBianGu.General.ImageView
             this.OnNoticeMessaged(((int)(Scale * 100)).ToString() + "%");
         }
 
-
         /// <summary> 当Scale改变时刷新图片大小 </summary>
         internal void RefreshImageByScale()
         {
@@ -332,7 +415,7 @@ namespace HeBianGu.General.ImageView
 
 
         /// <summary> 当Scale变化时设置更新后水平和垂直位移 </summary>
-        private void SetOffSetByRate()
+        internal void SetOffSetByRate()
         {
             this.UpdateLayout();
 
@@ -375,7 +458,7 @@ namespace HeBianGu.General.ImageView
         }
 
         /// <summary> 根据Scale放大倍数设置鸟撖图是否可见 </summary>
-        void RefreshMarkVisible()
+        internal void RefreshMarkVisible()
         {
             if (imgWidth == 0 || imgHeight == 0) return;
 
@@ -391,6 +474,131 @@ namespace HeBianGu.General.ImageView
 
         #endregion
 
+
+
+        public ObservableCollection<RectangleShape> RectangleShapes
+        {
+            get { return (ObservableCollection<RectangleShape>)GetValue(RectangleShapesProperty); }
+            set { SetValue(RectangleShapesProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty RectangleShapesProperty =
+            DependencyProperty.Register("RectangleShapes", typeof(ObservableCollection<RectangleShape>), typeof(ImageBase), new PropertyMetadata(new ObservableCollection<RectangleShape>(), (d, e) =>
+             {
+                 ImageBase control = d as ImageBase;
+
+                 if (control == null) return;
+
+                 ObservableCollection<RectangleShape> config = e.NewValue as ObservableCollection<RectangleShape>;
+
+             }));
+
+
+
+        internal void AddShape(Rect rect)
+        {
+            SampleShape resultStroke = new SampleShape(this._dynamic);
+            resultStroke.Name = DateTime.Now.ToString();
+            resultStroke.Code = DateTime.Now.ToString();
+            resultStroke.Draw(this._centerCanvas);
+            this.RectangleShapes.Add(resultStroke);
+
+            ////  Do：清除动态框
+            //_dynamic.BegionMatch(false);
+        }
+
+        void DeleteShape()
+        {
+            var find = this.RectangleShapes.FirstOrDefault(l => l.IsSelected);
+
+            if (find == null) return;
+
+            this._centerCanvas.Children.Remove(find);
+
+            this.RectangleShapes.Remove(find);
+        }
+
+        void ShowShape()
+        {
+            var find = this.RectangleShapes.FirstOrDefault(l => l.IsSelected);
+
+            if (find == null) return;
+
+            this.ShowShape(find.Rect);
+        }
+
+        /// <summary> 按矩形框放大 </summary>
+        internal void ShowShape(Rect rect)
+        {
+            if (this.imgWidth == 0 || this.imgHeight == 0)
+                return;
+
+            double percentX = rect.X / this._centerCanvas.ActualWidth;
+
+            double percentY = rect.Y / this._centerCanvas.ActualHeight;
+
+            double timeW = rect.Width / this._centerCanvas.ActualWidth;
+            double timeH = rect.Height / this._centerCanvas.ActualHeight;
+
+            double w = this.mask.ActualWidth * timeW;
+            double h = this.mask.ActualHeight * timeH;
+
+
+            //  Message：设置缩放比例
+            this.Scale = Math.Min(this.svImg.ActualWidth / this.imgWidth, this.svImg.ActualHeight / this.imgHeight);
+
+            this.Scale = this.Scale / Math.Max(timeW, timeH);
+
+            //this.txtZoom.Text = ((int)(Scale * 100)).ToString() + "%";
+
+            //if (sb_Tip != null) sb_Tip.Begin();
+
+      
+
+            double indicatorWidth = mask.Indicator.ActualWidth / mask.ActualWidth;
+            double indicatorHeight = mask.Indicator.ActualHeight / mask.ActualHeight;
+
+            double transWidth = indicatorWidth - timeW;
+            double transHeight = indicatorHeight - timeH;
+
+            percentX = Math.Abs(percentX - transWidth / 2);
+            percentY = Math.Abs(percentY - transHeight / 2);
+
+            w = indicatorWidth * mask.ActualWidth;
+            h = mask.ActualHeight * indicatorHeight;
+
+            SetImageByScale();
+
+            //  Message：更改区域位置
+            Rect rectMark = new Rect(percentX * this.mask.ActualWidth, percentY * this.mask.ActualHeight, w, h);
+
+            this.mask.UpdateSelectionRegion(rectMark, true);
+
+        }
+
+        private void SetImageByScale()
+        {
+            this.GetOffSetRate();
+
+            if (this.imgWidth < 0 || this.imgHeight < 0) return;
+
+            this.vb.Width = this.Scale * this.imgWidth;
+            this.vb.Height = this.Scale * this.imgHeight;
+
+            this.SetOffSetByRate();
+
+            this.RefreshMarkVisible();
+        }
     }
+
+
+    //将所有命令封装在一个类里面
+
+    public class ImageBaseCommands
+    {
+        public static RoutedUICommand DefaultCommand = new RoutedUICommand();
+    }
+
 
 }
