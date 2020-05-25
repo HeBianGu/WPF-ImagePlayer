@@ -8,11 +8,11 @@ using System.Windows;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("HeBianGu.General.ImageView")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("HeBianGu自定义图片查看控件")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("HeBianGu")]
 [assembly: AssemblyProduct("HeBianGu.General.ImageView")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright ©  2020 By HeBianGu")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
