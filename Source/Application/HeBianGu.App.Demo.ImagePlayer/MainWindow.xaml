@@ -1,0 +1,24 @@
+﻿<Window x:Class="HeBianGu.App.Demo.ImagePlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HeBianGu.App.Demo.ImagePlayer"
+        xmlns:imagecore="clr-namespace:HeBianGu.Control.ImagePlayer;assembly=HeBianGu.Control.ImagePlayer"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <imagecore:ImagePlayer>
+            <imagecore:ImagePlayer.DataSource>
+                <collections:ArrayList>
+                    <ImageSource>F:\GitHub\WPF-Project\SureDream 12.0\Product\Debug\images\PANORAMIS_0000001.jpg</ImageSource>
+                    <ImageSource>F:\GitHub\WPF-Project\SureDream 12.0\Product\Debug\images\PANORAMIS_0000022.jpg</ImageSource>
+                    <ImageSource>F:\GitHub\WPF-Project\SureDream 12.0\Product\Debug\images\PANORAMIS_0000032.jpg</ImageSource>
+
+                </collections:ArrayList>
+            </imagecore:ImagePlayer.DataSource>
+        </imagecore:ImagePlayer>
+    </Grid>
+</Window>

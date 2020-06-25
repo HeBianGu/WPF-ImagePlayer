@@ -3,13 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{F0B44989-BF14-41A4-83E8-95BC99504412}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{F0B44989-BF14-41A4-83E8-95BC99504412}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Gereral", "Gereral", "{DB155184-ECA0-4D07-93BF-4AEDD2D90A88}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Gereral", "3 - Gereral", "{DB155184-ECA0-4D07-93BF-4AEDD2D90A88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.App.Demo.ImageCore", "..\..\Source\Application\HeBianGu.App.Demo.ImageCore\HeBianGu.App.Demo.ImageCore.csproj", "{43C77071-A939-4C83-BE54-84DD1B7F3002}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.General.ImageCore", "..\..\Source\General\HeBianGu.General.ImageCore\HeBianGu.General.ImageCore.csproj", "{135BE864-21A3-4CF4-B784-B950783C4B5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - UserControl", "2 - UserControl", "{F6D2CE40-61FE-42CA-834E-0D142963B824}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.Control.ImagePlayer", "..\..\Source\UserControl\HeBianGu.Control.ImagePlayer\HeBianGu.Control.ImagePlayer.csproj", "{BFB86748-F913-4D4E-8AAE-8AF884C2FB61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeBianGu.General.WpfControlLib", "..\..\..\WPF-ControlBase\Source\General\HeBianGu.General.WpfControlLib\HeBianGu.General.WpfControlLib.csproj", "{CA7FC16B-035B-4E4C-9934-E1DF24A2CA7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Base", "4 - Base", "{54545F1D-2FC1-46BB-9B4D-1B78A04E5884}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HeBianGu.Base.WpfBase", "..\..\..\WPF-ControlBase\Source\Base\HeBianGu.Base.WpfBase\HeBianGu.Base.WpfBase.csproj", "{57893DD2-8645-4438-AAFC-06CCD110AA11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeBianGu.App.Demo.ImagePlayer", "..\..\Source\Application\HeBianGu.App.Demo.ImagePlayer\HeBianGu.App.Demo.ImagePlayer.csproj", "{D24A714E-F788-421A-AEE9-56EB649243C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +37,22 @@ Global
 		{135BE864-21A3-4CF4-B784-B950783C4B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{135BE864-21A3-4CF4-B784-B950783C4B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{135BE864-21A3-4CF4-B784-B950783C4B5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFB86748-F913-4D4E-8AAE-8AF884C2FB61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFB86748-F913-4D4E-8AAE-8AF884C2FB61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFB86748-F913-4D4E-8AAE-8AF884C2FB61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFB86748-F913-4D4E-8AAE-8AF884C2FB61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA7FC16B-035B-4E4C-9934-E1DF24A2CA7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA7FC16B-035B-4E4C-9934-E1DF24A2CA7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA7FC16B-035B-4E4C-9934-E1DF24A2CA7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA7FC16B-035B-4E4C-9934-E1DF24A2CA7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57893DD2-8645-4438-AAFC-06CCD110AA11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57893DD2-8645-4438-AAFC-06CCD110AA11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57893DD2-8645-4438-AAFC-06CCD110AA11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57893DD2-8645-4438-AAFC-06CCD110AA11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D24A714E-F788-421A-AEE9-56EB649243C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24A714E-F788-421A-AEE9-56EB649243C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24A714E-F788-421A-AEE9-56EB649243C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24A714E-F788-421A-AEE9-56EB649243C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +60,10 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{43C77071-A939-4C83-BE54-84DD1B7F3002} = {F0B44989-BF14-41A4-83E8-95BC99504412}
 		{135BE864-21A3-4CF4-B784-B950783C4B5C} = {DB155184-ECA0-4D07-93BF-4AEDD2D90A88}
+		{BFB86748-F913-4D4E-8AAE-8AF884C2FB61} = {F6D2CE40-61FE-42CA-834E-0D142963B824}
+		{CA7FC16B-035B-4E4C-9934-E1DF24A2CA7A} = {DB155184-ECA0-4D07-93BF-4AEDD2D90A88}
+		{57893DD2-8645-4438-AAFC-06CCD110AA11} = {54545F1D-2FC1-46BB-9B4D-1B78A04E5884}
+		{D24A714E-F788-421A-AEE9-56EB649243C3} = {F0B44989-BF14-41A4-83E8-95BC99504412}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5EF2E071-0F99-4784-A498-CEC7A6A02A3B}
