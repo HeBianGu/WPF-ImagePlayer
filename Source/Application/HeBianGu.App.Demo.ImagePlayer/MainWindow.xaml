@@ -13,10 +13,12 @@
         <imagecore:ImagePlayer>
             <imagecore:ImagePlayer.DataSource>
                 <collections:ArrayList>
-                    <ImageSource>F:\GitHub\WPF-Project\SureDream 12.0\Product\Debug\images\PANORAMIS_0000001.jpg</ImageSource>
-                    <ImageSource>F:\GitHub\WPF-Project\SureDream 12.0\Product\Debug\images\PANORAMIS_0000022.jpg</ImageSource>
-                    <ImageSource>F:\GitHub\WPF-Project\SureDream 12.0\Product\Debug\images\PANORAMIS_0000032.jpg</ImageSource>
-
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
                 </collections:ArrayList>
             </imagecore:ImagePlayer.DataSource>
         </imagecore:ImagePlayer>
