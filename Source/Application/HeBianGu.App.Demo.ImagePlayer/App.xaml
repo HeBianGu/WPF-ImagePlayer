@@ -1,8 +1,8 @@
-﻿<Application x:Class="HeBianGu.App.Demo.ImagePlayer.App"
+﻿<h:ApplicationBase x:Class="HeBianGu.App.Demo.ImagePlayer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:HeBianGu.App.Demo.ImagePlayer"
-             StartupUri="MainWindow.xaml">
+             xmlns:h="QQ:908293466">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,4 +18,4 @@
 
         </ResourceDictionary>
     </Application.Resources>
-</Application>
+</h:ApplicationBase>

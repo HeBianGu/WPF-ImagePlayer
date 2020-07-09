@@ -1,4 +1,4 @@
-﻿<Window x:Class="HeBianGu.App.Demo.ImagePlayer.MainWindow"
+﻿<h:BlurWindowBase x:Class="HeBianGu.App.Demo.ImagePlayer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,21 +6,59 @@
         xmlns:local="clr-namespace:HeBianGu.App.Demo.ImagePlayer"
         xmlns:imagecore="clr-namespace:HeBianGu.Control.ImagePlayer;assembly=HeBianGu.Control.ImagePlayer"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:h="QQ:908293466"  Style="{DynamicResource S.Window.Blur.Default}"
         xmlns:collections="clr-namespace:System.Collections;assembly=mscorlib"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" CaptionHeight="{DynamicResource S.Window.Row.Height}"
+        NotifyIconSource="/HeBianGu.General.WpfControlLib;component/Resources/iBook.ico"
+        Title="图片播放器" Height="650" Width="1000">
     <Grid>
         <imagecore:ImagePlayer>
             <imagecore:ImagePlayer.DataSource>
                 <collections:ArrayList>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/1.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/2.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/3.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/4.jpg</ImageSource> 
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/5.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/6.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/7.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/8.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/9.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/10.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/11.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/12.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/13.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/14.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/15.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/16.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/17.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/18.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/19.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/20.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/21.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/22.jpg</ImageSource>
                     <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
-                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
-                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
-                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource> 
-                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
-                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/23.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/24.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/25.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/26.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/27.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/28.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/29.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/30.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/31.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/32.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/33.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/34.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/35.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/36.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/37.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/38.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/39.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/40.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/41.jpg</ImageSource>
+                    <ImageSource>https://mtl.gzhuibei.com/images/img/21547/42.jpg</ImageSource>
                 </collections:ArrayList>
             </imagecore:ImagePlayer.DataSource>
         </imagecore:ImagePlayer>
     </Grid>
-</Window>
+</h:BlurWindowBase>

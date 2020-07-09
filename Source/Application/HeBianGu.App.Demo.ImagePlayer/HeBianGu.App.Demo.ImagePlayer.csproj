@@ -34,7 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HeBianGu.Base.WpfBase, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.Base.WpfBase.2.1.4\lib\net45\HeBianGu.Base.WpfBase.dll</HintPath>
+    </Reference>
+    <Reference Include="HeBianGu.General.WpfControlLib, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Solution\hebiangu\packages\HeBianGu.General.WpfControlLib.2.1.4\lib\net45\HeBianGu.General.WpfControlLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -85,6 +92,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,14 +102,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\WPF-ControlBase\Source\Base\HeBianGu.Base.WpfBase\HeBianGu.Base.WpfBase.csproj">
-      <Project>{57893dd2-8645-4438-aafc-06ccd110aa11}</Project>
-      <Name>HeBianGu.Base.WpfBase</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\WPF-ControlBase\Source\General\HeBianGu.General.WpfControlLib\HeBianGu.General.WpfControlLib.csproj">
-      <Project>{ca7fc16b-035b-4e4c-9934-e1df24a2ca7a}</Project>
-      <Name>HeBianGu.General.WpfControlLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\General\HeBianGu.General.ImageCore\HeBianGu.General.ImageCore.csproj">
       <Project>{135be864-21a3-4cf4-b784-b950783c4b5c}</Project>
       <Name>HeBianGu.General.ImageCore</Name>
